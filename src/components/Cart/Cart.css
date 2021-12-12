@@ -1,0 +1,30 @@
+.Cart {
+  /* height: 90%; */
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(120, 120, 120);
+}
+
+.Cart .cart-list-container {
+  flex-grow: 1;
+  margin: 0.5rem;
+  background-color: rgb(220, 220, 220);
+  border: 1.5px solid rgb(44, 44, 44);
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Cart .order-total {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid black;
+}
+
+.Cart .checkout-btn {
+  align-self: stretch;
+  height: 3rem;
+  background-color: lime;
+}

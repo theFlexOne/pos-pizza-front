@@ -1,0 +1,69 @@
+{
+  "app": {
+    "menu": [
+      {
+        "section": "pizza",
+        "type": "menuItems",
+        "items": [
+          {
+            "name": "supreme",
+            "type": "specialty",
+            "toppings": [
+              "pepperoni",
+              "sausage",
+              "onions",
+              "green peppers",
+              "mushrooms",
+              "black olives"
+            ],
+            "prices": {
+              "small": 12,
+              "medium": 16,
+              "large": 18
+            },
+            "description": "The classic Supreme(Deluxe) pizza.",
+            "id": 1
+          },
+          {
+            "name": "meat-galore",
+            "id": 2
+          },
+          {
+            "name": "veggie-lover",
+            "id": 3
+          },
+          {
+            "name": "chicken-bacon-ranch",
+            "id": 4
+          },
+          {
+            "name": "bbq-bacon-chicken",
+            "id": 5
+          }
+        ],
+        "id": 1
+      },
+      {
+        "section": "wings",
+        "id": "2"
+      },
+      {
+        "section": "pasta",
+        "id": "3"
+      },
+      {
+        "section": "drink",
+        "id": "4"
+      },
+      {
+        "section": "sides",
+        "id": "5"
+      },
+      {
+        "section": "dessert",
+        "id": "6"
+      }
+    ],
+    "settings": []
+  }
+}

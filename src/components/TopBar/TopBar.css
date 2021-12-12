@@ -1,0 +1,14 @@
+.Top-Bar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.Top-Bar .nav {
+  display: flex;
+  height: 100%;
+  background-color: rgb(66, 66, 66);
+}
+
+.Top-Bar .nav > * {
+  flex-basis: 100%;
+}

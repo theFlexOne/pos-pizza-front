@@ -1,0 +1,12 @@
+.Settings {
+  display: flex;
+  width: 100vw;
+}
+
+.Settings nav {
+  min-width: 30%;
+}
+
+.Settings main {
+  min-width: 70%;
+}

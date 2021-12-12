@@ -1,0 +1,38 @@
+.Customer-Info-Box {
+  display: flex;
+  /* align-items: center; */
+  background-color: rgb(184, 184, 184);
+  border-bottom: 2px solid rgb(66, 66, 66);
+}
+
+.Customer-Info-Box .left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  padding: 0 0.5rem;
+  margin-right: auto;
+}
+
+.Customer-Info-Box .left > * {
+  background-color: rgb(220, 220, 220);
+  padding-left: 0.25rem;
+}
+
+.Customer-Info-Box .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Customer-Info-Box .order-type {
+  width: max-content;
+  margin-left: 0.35rem;
+  text-decoration: underline;
+}
+
+.Customer-Info-Box button {
+  margin-right: 0.5rem;
+  min-width: max-content;
+  align-self: center;
+}

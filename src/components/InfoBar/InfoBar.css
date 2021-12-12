@@ -1,0 +1,18 @@
+footer {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  display: flex;
+  background-color: rgb(90, 90, 90);
+}
+
+footer .info {
+  flex-basis: 100%;
+  /* flex-grow: 1; */
+  border-top: 0.5px solid rgb(120, 120, 120);
+  border-right: 0.5px solid rgb(120, 120, 120);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 0.1rem;
+  color: rgb(175, 175, 175);
+}
