@@ -1,45 +1,40 @@
 import React, { useState } from 'react';
-import './MenuSectionBar.css';
+// import './MenuSectionBar.css';
 import MenuSectionButton from '../MenuSectionButton/MenuSectionButton';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import AppBar from '@mui/material/AppBar';
-import { Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 // import Tab from '@mui/material/Tab';
 // import Tabs from '@mui/material/Tabs`';
 
-export default function MenuSectionBar({
-  menu,
-  currentSection,
-  changeSection,
-}) {
-  const [index, setIndex] = useState(0);
-
-  const onTabClick = (e, index) => {
-    setIndex(index);
-    // e.preventDefault();
-  };
-
+export default function MenuSectionBar({ sections, index, changeSection }) {
   const SectionTab = props => {
-    const section = props.section;
-    const sectionName = section.section;
     return (
-      <Tab label={sectionName} className={`tab ${sectionName}`} {...props} />
+      <Tab
+        label={props.section}
+        className={`tab ${props.section}`}
+        sx={{ flex: 1 }}
+        {...props}
+      />
     );
   };
 
+  const handleChange = (_, index) => {
+    changeSection(index);
+  };
+
   return (
-    <nav className="Menu-Section-Bar">
-      <Tabs
-        variant="fullWidth"
-        className="nav tabs"
-        value={index}
-        onChange={onTabClick}
-      >
-        {menu.map(section => {
-          return <SectionTab key={section.id} section={section} />;
-        })}
-      </Tabs>
-    </nav>
+    <Tabs
+      variant="fullWidth"
+      component="nav"
+      value={index}
+      onChange={() => handleChange}
+      orientation="vertical"
+    >
+      {sections.map(section => {
+        return <SectionTab key={section} section={section} />;
+      })}
+    </Tabs>
 
     // <nav>
     //   <ButtonGroup

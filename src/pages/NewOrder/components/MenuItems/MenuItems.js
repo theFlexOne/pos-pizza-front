@@ -1,6 +1,7 @@
 import React from 'react';
-import './MenuItems.css';
+// import './MenuItems.css';
 import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
 
 export default function MenuItems({ section, addToCart }) {
   // console.log(section);
@@ -10,7 +11,7 @@ export default function MenuItems({ section, addToCart }) {
   };
 
   return (
-    <div className="Menu-Items">
+    <Box className="Menu-Items" flexGrow="1">
       {section &&
         section.items.map(item => {
           return (
@@ -25,6 +26,6 @@ export default function MenuItems({ section, addToCart }) {
             </Button>
           );
         })}
-    </div>
+    </Box>
   );
 }

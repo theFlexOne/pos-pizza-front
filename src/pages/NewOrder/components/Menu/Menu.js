@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MenuSectionBar from '../MenuSectionBar/MenuSectionBar';
 import MenuItems from '../MenuItems/MenuItems';
-import './Menu.css';
+// import './Menu.css';
 // import MenuModal from '../MenuModal/MenuModal';
 
 export default function Menu({ menu, addToCart, className: classes }) {

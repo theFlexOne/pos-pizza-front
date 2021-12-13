@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import './TopBar.css';
+// import './TopBar.css';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { Box } from '@mui/system';
+import { useTheme } from '@mui/material/styles';
 
 export default function TopBar() {
   let tabIdCounter = 0;
   const [index, setIndex] = useState(0);
+  const theme = useTheme();
 
   const onTabClick = (e, index) => {
     setIndex(index);
@@ -18,26 +21,36 @@ export default function TopBar() {
     return (
       <Tab
         component={Link}
-        className="tab"
-        id={`${tabIdCounter++}`}
-        to="/"
+        to="/NewOrder"
+        sx={{ color: 'rgba(255, 255, 255, .5' }}
         {...props}
       />
     );
   };
 
   return (
-    <AppBar className="Top-Bar header">
-      <Tabs className="nav tabs" value={index} onChange={onTabClick}>
-        <LinkTab label="New Order" to="/New-Order" />
-        <LinkTab label="Order History" to="/Order-History" />
-        <LinkTab label="Customer List" to="/Customer-List" />
+    <Box
+      className="Top-Bar header"
+      component="header"
+      sx={{ backgroundColor: theme.palette.grey[800] }}
+    >
+      <Tabs
+        className="nav tabs"
+        variant="fullWidth"
+        value={index}
+        onChange={onTabClick}
+        textColor="secondary"
+        indicatorColor="secondary"
+      >
+        <LinkTab label="New Order" to="/NewOrder" />
+        <LinkTab label="Order History" to="/OrderHistory" />
+        <LinkTab label="Customer List" to="/CustomerList" />
         <LinkTab label="Settings" to="/Settings" />
         <LinkTab label="Wait Times" />
         <LinkTab label="Custom 2" />
         <LinkTab label="Custom 3" />
         <LinkTab label="Custom 4" />
       </Tabs>
-    </AppBar>
+    </Box>
   );
 }

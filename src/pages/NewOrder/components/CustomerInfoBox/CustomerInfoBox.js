@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import './CustomerInfoBox.css';
+// import './CustomerInfoBox.css';
 import Typography from '@mui/material/Typography';
 
 export default function CustomerInfoBox() {
