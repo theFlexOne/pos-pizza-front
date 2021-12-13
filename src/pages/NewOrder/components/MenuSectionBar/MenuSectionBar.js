@@ -22,7 +22,6 @@ export default function MenuSectionBar({
   const SectionTab = props => {
     const section = props.section;
     const sectionName = section.section;
-    console.log(section);
     return (
       <Tab label={sectionName} className={`tab ${sectionName}`} {...props} />
     );

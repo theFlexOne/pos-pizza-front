@@ -4,7 +4,7 @@ import MenuItems from '../MenuItems/MenuItems';
 import './Menu.css';
 // import MenuModal from '../MenuModal/MenuModal';
 
-export default function Menu({ menu, addToCart }) {
+export default function Menu({ menu, addToCart, className: classes }) {
   const [currentSection, setCurrentSection] = useState(menu[0]);
   // const [menuSections, setMenuSections] = useState([]);
 
@@ -16,10 +16,8 @@ export default function Menu({ menu, addToCart }) {
     setCurrentSection(section);
   };
 
-  console.log(menu);
-  console.log(currentSection);
   return (
-    <section className="Menu">
+    <section className={classes}>
       <MenuItems addToCart={addToCart} section={currentSection} />
       <MenuSectionBar
         menu={menu}

@@ -1,11 +1,14 @@
 .App {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
+  /* display: grid;
   grid-template-rows: 3rem 1fr 2rem;
   grid-template-areas:
     'TopBar'
     '.Main.'
     'InfoBar';
-  justify-content: center;
+  justify-content: center; */
   height: 100vh;
   max-height: 100vh;
 }
@@ -15,6 +18,7 @@
 }
 
 .App main {
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  flex: 1;
+  /* grid-column: 1 / 2;
+  grid-row: 2 / 3; */
 }

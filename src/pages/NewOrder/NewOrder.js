@@ -8,19 +8,21 @@ import Menu from './components/Menu/Menu';
 export default function NewOrder({ menu }) {
   const [liveOrder, setLiveOrder] = useState([]);
 
+  console.log(menu);
+
   const handleAddItem = item => {
-    console.log(item);
     setLiveOrder(() => [...liveOrder, item]);
   };
 
-  console.log(menu);
-
   return (
-    <main className="NewOrder">
-      {menu && <Menu menu={menu} addToCart={handleAddItem} />}
-      {/* is this redundant? */}
-      <CustomerInfoBox />
-      <Cart order={liveOrder} />
-    </main>
+    <>
+      <main className="New-Order">
+        <Menu menu={menu} className="Menu" addToCart={handleAddItem} />
+      </main>
+      <div>
+        <CustomerInfoBox className="Customer-Info-Box" />
+        <Cart className="Cart" order={liveOrder} />
+      </div>
+    </>
   );
 }

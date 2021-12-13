@@ -3,35 +3,19 @@ import './App.css';
 import TopBar from '../components/TopBar/TopBar';
 import Content from '../components/Content/Content';
 import InfoBar from '../components/InfoBar/InfoBar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/';
-import { createTheme } from '@mui/material/styles';
-import { lightGreen, purple } from '@mui/material/colors';
-
-const url = 'http://localhost:8000/menu';
-
-const theme = createTheme({
-  palette: {
-    primary: purple,
-    secondary: lightGreen,
-  },
-});
+import useApp from '../hooks/useApp';
 
 function App() {
-  const [menu, setMenu] = useState([]);
+  const [app, err, isLoading] = useApp();
 
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setMenu(data);
-      });
-  }, []);
-
-  return (
+  return isLoading ? (
+    {
+      /* Insert <Modal /> here */
+    }
+  ) : (
     <div className="App">
-      <TopBar />
-      <Content />
+      <TopBar app={app} />
+      {app && <Content app={app} />}
       <InfoBar />
     </div>
   );
