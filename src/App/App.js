@@ -30,11 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <TopBar />
-        <Content />
-        <InfoBar />
-      </Router>
+      <TopBar />
+      <Content />
+      <InfoBar />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import './POSSettings.css';
 import React from 'react';
-import SettingsNavBar from '../SettingsNavBar/SettingsNavBar';
-import SettingsContent from '../SettingsContent/SettingsContent';
+import SettingsNavBar from '../../components/SettingsNavBar/SettingsNavBar';
+import SettingsContent from './components/SettingsContent/SettingsContent';
 
 export default function Settings() {
   return (

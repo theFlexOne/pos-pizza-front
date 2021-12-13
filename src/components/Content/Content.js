@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import NewOrder from '../NewOrder/NewOrder';
+import NewOrder from '../../pages/NewOrder/NewOrder';
 // import MenuModal from '../MenuModal/MenuModal';
 // import Order from '../Order/Order';
 import './Content.css';

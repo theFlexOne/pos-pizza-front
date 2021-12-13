@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './NewOrder.css';
-import Cart from '../Cart/Cart';
-import CustomerInfoBox from '../CustomerInfoBox/CustomerInfoBox';
-import Menu from '../Menu/Menu';
+import Cart from './components/Cart/Cart';
+import CustomerInfoBox from './components/CustomerInfoBox/CustomerInfoBox';
+import Menu from './components/Menu/Menu';
 
 export default function NewOrder({ menu }) {
   const [liveOrder, setLiveOrder] = useState([]);
