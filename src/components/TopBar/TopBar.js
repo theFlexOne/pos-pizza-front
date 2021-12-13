@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// import './TopBar.css';
 import { Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Box } from '@mui/system';
@@ -32,15 +30,13 @@ export default function TopBar() {
     <Box
       className="Top-Bar header"
       component="header"
-      sx={{ backgroundColor: theme.palette.grey[800] }}
+      sx={{ backgroundColor: theme.palette.blueGrey[700] }}
     >
       <Tabs
         className="nav tabs"
         variant="fullWidth"
         value={index}
         onChange={onTabClick}
-        textColor="secondary"
-        indicatorColor="secondary"
       >
         <LinkTab label="New Order" to="/NewOrder" />
         <LinkTab label="Order History" to="/OrderHistory" />

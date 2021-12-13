@@ -3,22 +3,35 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Divider } from '@mui/material';
 import { useTheme } from '@emotion/react';
+// import useDateTime from '../../hooks/useDateTime';
+import { DateTime } from 'luxon';
 
 export default function InfoBar() {
   const theme = useTheme();
+
+  const dt = DateTime.now();
+  console.log(dt);
   const InfoCell = ({ children }) => {
     return (
       <Typography
         variant="caption"
         component="p"
         flex="1"
-        // borderRight={`1px solid ${theme.palette.grey[800]}`}
         align="center"
+        color="rgba(255,255,255,0.5)"
       >
         {children}
       </Typography>
     );
   };
+
+  const CellDivider = () => (
+    <Divider
+      orientation="vertical"
+      sx={{ backgroundColor: 'rgba(255,255,255,0.7)' }}
+      flexItem
+    />
+  );
 
   return (
     <Box
@@ -26,22 +39,22 @@ export default function InfoBar() {
       component="footer"
       className="Info-Bar"
       display="flex"
-      backgroundColor={theme.palette.grey[600]}
+      backgroundColor={theme.palette.blueGrey[600]}
     >
       <InfoCell>USER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>OTHER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>OTHER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>OTHER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>OTHER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>OTHER</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>DATE</InfoCell>
-      <Divider orientation="vertical" flexItem />
+      <CellDivider />
       <InfoCell>TIME</InfoCell>
     </Box>
   );
