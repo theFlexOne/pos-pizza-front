@@ -13,6 +13,8 @@ ReactDOM.render(
         flexDirection="column"
         height="100vh"
         maxHeight="100vh"
+        width="100vw"
+        maxwidth="100vw"
       />
     </Router>
   </React.StrictMode>,

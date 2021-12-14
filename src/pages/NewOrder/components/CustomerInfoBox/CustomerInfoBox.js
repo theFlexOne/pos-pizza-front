@@ -1,11 +1,11 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React from 'react';
 // import './CustomerInfoBox.css';
 import Typography from '@mui/material/Typography';
 
 export default function CustomerInfoBox() {
   return (
-    <section className="Customer-Info-Box">
+    <Box flex="1">
       <div className="left">
         <Typography variant="body2" component="p" className="name">
           *name here*
@@ -31,6 +31,6 @@ export default function CustomerInfoBox() {
           Edit Info
         </Button>
       </div>
-    </section>
+    </Box>
   );
 }

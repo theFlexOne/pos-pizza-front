@@ -5,12 +5,8 @@ import MenuItems from '../MenuItems/MenuItems';
 // import MenuModal from '../MenuModal/MenuModal';
 
 export default function Menu({ menu, addToCart, className: classes }) {
-  const [currentSection, setCurrentSection] = useState(menu[0]);
+  const [currentSection, setCurrentSection] = useState(0);
   // const [menuSections, setMenuSections] = useState([]);
-
-  useEffect(() => {
-    setCurrentSection(menu[0]);
-  }, [menu]);
 
   const changeSection = section => {
     setCurrentSection(section);
@@ -22,7 +18,7 @@ export default function Menu({ menu, addToCart, className: classes }) {
       <MenuSectionBar
         menu={menu}
         changeSection={changeSection}
-        currentSection={currentSection}
+        index={currentSection}
       />
     </section>
   );

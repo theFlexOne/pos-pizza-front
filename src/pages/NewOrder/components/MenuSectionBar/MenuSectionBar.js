@@ -8,6 +8,8 @@ import { Box, Tab, Tabs } from '@mui/material';
 // import Tabs from '@mui/material/Tabs`';
 
 export default function MenuSectionBar({ sections, index, changeSection }) {
+  // const [value, setValue] = useState(0);
+
   const SectionTab = props => {
     return (
       <Tab
@@ -19,16 +21,16 @@ export default function MenuSectionBar({ sections, index, changeSection }) {
     );
   };
 
-  const handleChange = (_, index) => {
-    changeSection(index);
-  };
+  // const handleChange = (_, index) => {
+  //   setValue(index);
+  // };
 
   return (
     <Tabs
       variant="fullWidth"
       component="nav"
       value={index}
-      onChange={() => handleChange}
+      onChange={(_, index) => changeSection(index)}
       orientation="vertical"
     >
       {sections.map(section => {
