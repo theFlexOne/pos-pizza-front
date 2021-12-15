@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react';
-// import './App.css';
-import TopBar from '../components/TopBar/TopBar';
-import InfoBar from '../components/InfoBar/InfoBar';
+import React from 'react';
 import useApp from '../hooks/useApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from '../pages/NewOrder/NewOrder';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import Layout from '../components/Layout';
-
-const theme = createTheme({});
 
 function App() {
   const [app, err, isLoading] = useApp();
@@ -20,7 +15,7 @@ function App() {
     return <h2>{err.message}</h2>;
   }
   return (
-    <Layout app={app} theme={theme}>
+    <Layout app={app}>
       <Box component="section" className="page" display="flex" flex="1">
         {app && (
           <Routes>

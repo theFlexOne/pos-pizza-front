@@ -1,9 +1,9 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { blueGrey, orange } from '@mui/material/colors';
+import blueGrey from '@mui/material/colors/blueGrey';
 import TopBar from './TopBar/TopBar';
 import InfoBar from './InfoBar/InfoBar';
-import { Box } from '@mui/system';
+import Box from '@mui/system/Box';
 
 const theme = createTheme({
   palette: {
@@ -18,11 +18,9 @@ const theme = createTheme({
 });
 
 export default function Layout({ app, children }) {
-  console.log(theme);
   return (
     <ThemeProvider theme={theme}>
       <Box
-        className="App"
         display="flex"
         flexDirection="column"
         height="100vh"

@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-// import './MenuItems.css';
+import React from 'react';
+// import { useState } from 'react';
 import Button from '@mui/material/Button';
-import { Box } from '@mui/material';
-// import styled from '@mui/system';
-import buildPizza from '../../../../utils/buildPizza';
-import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
-const MenuButton = () => {};
+// const MenuButton = () => {};
 
 export default function MenuItems({ section: { items }, addToCart }) {
-  const handleClick = ({ name, toppings, id, prices: { large: price } }) => {
-    return addToCart({
+  const handleClick = item => {
+    const { name, toppings, id, prices } = item;
+    addToCart({
       name,
-      price,
+      price: (prices && prices.large) || 'N/A',
       toppings,
-      id,
     });
   };
 

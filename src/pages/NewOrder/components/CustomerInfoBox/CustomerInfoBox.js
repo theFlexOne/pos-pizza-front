@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 export default function CustomerInfoBox() {
   return (
-    <Box flex="1">
+    <Box>
       <div className="left">
         <Typography variant="body2" component="p" className="name">
           *name here*

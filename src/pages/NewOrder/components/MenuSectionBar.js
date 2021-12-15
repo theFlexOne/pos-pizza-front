@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-// import './MenuSectionBar.css';
-import MenuSectionButton from '../MenuSectionButton/MenuSectionButton';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import AppBar from '@mui/material/AppBar';
-import { Box, Tab, Tabs } from '@mui/material';
-// import Tab from '@mui/material/Tab';
-// import Tabs from '@mui/material/Tabs`';
+import React from 'react';
+// import { useState } from 'react';
+// import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 
 export default function MenuSectionBar({ sections, index, changeSection }) {
   // const [value, setValue] = useState(0);
