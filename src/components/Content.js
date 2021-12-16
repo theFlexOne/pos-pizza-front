@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Routes } from 'react-router-dom';
-import NewOrder from '../../pages/NewOrder/NewOrder';
+import NewOrder from '../pages/NewOrder/NewOrder';
 // import MenuModal from '../MenuModal/MenuModal';
 // import Order from '../Order/Order';
 

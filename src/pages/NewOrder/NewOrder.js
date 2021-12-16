@@ -7,10 +7,12 @@ import MenuSectionBar from './components/MenuSectionBar';
 import Box from '@mui/system/Box';
 import MainPanel from './components/MainPanel';
 import SidePanel from './components/SidePanel';
+import CustomerForm from './components/CustomerForm';
 
 export default function NewOrder({ menu }) {
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({});
+  const [isMenu, setIsMenu] = useState(false);
   // const [isBuilding, setIsBuilding] = useState(false);
 
   console.log(menu);
@@ -28,8 +30,7 @@ export default function NewOrder({ menu }) {
     setCustomer(customer);
   };
 
-  return (
-    // <Box className="New-Order" minHeight="100%" display="flex">
+  return isMenu ? (
     <>
       <MainPanel
         menu={menu}
@@ -42,12 +43,10 @@ export default function NewOrder({ menu }) {
         order={cart}
         customer={customer}
       />
-      {/* <Modal>
-        <ButtonGroup>
-          <Button></Button>
-        </ButtonGroup>
-      </Modal> */}
     </>
-    // </Box>
+  ) : (
+    <>
+      <CustomerForm />
+    </>
   );
 }
