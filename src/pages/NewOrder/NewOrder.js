@@ -12,11 +12,7 @@ import CustomerForm from './components/CustomerForm';
 export default function NewOrder({ menu }) {
   const [cart, setCart] = useState([]);
   const [customer, setCustomer] = useState({});
-  const [isMenu, setIsMenu] = useState(false);
-  // const [isBuilding, setIsBuilding] = useState(false);
-
-  console.log(menu);
-  console.log(cart);
+  const [isMenu, setIsMenu] = useState(true);
 
   const addToCart = item => {
     setCart([...cart, item]);
@@ -30,23 +26,21 @@ export default function NewOrder({ menu }) {
     setCustomer(customer);
   };
 
-  return isMenu ? (
+  return (
     <>
       <MainPanel
         menu={menu}
         addToCart={addToCart}
         customer={customer}
         applyCustomer={applyCustomer}
+        isMenu={isMenu}
       />
       <SidePanel
         removeFromCart={removeFromCart}
         order={cart}
         customer={customer}
+        isMenu={isMenu}
       />
-    </>
-  ) : (
-    <>
-      <CustomerForm />
     </>
   );
 }

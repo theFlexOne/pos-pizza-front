@@ -4,7 +4,22 @@ import ReactDOM from 'react-dom';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
 
-// import './styles.css';
+const basicKeyboardLayout = {
+  default: [
+    '1 2 3 4 5 6 7 8 9 0',
+    'q w e r t y u i o p',
+    "a s d f g h j k l '",
+    '{shift} - z x c v b n m {bksp}',
+    'cancel {space} {enter}',
+  ],
+  shift: [
+    '1 2 3 4 5 6 7 8 9 0',
+    'Q W E R T Y U I O P',
+    'A S D F G H J K L "',
+    '{shift} - Z X C V B N M {bksp}',
+    'cancel {space} {enter}',
+  ],
+};
 
 export default function TouchKeyboard({ input, setInput, keyboard }) {
   const [layout, setLayout] = useState('default');
@@ -34,22 +49,7 @@ export default function TouchKeyboard({ input, setInput, keyboard }) {
       <Keyboard
         keyboardRef={r => (keyboard.current = r)}
         layoutName={layout}
-        layout={{
-          default: [
-            '1 2 3 4 5 6 7 8 9 0',
-            'q w e r t y u i o p',
-            "a s d f g h j k l '",
-            '{shift} - z x c v b n m {bksp}',
-            'cancel {space} {enter}',
-          ],
-          shift: [
-            '1 2 3 4 5 6 7 8 9 0',
-            'Q W E R T Y U I O P',
-            'A S D F G H J K L "',
-            '{shift} - Z X C V B N M {bksp}',
-            'cancel {space} {enter}',
-          ],
-        }}
+        layout={basicKeyboardLayout}
         onChange={onChange}
         onKeyPress={onKeyPress}
       />

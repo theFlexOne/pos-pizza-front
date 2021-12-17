@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <Layout app={app}>
-      <Box component="section" className="page" display="flex" flex="1">
+      <Box className="page" display="flex" flex="1">
         {app && (
           <Routes>
             <Route path="/" element={<NewOrder menu={app.menu} />} />

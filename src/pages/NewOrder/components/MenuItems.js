@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 
 // const MenuButton = () => {};
 
-export default function MenuItems({ section: { items }, addToCart }) {
+export default function MenuItems({ section, addToCart }) {
+  const items = section?.items;
   const handleClick = item => {
     const { name, toppings, id, prices } = item;
     addToCart({
