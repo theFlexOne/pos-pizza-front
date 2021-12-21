@@ -26,7 +26,12 @@
         {
           "name": "meat-galore",
           "type": "specialty",
-          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
+          "toppings": [
+            "pepperoni",
+            "sausage",
+            "beef",
+            "bacon"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -38,7 +43,12 @@
         {
           "name": "veggie-lover",
           "type": "specialty",
-          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
+          "toppings": [
+            "onions",
+            "green peppers",
+            "mushrooms",
+            "black olives"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -50,7 +60,11 @@
         {
           "name": "chicken-bacon-ranch",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "ranch"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "ranch"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -62,7 +76,12 @@
         {
           "name": "bbq-bacon-chicken",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "bbq sauce",
+            "onions"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -255,6 +274,134 @@
       "recentOrders": [],
       "id": "05e21643",
       "created": 1584592068850
+    },
+    {
+      "phoneNumber": "555-631-4699",
+      "name": {
+        "firstName": "asdasd",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "123 fun street",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "c3c82572",
+      "created": 1640118438878
+    },
+    {
+      "phoneNumber": "555-631-4699",
+      "name": {
+        "firstName": "asdasd",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "123 fun street",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "ce744767",
+      "created": 1640118448851
+    },
+    {
+      "phoneNumber": "555-631-4688",
+      "name": {
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "185 Hwy 212 E, Trlr 53",
+        "secondaryAddress": "53",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "1c3e5eaf",
+      "created": 1640118775394
+    },
+    {
+      "phoneNumber": "555-631-4600",
+      "name": {
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "185 Hwy 212 E, Trlr 53",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "31743a1f",
+      "created": 1640118871345
+    },
+    {
+      "phoneNumber": "000-000-0000",
+      "name": {
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "185 Hwy 212 E, Trlr 53",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "9586fad0",
+      "created": 1640119973562
+    },
+    {
+      "phoneNumber": "612-644-0596",
+      "name": {
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "90bdb237",
+      "created": 1640121411037
+    },
+    {
+      "phoneNumber": "612-111-1111",
+      "name": {
+        "firstName": "asdasd",
+        "lastName": "asdasd"
+      },
+      "address": {
+        "streetAddress": "",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "86b2f5d8",
+      "created": 1640122402719
+    },
+    {
+      "phoneNumber": "111-111-1111",
+      "name": {
+        "firstName": "asdasd",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "a6986621",
+      "created": 1640122456248
     }
   ],
   "settings": []

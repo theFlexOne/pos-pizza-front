@@ -31,7 +31,7 @@ export default function CustomerFormAddress({
   secondaryAddress,
   onStreetAddressChange,
   onSecondaryAddressChange,
-  createNewCustomer,
+  onCustomerSubmit,
 }) {
   return (
     <Box width="100%">
@@ -71,7 +71,7 @@ export default function CustomerFormAddress({
           />
         </Box>
       </Box>
-      <Keyboard onBtnClick={createNewCustomer} btnLabel="START ORDER" />
+      <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" />
     </Box>
   );
 }

@@ -30,26 +30,22 @@ const NewCustomer = ({
     created: Date.now(),
   };
 };
-export default function Customer({ customerList, setCustomer }) {
+export default function Customer({
+  customerList,
+  setCustomer,
+  formStep,
+  changeFormStep,
+  onNewCustomer,
+}) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
   const [secondaryAddress, setSecondaryAddress] = useState('');
-  const [formStep, setFormStep] = useState(1);
-  // const [formData, setFormData] = useState(NewCustomer(phoneNumber));
 
   //* Auto-formatting phone number - "###-###-####"
   if (phoneNumber.length === 3 || phoneNumber.length === 7)
     setPhoneNumber(() => phoneNumber + '-');
-
-  console.log(
-    phoneNumber,
-    firstName,
-    lastName,
-    streetAddress,
-    secondaryAddress
-  );
 
   const lookupPhoneNumber = () => {
     for (let i = 0; i < customerList.length; i++) {
@@ -60,24 +56,27 @@ export default function Customer({ customerList, setCustomer }) {
   };
 
   const nextPage = () => {
-    setFormStep(() => formStep + 1);
+    changeFormStep(formStep + 1);
   };
 
-  const createNewCustomer = () => {
+  const handleCustomerSubmit = () => {
+    const customer = NewCustomer({
+      phoneNumber,
+      firstName,
+      lastName,
+      streetAddress,
+      secondaryAddress,
+    });
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        NewCustomer({
-          phoneNumber,
-          firstName,
-          lastName,
-          streetAddress,
-          secondaryAddress,
-        })
-      ),
+      body: JSON.stringify(customer),
     };
-    fetch(POS_DATA_URL + '/customers', options);
+    fetch(POS_DATA_URL + '/customers', options)
+      .then(res => res.json())
+      .then(data => {
+        onNewCustomer(data);
+      });
   };
 
   const formPage = () => {
@@ -109,11 +108,18 @@ export default function Customer({ customerList, setCustomer }) {
             secondaryAddress={secondaryAddress}
             onStreetAddressChange={e => setStreetAddress(e.target.value)}
             onSecondaryAddressChange={e => setSecondaryAddress(e.target.value)}
-            createNewCustomer={createNewCustomer}
+            onCustomerSubmit={handleCustomerSubmit}
           />
         );
       default:
-        return null;
+        return (
+          <CustomerLookup
+            phone={phoneNumber}
+            onPhoneNumberChange={e => setPhoneNumber(e.target.value)}
+            clearField={() => setPhoneNumber('')}
+            lookupPhoneNumber={lookupPhoneNumber}
+          />
+        );
     }
   };
 

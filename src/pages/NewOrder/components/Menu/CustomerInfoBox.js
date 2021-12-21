@@ -3,32 +3,35 @@ import React from 'react';
 // import './CustomerInfoBox.css';
 import Typography from '@mui/material/Typography';
 
-export default function CustomerInfoBox() {
+export default function CustomerInfoBox({ customer, changeCustomer }) {
+  const {
+    name: { firstName, lastName },
+    phoneNumber,
+    address: { streetAddress, secondaryAddress },
+  } = customer;
+  console.log(customer);
+  // console.log(fn, ln, pn, ad1, ad2);
   return (
     <Box>
       <div className="left">
         <Typography variant="body2" component="p" className="name">
-          *name here*
+          {`${firstName} ${lastName}`}
         </Typography>
         <Typography variant="body2" component="p" className="phone-number">
-          *phone number here*
+          {phoneNumber}
         </Typography>
         <Typography variant="body2" component="p" className="address">
-          *address here (only if delivery)*
+          {streetAddress + ', ' + secondaryAddress}
         </Typography>
       </div>
       <div className="right">
-        <Typography
-          variant="caption"
-          component="p"
-          className="order-type"
+        <Button
+          variant="contained"
+          size="small"
           color="primary"
+          onClick={changeCustomer}
         >
-          *order type*
-        </Typography>
-
-        <Button variant="contained" size="small" color="primary">
-          Edit Info
+          Change Customer
         </Button>
       </div>
     </Box>
