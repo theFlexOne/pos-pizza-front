@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const POS_DATA_URL = 'http://localhost:8000/app';
+const POS_DATA_URL = 'http://localhost:8000';
 
 const useApp = () => {
   const [result, setResult] = useState(null);
@@ -12,7 +12,7 @@ const useApp = () => {
       setIsLoading(true);
       console.log('Loading...');
       try {
-        const response = await fetch(POS_DATA_URL);
+        const response = await fetch(POS_DATA_URL + '/db');
         const data = await response.json();
         setResult(data);
       } catch (e) {

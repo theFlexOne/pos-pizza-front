@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
-// import './Cart.css';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { capAll } from '../../../../utils/textMods';
-import { Container } from '@mui/material';
 
 const displayPrice = num => {
   return '$' + num.toFixed(2);

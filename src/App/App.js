@@ -3,7 +3,6 @@ import useApp from '../hooks/useApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from '../pages/NewOrder/NewOrder';
-import { createTheme } from '@mui/material/styles';
 import Layout from '../components/Layout';
 
 function App() {
@@ -14,13 +13,15 @@ function App() {
     console.error(err);
     return <h2>{err.message}</h2>;
   }
+
+  console.log(app);
   return (
     <Layout app={app}>
       <Box className="page" display="flex" flex="1">
         {app && (
           <Routes>
-            <Route path="/" element={<NewOrder menu={app.menu} />} />
-            <Route path="/NewOrder" element={<NewOrder menu={app.menu} />} />
+            <Route path="/" element={<NewOrder app={app} />} />
+            <Route path="/NewOrder" element={<NewOrder app={app} />} />
           </Routes>
         )}
       </Box>

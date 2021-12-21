@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DateTime as dt } from 'luxon';
 
+const getTime = () => dt.now().toFormat('t');
+
 const useDateTime = () => {
-  const date = dt.now().toFormat('M/d/yy');
-  const date = dt.now().toFormat('hh:mm');
+  const [time, setTime] = useState(getTime);
+  const date = dt.now().toFormat('D');
 
-  // useEffect(() => {
-
-  // })
+  useEffect(() => {
+    const tick = setTimeout(() => {
+      setTime(getTime);
+    }, 60 * 1000);
+    return () => {
+      clearTimeout(tick);
+    };
+  }, [time]);
+  return [date, time];
 };
 
 export default useDateTime;

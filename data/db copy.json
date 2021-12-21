@@ -1,70 +1,191 @@
 {
-  "app": {
-    "menu": [
-      {
-        "section": "pizza",
-        "type": "base",
-        "items": [
-          {
-            "name": "supreme",
-            "type": "specialty",
-            "toppings": [
-              "pepperoni",
-              "sausage",
-              "onions",
-              "green peppers",
-              "mushrooms",
-              "black olives"
-            ],
-            "prices": {
-              "small": 12,
-              "medium": 16,
-              "large": 18
-            },
-            "description": "The classic Supreme(Deluxe) pizza.",
-            "id": 1
+  "menu": [
+    {
+      "section": "pizza",
+      "type": "menuItems",
+      "items": [
+        {
+          "name": "supreme",
+          "type": "specialty",
+          "toppings": [
+            "pepperoni",
+            "sausage",
+            "onions",
+            "green peppers",
+            "mushrooms",
+            "black olives"
+          ],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "meat-galore",
-            "id": 2
+          "description": "The classic Supreme(Deluxe) pizza.",
+          "id": 1
+        },
+        {
+          "name": "meat-galore",
+          "type": "specialty",
+          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "veggie-lover",
-            "id": 3
+          "description": "Four meat pizza.",
+          "id": 2
+        },
+        {
+          "name": "veggie-lover",
+          "type": "specialty",
+          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "chicken-bacon-ranch",
-            "id": 4
+          "description": "Vegetarian.",
+          "id": 3
+        },
+        {
+          "name": "chicken-bacon-ranch",
+          "type": "specialty",
+          "toppings": ["chicken", "bacon", "ranch"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "bbq-bacon-chicken",
-            "id": 5
-          }
-        ],
-        "id": 1
+          "description": "CBR.",
+          "id": 4
+        },
+        {
+          "name": "bbq-bacon-chicken",
+          "type": "specialty",
+          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
+          },
+          "description": "BBQ Pizza.",
+          "id": 5
+        }
+      ],
+      "id": 1
+    },
+    {
+      "section": "wings",
+      "id": "2"
+    },
+    {
+      "section": "pasta",
+      "id": "3"
+    },
+    {
+      "section": "drink",
+      "id": "4"
+    },
+    {
+      "section": "sides",
+      "id": "5"
+    },
+    {
+      "section": "dessert",
+      "id": "6"
+    }
+  ],
+  "customers": [
+    {
+      "name": "Marco Abshire",
+      "phoneNumber": "555-075-5137",
+      "address": {
+        "streetAddress": "65236 Hermann Station",
+        "city": "Gravel Falls"
       },
-      {
-        "section": "wings",
-        "id": "2"
+      "recentOrders": []
+    },
+    {
+      "name": "Maiya Franecki",
+      "phoneNumber": "555-652-1921",
+      "address": {
+        "streetAddress": "778 Paucek Cliff",
+        "city": "Gravel Falls"
       },
-      {
-        "section": "pasta",
-        "id": "3"
+      "recentOrders": []
+    },
+    {
+      "name": "Heath Rosenbaum",
+      "phoneNumber": "555-854-2470",
+      "address": {
+        "streetAddress": "0204 Bednar Summit",
+        "city": "Gravel Falls"
       },
-      {
-        "section": "drink",
-        "id": "4"
+      "recentOrders": []
+    },
+    {
+      "name": "Joannie Little",
+      "phoneNumber": "555-631-4699",
+      "address": {
+        "streetAddress": "203 Paucek Route",
+        "city": "Gravel Falls"
       },
-      {
-        "section": "sides",
-        "id": "5"
+      "recentOrders": []
+    },
+    {
+      "name": "Enos Johnson",
+      "phoneNumber": "555-346-5014",
+      "address": {
+        "streetAddress": "575 Bernier Prairie",
+        "city": "Gravel Falls"
       },
-      {
-        "section": "dessert",
-        "id": "6"
-      }
-    ],
-    "customers": [],
-    "settings": []
-  }
+      "recentOrders": []
+    },
+    {
+      "name": "Chanelle Hilpert",
+      "phoneNumber": "555-267-4465",
+      "address": {
+        "streetAddress": "91620 Alia Square",
+        "city": "Gravel Falls"
+      },
+      "recentOrders": []
+    },
+    {
+      "name": "Marilou Jakubowski",
+      "phoneNumber": "555-944-7590",
+      "address": {
+        "streetAddress": "84211 Boris Harbor",
+        "city": "Gravel Falls"
+      },
+      "recentOrders": []
+    },
+    {
+      "name": "Joel Bernhard",
+      "phoneNumber": "555-258-7235",
+      "address": {
+        "streetAddress": "48090 Haley Harbors",
+        "city": "Gravel Falls"
+      },
+      "recentOrders": []
+    },
+    {
+      "name": "Lance Willms",
+      "phoneNumber": "555-690-2097",
+      "address": {
+        "streetAddress": "0354 Bernhard Square",
+        "city": "Gravel Falls"
+      },
+      "recentOrders": []
+    },
+    {
+      "name": "Demario Dickinson",
+      "phoneNumber": "555-347-3046",
+      "address": {
+        "streetAddress": "71398 Vicky Corner",
+        "city": "Gravel Falls"
+      },
+      "recentOrders": []
+    }
+  ],
+  "settings": []
 }

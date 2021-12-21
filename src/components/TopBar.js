@@ -6,12 +6,11 @@ import { Box } from '@mui/system';
 import { useTheme } from '@mui/material/styles';
 
 export default function TopBar() {
-  let tabIdCounter = 0;
-  const [index, setIndex] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(0);
   const theme = useTheme();
 
-  const onTabClick = (e, index) => {
-    setIndex(index);
+  const handleChange = (_, newTab) => {
+    setSelectedTab(newTab);
     // e.preventDefault();
   };
 
@@ -35,8 +34,8 @@ export default function TopBar() {
       <Tabs
         className="nav tabs"
         variant="fullWidth"
-        value={index}
-        onChange={onTabClick}
+        value={selectedTab}
+        onChange={handleChange}
       >
         <LinkTab label="New Order" to="/NewOrder" />
         <LinkTab label="Order History" to="/OrderHistory" />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useState } from 'react';
 // import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -12,7 +12,7 @@ export default function MenuSectionBar({ sections, index, changeSection }) {
       <Tab
         label={props.section}
         className={`tab ${props.section}`}
-        sx={{ flex: 1 }}
+        sx={{ flex: '1 1 100%' }}
         {...props}
       />
     );
@@ -27,10 +27,11 @@ export default function MenuSectionBar({ sections, index, changeSection }) {
       variant="fullWidth"
       component="nav"
       value={index}
-      onChange={(_, index) => changeSection(index)}
+      onChange={changeSection}
       orientation="vertical"
     >
       {sections.map(section => {
+        console.log(section);
         return <SectionTab key={section} section={section} />;
       })}
     </Tabs>

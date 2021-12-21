@@ -1,46 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import Cart from './components/Cart/Cart';
-import CustomerInfoBox from './components/CustomerInfoBox/CustomerInfoBox';
-import MenuItems from './components/MenuItems';
-import MenuSectionBar from './components/MenuSectionBar';
-import Box from '@mui/system/Box';
-import MainPanel from './components/MainPanel';
-import SidePanel from './components/SidePanel';
-import CustomerForm from './components/CustomerForm';
+import Menu from './components/Menu/Menu';
+import Customer from './components/Customer/Customer';
 
-export default function NewOrder({ menu }) {
-  const [cart, setCart] = useState([]);
-  const [customer, setCustomer] = useState({});
-  const [isMenu, setIsMenu] = useState(true);
+export default function NewOrder({ app }) {
+  const { menu, customers } = app;
+  const [customer, setCustomer] = useState(null);
+  const [isMenu, setIsMenu] = useState(false);
 
-  const addToCart = item => {
-    setCart([...cart, item]);
-  };
+  useEffect(() => {
+    if (customer) setIsMenu(true);
+  }, [customer]);
 
-  const removeFromCart = ({ idToRemove }) => {
-    setCart(cart.filter(({ id }) => id !== idToRemove));
-  };
+  console.log(customer);
 
-  const applyCustomer = customer => {
-    setCustomer(customer);
-  };
-
-  return (
-    <>
-      <MainPanel
-        menu={menu}
-        addToCart={addToCart}
-        customer={customer}
-        applyCustomer={applyCustomer}
-        isMenu={isMenu}
-      />
-      <SidePanel
-        removeFromCart={removeFromCart}
-        order={cart}
-        customer={customer}
-        isMenu={isMenu}
-      />
-    </>
+  return isMenu ? (
+    <Menu menu={menu} customer={customer} />
+  ) : (
+    <Customer customerList={customers} setCustomer={setCustomer} />
   );
 }

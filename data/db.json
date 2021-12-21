@@ -1,198 +1,261 @@
 {
-  "app": {
-    "menu": [
-      {
-        "section": "pizza",
-        "type": "menuItems",
-        "items": [
-          {
-            "name": "supreme",
-            "type": "specialty",
-            "toppings": [
-              "pepperoni",
-              "sausage",
-              "onions",
-              "green peppers",
-              "mushrooms",
-              "black olives"
-            ],
-            "prices": {
-              "small": 12.0,
-              "medium": 16.0,
-              "large": 18.0
-            },
-            "description": "The classic Supreme(Deluxe) pizza.",
-            "id": 1
+  "menu": [
+    {
+      "section": "pizza",
+      "type": "menuItems",
+      "items": [
+        {
+          "name": "supreme",
+          "type": "specialty",
+          "toppings": [
+            "pepperoni",
+            "sausage",
+            "onions",
+            "green peppers",
+            "mushrooms",
+            "black olives"
+          ],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "meat-galore",
-            "type": "specialty",
-            "toppings": ["pepperoni", "sausage", "beef", "bacon"],
-            "prices": {
-              "small": 12.0,
-              "medium": 16.0,
-              "large": 18.0
-            },
-            "description": "Four meat pizza.",
-            "id": 2
+          "description": "The classic Supreme(Deluxe) pizza.",
+          "id": 1
+        },
+        {
+          "name": "meat-galore",
+          "type": "specialty",
+          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "veggie-lover",
-            "type": "specialty",
-            "toppings": [
-              "onions",
-              "green peppers",
-              "mushrooms",
-              "black olives"
-            ],
-            "prices": {
-              "small": 12.0,
-              "medium": 16.0,
-              "large": 18.0
-            },
-            "description": "Vegetarian.",
-            "id": 3
+          "description": "Four meat pizza.",
+          "id": 2
+        },
+        {
+          "name": "veggie-lover",
+          "type": "specialty",
+          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "chicken-bacon-ranch",
-            "type": "specialty",
-            "toppings": ["chicken", "bacon", "ranch"],
-            "prices": {
-              "small": 12.0,
-              "medium": 16.0,
-              "large": 18.0
-            },
-            "description": "CBR.",
-            "id": 4
+          "description": "Vegetarian.",
+          "id": 3
+        },
+        {
+          "name": "chicken-bacon-ranch",
+          "type": "specialty",
+          "toppings": ["chicken", "bacon", "ranch"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
           },
-          {
-            "name": "bbq-bacon-chicken",
-            "type": "specialty",
-            "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
-            "prices": {
-              "small": 12.0,
-              "medium": 16.0,
-              "large": 18.0
-            },
-            "description": "BBQ Pizza.",
-            "id": 5
-          }
-        ],
-        "id": 1
-      },
-      {
-        "section": "wings",
-        "id": "2"
-      },
-      {
-        "section": "pasta",
-        "id": "3"
-      },
-      {
-        "section": "drink",
-        "id": "4"
-      },
-      {
-        "section": "sides",
-        "id": "5"
-      },
-      {
-        "section": "dessert",
-        "id": "6"
-      }
-    ],
-    "customers": [
-      {
-        "name": "Marco Abshire",
-        "phoneNumber": "555-075-5137",
-        "address": {
-          "streetAddress": "65236 Hermann Station",
-          "city": "Gravel Falls"
+          "description": "CBR.",
+          "id": 4
         },
-        "recentOrders": []
+        {
+          "name": "bbq-bacon-chicken",
+          "type": "specialty",
+          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
+          "prices": {
+            "small": 12,
+            "medium": 16,
+            "large": 18
+          },
+          "description": "BBQ Pizza.",
+          "id": 5
+        }
+      ],
+      "id": 1
+    },
+    {
+      "section": "wings",
+      "id": "2"
+    },
+    {
+      "section": "pasta",
+      "id": "3"
+    },
+    {
+      "section": "drink",
+      "id": "4"
+    },
+    {
+      "section": "sides",
+      "id": "5"
+    },
+    {
+      "section": "dessert",
+      "id": "6"
+    }
+  ],
+  "customers": [
+    {
+      "name": {
+        "firstName": "Johanna",
+        "lastName": "Gerlach"
       },
-      {
-        "name": "Maiya Franecki",
-        "phoneNumber": "555-652-1921",
-        "address": {
-          "streetAddress": "778 Paucek Cliff",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "phoneNumber": "555-092-6911",
+      "address": {
+        "streetAddress": "00287 Ernser Corners",
+        "secondaryAddress": "Apt. 836",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
       },
-      {
-        "name": "Heath Rosenbaum",
-        "phoneNumber": "555-854-2470",
-        "address": {
-          "streetAddress": "0204 Bednar Summit",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "recentOrders": [],
+      "id": "3845d348",
+      "created": 1590929198151
+    },
+    {
+      "name": {
+        "firstName": "Michele",
+        "lastName": "Schmeler"
       },
-      {
-        "name": "Joannie Little",
-        "phoneNumber": "555-631-4699",
-        "address": {
-          "streetAddress": "203 Paucek Route",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "phoneNumber": "555-842-8380",
+      "address": {
+        "streetAddress": "8590 Maritza Ports",
+        "secondaryAddress": "Apt. 670",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
       },
-      {
-        "name": "Enos Johnson",
-        "phoneNumber": "555-346-5014",
-        "address": {
-          "streetAddress": "575 Bernier Prairie",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "recentOrders": [],
+      "id": "55a84299",
+      "created": 1623899765553
+    },
+    {
+      "name": {
+        "firstName": "Delpha",
+        "lastName": "Kassulke"
       },
-      {
-        "name": "Chanelle Hilpert",
-        "phoneNumber": "555-267-4465",
-        "address": {
-          "streetAddress": "91620 Alia Square",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "phoneNumber": "555-644-2613",
+      "address": {
+        "streetAddress": "6174 Strosin Causeway",
+        "secondaryAddress": "Apt. 470",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
       },
-      {
-        "name": "Marilou Jakubowski",
-        "phoneNumber": "555-944-7590",
-        "address": {
-          "streetAddress": "84211 Boris Harbor",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "recentOrders": [],
+      "id": "f0c31e38",
+      "created": 1635000670090
+    },
+    {
+      "name": {
+        "firstName": "Antonetta",
+        "lastName": "Daugherty"
       },
-      {
-        "name": "Joel Bernhard",
-        "phoneNumber": "555-258-7235",
-        "address": {
-          "streetAddress": "48090 Haley Harbors",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "phoneNumber": "555-806-0707",
+      "address": {
+        "streetAddress": "531 Walker River",
+        "secondaryAddress": "Apt. 124",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
       },
-      {
-        "name": "Lance Willms",
-        "phoneNumber": "555-690-2097",
-        "address": {
-          "streetAddress": "0354 Bernhard Square",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
+      "recentOrders": [],
+      "id": "0aed6e73",
+      "created": 1605502063530
+    },
+    {
+      "name": {
+        "firstName": "Zion",
+        "lastName": "Rohan"
       },
-      {
-        "name": "Demario Dickinson",
-        "phoneNumber": "555-347-3046",
-        "address": {
-          "streetAddress": "71398 Vicky Corner",
-          "city": "Gravel Falls"
-        },
-        "recentOrders": []
-      }
-    ],
-    "settings": []
-  }
+      "phoneNumber": "555-567-5346",
+      "address": {
+        "streetAddress": "7056 Zboncak Greens",
+        "secondaryAddress": "Suite 310",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "7a20b122",
+      "created": 1587322164184
+    },
+    {
+      "name": {
+        "firstName": "Hyman",
+        "lastName": "Thiel"
+      },
+      "phoneNumber": "555-161-4667",
+      "address": {
+        "streetAddress": "8007 Dillan Underpass",
+        "secondaryAddress": "Suite 518",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "5bda1314",
+      "created": 1615262361992
+    },
+    {
+      "name": {
+        "firstName": "Adrienne",
+        "lastName": "Cruickshank"
+      },
+      "phoneNumber": "555-232-4454",
+      "address": {
+        "streetAddress": "652 Antonetta Lock",
+        "secondaryAddress": "Apt. 464",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "34df8f13",
+      "created": 1581590943920
+    },
+    {
+      "name": {
+        "firstName": "Kaylah",
+        "lastName": "Pfannerstill"
+      },
+      "phoneNumber": "555-178-6641",
+      "address": {
+        "streetAddress": "1492 Windler Summit",
+        "secondaryAddress": "Apt. 444",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "c29e3b31",
+      "created": 1615200883036
+    },
+    {
+      "name": {
+        "firstName": "Kathlyn",
+        "lastName": "Bode"
+      },
+      "phoneNumber": "555-514-0114",
+      "address": {
+        "streetAddress": "5949 Cummerata Key",
+        "secondaryAddress": "Suite 348",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "5f4393c9",
+      "created": 1582330479416
+    },
+    {
+      "name": {
+        "firstName": "Joy",
+        "lastName": "Huel"
+      },
+      "phoneNumber": "555-096-1569",
+      "address": {
+        "streetAddress": "62203 Hobart Ville",
+        "secondaryAddress": "Suite 801",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "recentOrders": [],
+      "id": "05e21643",
+      "created": 1584592068850
+    }
+  ],
+  "settings": []
 }

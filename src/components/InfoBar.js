@@ -1,16 +1,17 @@
-import React from 'react';
-// import './InfoBar.css';
+import React, { useEffect, useRef, useState } from 'react';
 import Typography from '@mui/material/Typography';
-import { Box, Divider } from '@mui/material';
+import Box from '@mui/system/Box';
+import Divider from '@mui/material/Divider';
 import { useTheme } from '@emotion/react';
-// import useDateTime from '../../hooks/useDateTime';
-import { DateTime } from 'luxon';
+import useDateTime from '../hooks/useDateTime';
 
 export default function InfoBar() {
   const theme = useTheme();
 
-  const dt = DateTime.now();
-  console.log(dt);
+  const [date, time] = useDateTime();
+
+  console.log(date, ' | ', time);
+
   const InfoCell = ({ children }) => {
     return (
       <Typography
@@ -23,6 +24,10 @@ export default function InfoBar() {
         {children}
       </Typography>
     );
+  };
+
+  const ClockCell = () => {
+    return <InfoCell />;
   };
 
   const CellDivider = () => (
@@ -53,9 +58,9 @@ export default function InfoBar() {
       <CellDivider />
       <InfoCell>OTHER</InfoCell>
       <CellDivider />
-      <InfoCell>DATE</InfoCell>
+      <InfoCell>{date}</InfoCell>
       <CellDivider />
-      <InfoCell>TIME</InfoCell>
+      <InfoCell>{time}</InfoCell>
     </Box>
   );
 }
