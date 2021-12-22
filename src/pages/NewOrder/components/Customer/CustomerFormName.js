@@ -90,7 +90,7 @@ export default function CustomerFormName({
         <Keyboard
           onBtnClick={nextPage}
           prev={prevPage}
-          firstName={firstName}
+          disabled={!firstName}
           btnLabel="NEXT PAGE"
         />
       </Box>

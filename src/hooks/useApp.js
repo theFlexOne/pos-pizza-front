@@ -8,7 +8,7 @@ const useApp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       setIsLoading(true);
       console.log('Loading...');
       try {
@@ -20,7 +20,7 @@ const useApp = () => {
         setError(e);
       }
       setIsLoading(false);
-    }
+    };
 
     fetchData();
   }, []);

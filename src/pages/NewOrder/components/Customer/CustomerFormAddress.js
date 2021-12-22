@@ -2,6 +2,7 @@ import { TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
+import { useTheme } from '@emotion/react';
 
 const styles = {
   form: {
@@ -32,10 +33,13 @@ export default function CustomerFormAddress({
   onStreetAddressChange,
   onSecondaryAddressChange,
   onCustomerSubmit,
+  prevPage,
 }) {
+  const theme = useTheme();
+
   return (
-    <Box width="100%">
-      <Box width="100%" height="50%">
+    <Box width="100%" display="flex" flexDirection="column">
+      <Box flex="1">
         <Box component="form" sx={styles.form}>
           <TextField
             id="streetAddress"
@@ -44,6 +48,8 @@ export default function CustomerFormAddress({
             value={streetAddress}
             onChange={onStreetAddressChange}
             fullWidth
+            autoFocus
+            required
           />
           <TextField
             id="secondaryAddress"
@@ -71,7 +77,21 @@ export default function CustomerFormAddress({
           />
         </Box>
       </Box>
-      <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" />
+      <Box
+        display="flex"
+        flex="1"
+        height="auto"
+        padding=".75rem 1.25rem"
+        backgroundColor={theme.palette.secondary[900]}
+      >
+        <Keyboard
+          onBtnClick={onCustomerSubmit}
+          prev={prevPage}
+          btnLabel="START ORDER"
+          disabled={!streetAddress}
+        />
+      </Box>
+      {/* <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" /> */}
     </Box>
   );
 }

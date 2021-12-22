@@ -6,9 +6,9 @@ import Customer from './components/Customer/Customer';
 export default function NewOrder({ app }) {
   const { menu, customers } = app;
   const [customer, setCustomer] = useState(null);
-  const [isMenu, setIsMenu] = useState(false);
+  const [isMenu, setIsMenu] = useState(true);
   const [customerList, setCustomerList] = useState(customers);
-  const [formStep, setFormStep] = useState(2);
+  const [formStep, setFormStep] = useState(1);
 
   const changeCustomer = () => {
     setIsMenu(() => false);

@@ -26,12 +26,7 @@
         {
           "name": "meat-galore",
           "type": "specialty",
-          "toppings": [
-            "pepperoni",
-            "sausage",
-            "beef",
-            "bacon"
-          ],
+          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -43,12 +38,7 @@
         {
           "name": "veggie-lover",
           "type": "specialty",
-          "toppings": [
-            "onions",
-            "green peppers",
-            "mushrooms",
-            "black olives"
-          ],
+          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -60,11 +50,7 @@
         {
           "name": "chicken-bacon-ranch",
           "type": "specialty",
-          "toppings": [
-            "chicken",
-            "bacon",
-            "ranch"
-          ],
+          "toppings": ["chicken", "bacon", "ranch"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -76,12 +62,7 @@
         {
           "name": "bbq-bacon-chicken",
           "type": "specialty",
-          "toppings": [
-            "chicken",
-            "bacon",
-            "bbq sauce",
-            "onions"
-          ],
+          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -95,6 +76,26 @@
     },
     {
       "section": "wings",
+      "items": [
+        {
+          "name": "Boneless",
+          "type": "wings",
+          "prices": {
+            "10": 12,
+            "20": 20
+          },
+          "id": 1
+        },
+        {
+          "name": "Traditional",
+          "type": "wings",
+          "prices": {
+            "10": 12,
+            "20": 20
+          },
+          "id": 2
+        }
+      ],
       "id": "2"
     },
     {
@@ -418,6 +419,22 @@
       "orderHistory": [],
       "id": "c5e57bff",
       "created": 1640126457155
+    },
+    {
+      "phoneNumber": "",
+      "name": {
+        "firstName": "Er",
+        "lastName": ""
+      },
+      "address": {
+        "streetAddress": "ss",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "cffc4bc9",
+      "created": 1640146832051
     }
   ],
   "settings": []

@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-export default function Keyboard({ onBtnClick, btnLabel, prev, firstName }) {
+export default function Keyboard({ onBtnClick, btnLabel, prev, disabled }) {
   return (
     <Box sx={styles.keyboardContainer}>
       <Typography variant="body2" marginTop="auto">
@@ -26,7 +26,7 @@ export default function Keyboard({ onBtnClick, btnLabel, prev, firstName }) {
         <Button variant="contained" onClick={prev} size="large">
           PREV PAGE
         </Button>
-        <Button variant="contained" disabled={!firstName} onClick={onBtnClick}>
+        <Button variant="contained" disabled={disabled} onClick={onBtnClick}>
           {btnLabel}
         </Button>
       </ButtonGroup>

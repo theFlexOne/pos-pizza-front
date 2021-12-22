@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import MainPanel from './MainPanel';
 import SidePanel from './SidePanel';
+import { useTheme } from '@emotion/react';
 
 export default function Menu({ menu, customer, changeCustomer }) {
   const [cart, setCart] = useState([]);
+
   const addToCart = item => {
     setCart([...cart, item]);
   };

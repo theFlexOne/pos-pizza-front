@@ -20,7 +20,9 @@ const CartItem = ({ item, i }) => {
             {toMoneyString(item.price)}
           </Typography>
         </Box>
-        <Typography variant="caption">{item.toppings.join(', ')}</Typography>
+        {item.toppings && (
+          <Typography variant="caption">{item.toppings.join(', ')}</Typography>
+        )}
       </Box>
       {/* {i < order.length && <Divider />} */}
     </>

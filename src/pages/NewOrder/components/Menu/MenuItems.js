@@ -8,10 +8,13 @@ import Box from '@mui/material/Box';
 export default function MenuItems({ section, addToCart }) {
   const items = section?.items;
   const handleClick = item => {
-    const { name, toppings, prices } = item;
+    const { name, toppings, prices, type } = item;
     addToCart({
       name,
-      price: (prices && prices.large) || 'N/A',
+      price: (() => {
+        if (type === 'specialty') return prices.large;
+        if (type === 'wings') return prices[20];
+      })(),
       toppings,
     });
   };

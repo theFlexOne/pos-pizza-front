@@ -114,6 +114,7 @@ export default function Customer({
             onStreetAddressChange={e => setStreetAddress(e.target.value)}
             onSecondaryAddressChange={e => setSecondaryAddress(e.target.value)}
             onCustomerSubmit={handleCustomerSubmit}
+            prevPage={prevPage}
           />
         );
       default:
