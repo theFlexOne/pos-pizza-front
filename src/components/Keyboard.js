@@ -1,22 +1,35 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, ButtonGroup, Typography } from '@mui/material';
 import React from 'react';
 
-export default function Keyboard({ onBtnClick, btnLabel }) {
+const styles = {
+  keyboardContainer: {
+    flex: '1',
+    backgroundColor: '#38D435',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+};
+
+export default function Keyboard({ onBtnClick, btnLabel, prev, firstName }) {
   return (
-    <Box
-      // input={input}
-      // setInput={setInput}
-      // keyboard={keyboard}
-      width="100%"
-      height="50%"
-      backgroundColor="#393837"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Button variant="contained" onClick={onBtnClick}>
-        {btnLabel}
-      </Button>
+    <Box sx={styles.keyboardContainer}>
+      <Typography variant="body2" marginTop="auto">
+        **SPACE RESERVED FOR A QWERTY-LIKE KEYBOARD**
+      </Typography>
+      <ButtonGroup
+        // size="large"
+        fullWidth
+        sx={{ maxWidth: '50vw', minHeight: '3.5rem', m: 'auto 0' }}
+      >
+        <Button variant="contained" onClick={prev} size="large">
+          PREV PAGE
+        </Button>
+        <Button variant="contained" disabled={!firstName} onClick={onBtnClick}>
+          {btnLabel}
+        </Button>
+      </ButtonGroup>
     </Box>
   );
 }

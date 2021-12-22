@@ -19,7 +19,7 @@ export default function TopBar() {
       <Tab
         component={Link}
         to="/NewOrder"
-        sx={{ color: 'rgba(255, 255, 255, .5' }}
+        // sx={{ color: 'rgba(255, 255, 255, .5' }}
         {...props}
       />
     );
@@ -29,7 +29,7 @@ export default function TopBar() {
     <Box
       className="Top-Bar header"
       component="header"
-      sx={{ backgroundColor: theme.palette.blueGrey[700] }}
+      sx={{ backgroundColor: theme.palette.secondary[700] }}
     >
       <Tabs
         className="nav tabs"

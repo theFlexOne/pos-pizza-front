@@ -8,7 +8,7 @@ export default function NewOrder({ app }) {
   const [customer, setCustomer] = useState(null);
   const [isMenu, setIsMenu] = useState(false);
   const [customerList, setCustomerList] = useState(customers);
-  const [formStep, setFormStep] = useState(1);
+  const [formStep, setFormStep] = useState(2);
 
   const changeCustomer = () => {
     setIsMenu(() => false);
@@ -25,14 +25,12 @@ export default function NewOrder({ app }) {
     if (customer) setIsMenu(true);
   }, [customer]);
 
-  console.log(customer || 'NONE');
-
   return isMenu ? (
     <Menu menu={menu} customer={customer} changeCustomer={changeCustomer} />
   ) : (
     <Customer
       customerList={customerList}
-      setCustomer={setCustomer}
+      setCustomer={customer => setCustomer(customer)}
       formStep={formStep}
       changeFormStep={val => setFormStep(val)}
       onNewCustomer={handleNewCustomer}

@@ -1,6 +1,7 @@
 import { Box, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import Keyboard from '../../../../components/Keyboard';
+import { useTheme } from '@emotion/react';
 
 const styles = {
   form: {
@@ -8,13 +9,15 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    '& > *': {
+      borderRadius: '4px',
+    },
   },
   firstName: {
-    mr: '2rem',
-    flexBasis: '30%',
+    flex: '1 1 30%',
   },
   lastName: {
-    flexBasis: '40%',
+    flex: '1 1 40%',
   },
 };
 
@@ -24,33 +27,73 @@ export default function CustomerFormName({
   onFirstNameChange,
   onLastNameChange,
   nextPage,
+  prevPage,
 }) {
-  // const [firstName, setFirstName] = useState('');
-  // const [lastName, setLastName] = useState('');
+  const theme = useTheme();
 
-  // const keyboard = useRef();
+  console.log(theme);
 
   return (
-    <Box width="100%">
-      <Box width="100%" height="50%">
-        <Box component="form" sx={styles.form}>
-          <TextField
-            id="setFirstName"
-            label="First Name"
-            sx={styles.firstName}
-            value={firstName}
-            onChange={onFirstNameChange}
-          />
-          <TextField
-            id="lastName"
-            label="Last Name"
-            sx={styles.lastName}
-            value={lastName}
-            onChange={onLastNameChange}
-          />
+    <Box
+      width="100%"
+      display="flex"
+      flexDirection="column"
+      backgroundColor={theme.palette.secondary[200]}
+    >
+      <Box flex="1" display="flex" justifyContent="center">
+        <Box
+          component="form"
+          sx={styles.form}
+          display="inherit"
+          flexBasis="70%"
+          gap="1.5rem"
+        >
+          <Box
+            backgroundColor={theme.palette.secondary[50]}
+            flex="1 1 35%"
+            // borderRadius="4px"
+          >
+            <TextField
+              id="setFirstName"
+              label="First Name"
+              sx={styles.firstName}
+              value={firstName}
+              onChange={onFirstNameChange}
+              fullWidth
+              autoFocus
+              required
+            />
+          </Box>
+          <Box
+            flex="1 1 55%"
+            borderRadius="4px"
+            backgroundColor={theme.palette.secondary[50]}
+          >
+            <TextField
+              id="lastName"
+              label="Last Name"
+              sx={styles.lastName}
+              value={lastName}
+              onChange={onLastNameChange}
+              fullWidth
+            />
+          </Box>
         </Box>
       </Box>
-      <Keyboard onBtnClick={nextPage} btnLabel="CONTINUE" />
+      <Box
+        display="flex"
+        flex="1"
+        height="auto"
+        padding=".75rem 1.25rem"
+        backgroundColor={theme.palette.secondary[900]}
+      >
+        <Keyboard
+          onBtnClick={nextPage}
+          prev={prevPage}
+          firstName={firstName}
+          btnLabel="NEXT PAGE"
+        />
+      </Box>
     </Box>
   );
 }

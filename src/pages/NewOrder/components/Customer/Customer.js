@@ -59,6 +59,10 @@ export default function Customer({
     changeFormStep(formStep + 1);
   };
 
+  const prevPage = () => {
+    changeFormStep(formStep - 1);
+  };
+
   const handleCustomerSubmit = () => {
     const customer = NewCustomer({
       phoneNumber,
@@ -99,6 +103,7 @@ export default function Customer({
             onFirstNameChange={e => setFirstName(e.target.value)}
             onLastNameChange={e => setLastName(e.target.value)}
             nextPage={nextPage}
+            prevPage={prevPage}
           />
         );
       case 3:

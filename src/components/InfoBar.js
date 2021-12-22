@@ -40,11 +40,11 @@ export default function InfoBar() {
 
   return (
     <Box
-      borderTop={`1px solid ${theme.palette.grey[800]}`}
+      borderTop={`1px solid ${theme.palette.secondary[800]}`}
       component="footer"
       className="Info-Bar"
       display="flex"
-      backgroundColor={theme.palette.blueGrey[600]}
+      backgroundColor={theme.palette.secondary[600]}
     >
       <InfoCell>USER</InfoCell>
       <CellDivider />
