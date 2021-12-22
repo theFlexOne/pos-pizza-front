@@ -1,0 +1,154 @@
+{
+  "menu": [
+    { 
+      "section": "pizza",
+      "id": 1,
+      "types": [
+        { 
+          "name": "single-topping",
+          "item-id": 1,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": []
+          },
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        {
+        "name": "pepperoni",
+        "item-id": 2,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": ["pepperoni"]
+          },
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        {
+          "name": "sausage",
+          "item-id": 3,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": ["sausage"]
+          },
+          "small": 10,
+          "medium": 12,
+          "large": 14
+        },
+        {
+          "name": "supreme",
+          "item-id": 4,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": ["pepperoni", "sausage", "canadian-bacon", "green-peppers", "onions", "black-olives", "mushrooms"]
+          },
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        },
+        {
+          "name": "meat-lovers",
+          "item-id": 5,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": ["pepperoni", "sausage", "canadian-bacon", "bacon"]
+          },
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        },
+        {
+          "name": "veggie-lovers",
+          "item-id": 6,
+          "toppings": {
+            "sauce": "tomato",
+            "toppings": ["green-peppers", "onions", "black-olives", "mushrooms"]
+          },
+          "small": 13,
+          "medium": 15,
+          "large": 17
+        }
+      ],
+      "toppings": {
+        "types": [
+          "pepperoni",
+          "sausage",
+          "canadian-bacon",
+          "bacon",
+          "chicken",
+          "green-peppers",
+          "onions",
+          "black-olives",
+          "mushrooms",
+          "spinach"
+        ],
+        "prices": {
+          "small": 0.50,
+          "medium": 0.75,
+          "large": 1
+        }
+      },
+      "sauces": ["tomato", "ranch", "bbq", "alfredo", "buffalo-ranch"],
+      "crust-types": ["hand-tossed", "thin", "deep-dish", "stuffed"]
+    },
+    {
+      "section": "pasta",
+      "id": 2,
+      "prices": {
+        "small": 6,
+        "large": 9,
+        "extras": 0.75
+      },
+      "types": [
+        "alfredo-pasta",
+        "marinara-pasta",
+        "mac-n-cheese"
+      ],
+      "extras": [
+        "parmesan-cheese"
+      ]
+    },
+    {
+      "section": "wings",
+      "id": 3,
+      "prices": {
+        "10pc": 10,
+        "20pc": 18,
+        "40pc": 35
+      },
+      "types": [
+        "bone-in",
+        "bone-out"
+      ],
+      "sauces": [
+        "mild", "medium", "hot", "honey-bbq", "plain"
+      ],
+      "extras": []
+    },
+    {
+      "section": "sides",
+      "id": 4,
+      "dipping-sauces": []
+    },
+    {
+      "section": "drinks",
+      "id": 5,
+      "two-liters": [
+        "coke", "diet-coke", "sprite", "dr-pepper"
+      ],
+      "twenty-onces": ["coke", "diet-coke", "sprite", "dr-pepper"]
+    },
+    {
+      "section": "dessert",
+      "id": 6,
+      "lava-cake": {
+        "price": 5
+      },
+      "funnel-fries": {
+        "price": 4
+      }
+    }
+  ]
+}
