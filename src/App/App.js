@@ -14,7 +14,6 @@ function App() {
     return <h2>{err.message}</h2>;
   }
 
-  console.log(app);
   return (
     <Layout app={app}>
       <Box className="page" display="flex" flex="1">

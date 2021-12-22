@@ -6,7 +6,7 @@ import Customer from './components/Customer/Customer';
 export default function NewOrder({ app }) {
   const { menu, customers } = app;
   const [customer, setCustomer] = useState(null);
-  const [isMenu, setIsMenu] = useState(true);
+  const [isMenu, setIsMenu] = useState(false);
   const [customerList, setCustomerList] = useState(customers);
   const [formStep, setFormStep] = useState(1);
 
@@ -34,6 +34,7 @@ export default function NewOrder({ app }) {
       formStep={formStep}
       changeFormStep={val => setFormStep(val)}
       onNewCustomer={handleNewCustomer}
+      goToMenu={() => setIsMenu(() => true)}
     />
   );
 }

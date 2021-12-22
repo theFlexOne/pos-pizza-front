@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/system/Box';
 import Divider from '@mui/material/Divider';
@@ -9,8 +9,6 @@ export default function InfoBar() {
   const theme = useTheme();
 
   const [date, time] = useDateTime();
-
-  console.log(date, ' | ', time);
 
   const InfoCell = ({ children }) => {
     return (
@@ -26,9 +24,9 @@ export default function InfoBar() {
     );
   };
 
-  const ClockCell = () => {
-    return <InfoCell />;
-  };
+  // const ClockCell = () => {
+  //   return <InfoCell />;
+  // };
 
   const CellDivider = () => (
     <Divider

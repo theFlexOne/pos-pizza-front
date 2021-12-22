@@ -10,11 +10,11 @@ export default function CustomerInfoBox({
   let firstName, lastName, phoneNumber, streetAddress, secondaryAddress;
   customer &&
     ({
-      name: { firstName: firstName, lastName: lastName },
+      name: { firstName, lastName },
       phoneNumber,
       address: { streetAddress, secondaryAddress },
     } = customer);
-  console.log(customer);
+  console.log(customer || 'N/A');
   // console.log(fn, ln, pn, ad1, ad2);
   return (
     <Box flex=".5" display="flex" flexDirection="column">

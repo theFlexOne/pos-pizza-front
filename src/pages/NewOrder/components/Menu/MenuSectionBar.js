@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import { useTheme } from '@emotion/react';
@@ -44,13 +43,12 @@ export default function MenuSectionBar({ sections, index, changeSection }) {
   };
 
   const theme = useTheme();
-  console.log(`sections - `, sections);
 
   return (
     <Box
       display="flex"
       flexDirection="column"
-      backgroundColor={theme.palette.secondary[700]}
+      backgroundColor={theme.palette.secondary[600]}
     >
       {sections.map((section, i) => (
         <SectionButton key={section} id={i} label={section} />

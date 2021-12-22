@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '@emotion/react';
 
 const styles = {
@@ -41,6 +41,7 @@ export default function CustomerLookup({
   onPhoneNumberChange,
   lookupPhoneNumber,
   clearField,
+  goToMenu,
 }) {
   const theme = useTheme();
 
@@ -72,6 +73,9 @@ export default function CustomerLookup({
               required
             />
           </Box>
+          <Button variant="contained" onClick={goToMenu}>
+            SWITCH TO MENU
+          </Button>
         </Box>
       </Box>
       <Box

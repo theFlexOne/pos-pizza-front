@@ -36,6 +36,7 @@ export default function Customer({
   formStep,
   changeFormStep,
   onNewCustomer,
+  goToMenu,
 }) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -92,6 +93,7 @@ export default function Customer({
             onPhoneNumberChange={e => setPhoneNumber(e.target.value)}
             clearField={() => setPhoneNumber('')}
             lookupPhoneNumber={lookupPhoneNumber}
+            goToMenu={goToMenu}
           />
         );
 
@@ -124,6 +126,7 @@ export default function Customer({
             onPhoneNumberChange={e => setPhoneNumber(e.target.value)}
             clearField={() => setPhoneNumber('')}
             lookupPhoneNumber={lookupPhoneNumber}
+            goToMenu={goToMenu}
           />
         );
     }
