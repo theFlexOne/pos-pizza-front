@@ -1,9 +1,9 @@
 import React from 'react';
-import useApp from '../hooks/useApp';
+import useApp from './hooks/useApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
-import NewOrder from '../pages/NewOrder/NewOrder';
-import Layout from '../components/Layout';
+import NewOrder from './pages/NewOrder/NewOrder';
+import Layout from './components/Layout';
 
 function App() {
   const [app, err, isLoading] = useApp();

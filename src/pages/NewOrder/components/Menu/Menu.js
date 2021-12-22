@@ -19,6 +19,7 @@ export default function Menu({ menu, customer, changeCustomer }) {
       <SidePanel
         removeFromCart={removeFromCart}
         order={cart}
+        // onItemRemove={id => setCart(cart.filter(item => ))}
         customer={customer}
         changeCustomer={changeCustomer}
       />

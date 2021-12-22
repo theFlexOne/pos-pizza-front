@@ -5,34 +5,13 @@ import Box from '@mui/material/Box';
 import { capAll } from '../../../../utils/textMods';
 import { useTheme } from '@emotion/react';
 
-const salesTax = 0.07;
+const SALES_TAX = 0.07;
 
 const toMoneyString = num => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(num);
-};
-
-const CartItem = ({ item, i }) => {
-  return (
-    <>
-      <Box>
-        <Box display="flex">
-          <Typography marginRight="auto" paddingRight=".5rem">
-            {capAll(item.name)}
-          </Typography>
-          <Typography price={item.price}>
-            {toMoneyString(item.price)}
-          </Typography>
-        </Box>
-        {item.toppings && (
-          <Typography variant="body2">{item.toppings.join(', ')}</Typography>
-        )}
-      </Box>
-      {/* {i < order.length && <Divider />} */}
-    </>
-  );
 };
 
 const CartTotal = ({ subtotal }) => {
@@ -49,7 +28,7 @@ const CartTotal = ({ subtotal }) => {
         justifyContent="center"
       >
         <Typography variant="body2" alignSelf="center">
-          SUBTOTAL
+          SUBTOTAL:
         </Typography>
         <Typography
           name="subtotal"
@@ -67,7 +46,7 @@ const CartTotal = ({ subtotal }) => {
         justifyContent="center"
       >
         <Typography variant="body2" alignSelf="center">
-          TAX
+          TAX:
         </Typography>
         <Typography
           name="salesTax"
@@ -75,7 +54,7 @@ const CartTotal = ({ subtotal }) => {
           variant="body2"
           alignSelf="center"
         >
-          {toMoneyString(subtotal * salesTax)}
+          {toMoneyString(subtotal * SALES_TAX)}
         </Typography>
       </Box>
       <Box
@@ -85,7 +64,7 @@ const CartTotal = ({ subtotal }) => {
         justifyContent="center"
       >
         <Typography variant="body2" alignSelf="center">
-          TOTAL
+          TOTAL:
         </Typography>
         <Typography
           name="total"
@@ -93,7 +72,7 @@ const CartTotal = ({ subtotal }) => {
           variant="body2"
           alignSelf="center"
         >
-          {toMoneyString(subtotal * (1 + salesTax))}
+          {toMoneyString(subtotal * (1 + SALES_TAX))}
         </Typography>
       </Box>
     </Box>
@@ -102,8 +81,43 @@ const CartTotal = ({ subtotal }) => {
 
 export default function Cart({ order }) {
   const [subtotal, setSubtotal] = useState(0);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const theme = useTheme();
+
+  const CartItem = ({ item }) => {
+    const [isSelected, setIsSelected] = useState(false);
+    const { id, price, toppings = undefined, name } = item;
+
+    const handleClick = id => {
+      // setSelectedItems(() => [...selectedItems, id]);
+      setIsSelected(() => !isSelected);
+    };
+    return (
+      <>
+        <Box
+          id={id}
+          backgroundColor={
+            isSelected ? 'rgba(0, 0, 0, .25)' : 'rgba(0, 0, 0, .0)'
+          }
+          className={isSelected && 'selected'}
+        >
+          <Box display="flex">
+            <Typography marginRight="auto" paddingRight=".5rem">
+              {capAll(name)}
+            </Typography>
+            <Typography price={price}>{toMoneyString(price)}</Typography>
+          </Box>
+          <Box onClick={() => handleClick(id)}>
+            {toppings && (
+              <Typography variant="caption">{toppings.join(', ')}</Typography>
+            )}
+          </Box>
+        </Box>
+        {/* {i < order.length && <Divider />} */}
+      </>
+    );
+  };
 
   useEffect(() => {
     const orderSum = order.reduce((sum, item) => {
@@ -129,9 +143,13 @@ export default function Cart({ order }) {
         flexDirection="column"
         borderRadius="4px"
       >
-        {order && order.map((item, i) => <CartItem item={item} key={i} />)}
+        {order &&
+          order.map((item, i) => {
+            return <CartItem item={item} key={item.id} />;
+          })}
         <CartTotal subtotal={subtotal} />
       </Box>
+      {}
       <Button type="submit" variant="contained" margin="0 .5rem">
         CHECKOUT
       </Button>

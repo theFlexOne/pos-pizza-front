@@ -3,6 +3,7 @@ import React from 'react';
 import Cart from './Cart';
 import CustomerInfoBox from './CustomerInfoBox';
 import { useTheme } from '@emotion/react';
+import { Divider } from '@mui/material';
 
 export default function SidePanel({
   order,
@@ -19,6 +20,7 @@ export default function SidePanel({
       backgroundColor={theme.palette.secondary[500]}
     >
       <CustomerInfoBox customer={customer} changeCustomer={changeCustomer} />
+      <Divider sx={{ borderColor: 'rgba(0,0,0,0.5)' }} />
       <Cart order={order} />
     </Box>
   );

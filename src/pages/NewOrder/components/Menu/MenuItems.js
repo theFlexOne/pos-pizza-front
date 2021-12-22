@@ -2,6 +2,7 @@ import React from 'react';
 // import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { v4 as uuid } from 'uuid';
 
 // const MenuButton = () => {};
 
@@ -16,6 +17,7 @@ export default function MenuItems({ section, addToCart }) {
         if (type === 'wings') return prices[20];
       })(),
       toppings,
+      id: uuid(),
     });
   };
 
