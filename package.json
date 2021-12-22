@@ -11,18 +11,20 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "dayjs": "^1.10.7",
+    "luxon": "^2.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.2",
     "react-scripts": "^3.4.4",
+    "react-simple-keyboard": "^3.4.13",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "npx json-server --watch build/data/menuData.json --port 8000",
-    "server2": "npx json-server --watch build/data/db-sections.json --port 8051",
+    "server": "npx json-server --watch data/db.json --port 8000",
+    "server2": "npx json-server --watch data/db-sections.json --port 8051",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
