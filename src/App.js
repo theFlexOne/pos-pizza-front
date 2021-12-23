@@ -4,9 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from './pages/NewOrder/NewOrder';
 import Layout from './components/Layout';
+import useFetch from './hooks/useFetch';
 
 function App() {
   const [app, err, isLoading] = useApp();
+
+  // const appData = useFetch();
 
   if (isLoading) return <h2>Loading...</h2>;
   if (err) {

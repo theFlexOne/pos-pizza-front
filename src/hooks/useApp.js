@@ -12,8 +12,12 @@ const useApp = () => {
       setIsLoading(true);
       console.log('Loading...');
       try {
-        const response = await fetch(POS_DATA_URL + '/db');
-        const data = await response.json();
+        const res = await fetch(POS_DATA_URL + '/db');
+        if (!res.ok) {
+          console.error(res.message);
+          return null;
+        }
+        const data = await res.json();
         setResult(data);
       } catch (e) {
         console.error('Error:' + e.message, e);
