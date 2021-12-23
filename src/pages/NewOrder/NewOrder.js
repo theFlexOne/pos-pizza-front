@@ -9,6 +9,15 @@ export default function NewOrder({ app }) {
   const [isMenu, setIsMenu] = useState(false);
   const [customerList, setCustomerList] = useState(customers);
   const [formStep, setFormStep] = useState(1);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = item => {
+    setCart([...cart, item]);
+  };
+
+  const removeFromCart = ({ id }) => {
+    setCart(cart.filter(item => item.id !== id));
+  };
 
   const changeCustomer = () => {
     setIsMenu(() => false);
@@ -26,7 +35,14 @@ export default function NewOrder({ app }) {
   }, [customer]);
 
   return isMenu ? (
-    <Menu menu={menu} customer={customer} changeCustomer={changeCustomer} />
+    <Menu
+      menu={menu}
+      customer={customer}
+      changeCustomer={changeCustomer}
+      addToCart={addToCart}
+      removeFromCart={removeFromCart}
+      cart={cart}
+    />
   ) : (
     <Customer
       customerList={customerList}

@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Box } from '@mui/system';
 import { useTheme } from '@mui/material/styles';
+import GroupIcon from '@mui/icons-material/Group';
 
 export default function TopBar() {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -19,6 +20,7 @@ export default function TopBar() {
       <Tab
         component={Link}
         to="/NewOrder"
+        iconPosition="end"
         // sx={{ color: 'rgba(255, 255, 255, .5' }}
         {...props}
       />
@@ -39,7 +41,7 @@ export default function TopBar() {
       >
         <LinkTab label="New Order" to="/NewOrder" />
         <LinkTab label="Order History" to="/OrderHistory" />
-        <LinkTab label="Customer List" to="/CustomerList" />
+        <LinkTab icon={<GroupIcon />} label="Customers" to="/Customers" />
         <LinkTab label="Settings" to="/Settings" />
         <LinkTab label="Wait Times" />
         <LinkTab label="Custom 2" />

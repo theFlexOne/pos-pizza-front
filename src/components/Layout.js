@@ -11,6 +11,11 @@ const theme = createTheme({
     primary: orange,
     secondary: blueGrey,
   },
+  typography: {
+    // fontFamily: [
+    //   //*insert fonts here
+    // ],
+  },
 });
 
 export default function Layout({ app, children }) {

@@ -1,6 +1,8 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const styles = {
   page: {
@@ -74,7 +76,7 @@ export default function CustomerLookup({
             />
           </Box>
           <Button variant="contained" onClick={goToMenu}>
-            SWITCH TO MENU
+            SWITCH TO MENU {<MenuBookIcon sx={{ ml: '1rem' }} />}
           </Button>
         </Box>
       </Box>
@@ -106,10 +108,10 @@ export default function CustomerLookup({
             variant="contained"
             sx={{ mt: 'auto' }}
           >
-            LOOKUP PHONE NUMBER
+            LOOKUP TEL
           </Button>
           <Button variant="contained" onClick={clearField} sx={{ mb: 'auto' }}>
-            CLEAR
+            CLEAR <ClearIcon sx={{ ml: '1rem' }} />
           </Button>
         </Box>
       </Box>

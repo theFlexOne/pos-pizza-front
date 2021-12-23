@@ -89,10 +89,6 @@ export default function Cart({ order }) {
     const [isSelected, setIsSelected] = useState(false);
     const { id, price, toppings = undefined, name } = item;
 
-    const handleClick = id => {
-      // setSelectedItems(() => [...selectedItems, id]);
-      setIsSelected(() => !isSelected);
-    };
     return (
       <>
         <Box
@@ -100,7 +96,6 @@ export default function Cart({ order }) {
           backgroundColor={
             isSelected ? 'rgba(0, 0, 0, .25)' : 'rgba(0, 0, 0, .0)'
           }
-          className={isSelected && 'selected'}
         >
           <Box display="flex">
             <Typography marginRight="auto" paddingRight=".5rem">
@@ -108,7 +103,7 @@ export default function Cart({ order }) {
             </Typography>
             <Typography price={price}>{toMoneyString(price)}</Typography>
           </Box>
-          <Box onClick={() => handleClick(id)}>
+          <Box>
             {toppings && (
               <Typography variant="caption">{toppings.join(', ')}</Typography>
             )}
@@ -132,7 +127,7 @@ export default function Cart({ order }) {
       flexDirection="column"
       flex="3"
       maxHeight="100%"
-      paddingBottom=".5rem"
+      // paddingBottom=".5rem"
     >
       <Box
         padding=".5rem"
@@ -149,10 +144,11 @@ export default function Cart({ order }) {
           })}
         <CartTotal subtotal={subtotal} />
       </Box>
-      {}
-      <Button type="submit" variant="contained" margin="0 .5rem">
-        CHECKOUT
-      </Button>
+      <Box margin=".25rem .5rem" display="flex" justifyContent="center">
+        <Button type="submit" variant="contained" flexGrow="1" fullWidth>
+          CHECKOUT
+        </Button>
+      </Box>
     </Box>
   );
 }
