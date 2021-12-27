@@ -37,6 +37,17 @@ export default function CustomerFormAddress({
 }) {
   const theme = useTheme();
 
+  const nextBtn = {
+    label: 'Next Page',
+    action: onCustomerSubmit,
+    disabled: !streetAddress,
+  };
+
+  const prevBtn = {
+    label: 'Prev Page',
+    action: prevPage,
+  };
+
   return (
     <Box width="100%" display="flex" flexDirection="column">
       <Box flex="1">
@@ -84,12 +95,7 @@ export default function CustomerFormAddress({
         padding=".75rem 1.25rem"
         backgroundColor={theme.palette.secondary[900]}
       >
-        <Keyboard
-          onBtnClick={onCustomerSubmit}
-          prev={prevPage}
-          btnLabel="START ORDER"
-          disabled={!streetAddress}
-        />
+        <Keyboard next={nextBtn} prev={prevBtn} />
       </Box>
       {/* <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" /> */}
     </Box>

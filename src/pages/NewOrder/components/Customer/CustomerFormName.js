@@ -33,6 +33,19 @@ export default function CustomerFormName({
 
   console.log(theme);
 
+  const nextBtn = {
+    label: 'Next Page',
+    action: nextPage,
+    disabled: !firstName,
+  };
+
+  const prevBtn = {
+    label: 'Prev Page',
+    action: prevPage,
+  };
+
+  console.dir(Keyboard);
+
   return (
     <Box
       width="100%"
@@ -87,12 +100,7 @@ export default function CustomerFormName({
         padding=".75rem 1.25rem"
         backgroundColor={theme.palette.secondary[900]}
       >
-        <Keyboard
-          onBtnClick={nextPage}
-          prev={prevPage}
-          disabled={!firstName}
-          btnLabel="NEXT PAGE"
-        />
+        <Keyboard next={{ ...nextBtn }} prev={{ ...prevBtn }} />
       </Box>
     </Box>
   );
