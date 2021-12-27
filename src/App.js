@@ -6,6 +6,7 @@ import NewOrder from './pages/NewOrder/NewOrder';
 import Layout from './components/Layout';
 // import useFetch from './hooks/useFetch';
 import Customers from './pages/Customers/Customers';
+import Settings from './pages/Settings/Settings';
 
 function App() {
   const [customerList, setCustomerList] = useState([]);
@@ -67,6 +68,7 @@ function App() {
                 />
               }
             />
+            <Route path="/Settings" element={<Settings app={app} />} />
           </Routes>
         )}
       </Box>

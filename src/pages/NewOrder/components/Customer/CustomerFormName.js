@@ -48,8 +48,6 @@ export default function CustomerFormName({
     },
   };
 
-  console.log(theme);
-
   const nextBtn = {
     label: 'Next Page',
     action: nextPage,
@@ -60,8 +58,6 @@ export default function CustomerFormName({
     label: 'Prev Page',
     action: prevPage,
   };
-
-  console.dir(Keyboard);
 
   return (
     <Box sx={styles.page}>

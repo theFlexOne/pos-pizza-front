@@ -36,8 +36,6 @@ export default function CustomerInfoBox({
       phoneNumber,
       address: { streetAddress, secondaryAddress },
     } = customer);
-  console.log(customer || 'N/A');
-  // console.log(fn, ln, pn, ad1, ad2);
   return (
     <Box sx={styles.parent}>
       {customer ? (
@@ -66,12 +64,6 @@ export default function CustomerInfoBox({
               {(streetAddress + ', ' + secondaryAddress).toUpperCase()}
             </Typography>
           </Box>
-          {/* <Typography variant="body2" component="p" className="phone-number">
-            {phoneNumber}
-          </Typography>
-          <Typography variant="body2" component="p" className="address">
-            {streetAddress + ', ' + secondaryAddress}
-          </Typography> */}
         </Box>
       ) : (
         <Typography variant="body2">

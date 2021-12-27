@@ -41,9 +41,9 @@ export default function TopBar() {
       >
         <LinkTab label="New Order" to="/NewOrder" />
         <LinkTab label="Order History" to="/OrderHistory" />
-        <LinkTab icon={<GroupIcon />} label="Customers" to="/Customers" />
+        <LinkTab label="Customers" to="/Customers" />
         <LinkTab label="Settings" to="/Settings" />
-        <LinkTab label="Wait Times" />
+        <LinkTab label="Reports" to="/Reports" />
         <LinkTab label="Custom 2" />
         <LinkTab label="Custom 3" />
         <LinkTab label="Custom 4" />

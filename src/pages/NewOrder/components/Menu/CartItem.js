@@ -7,8 +7,6 @@ export default function CartItem({ item, removeFromCart }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const { id, price, toppings = undefined, name } = item;
 
-  console.log(id, price, toppings, name);
-
   const styles = {
     container: {
       display: 'flex',

@@ -76,8 +76,6 @@ const CartTotal = ({ subtotal }) => {
 export default function Cart({ cart, removeFromCart }) {
   const [subtotal, setSubtotal] = useState(0);
 
-  console.log(`cart: `, cart);
-
   const theme = useTheme();
 
   useEffect(() => {
