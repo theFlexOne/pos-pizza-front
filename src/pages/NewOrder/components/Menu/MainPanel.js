@@ -14,6 +14,7 @@ const styles = {
 
 const MainPanel = ({ menu, addToCart }) => {
   const [sectionIndex, setSectionIndex] = useState(0);
+  console.log(`menu: `, menu);
 
   const theme = useTheme();
 

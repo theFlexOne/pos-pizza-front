@@ -145,7 +145,12 @@ export default function Cart({ order }) {
         <CartTotal subtotal={subtotal} />
       </Box>
       <Box margin=".25rem .5rem" display="flex" justifyContent="center">
-        <Button type="submit" variant="contained" flexGrow="1" fullWidth>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ flexGrow: '1' }}
+          fullWidth
+        >
           CHECKOUT
         </Button>
       </Box>

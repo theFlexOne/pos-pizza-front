@@ -3,11 +3,10 @@ import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
 
-export default function NewOrder({ app }) {
-  const { menu, customers } = app;
+export default function NewOrder({ menu, updateCustomerList, customerList }) {
+  // const { menu } = app;
   const [customer, setCustomer] = useState(null);
   const [isMenu, setIsMenu] = useState(false);
-  const [customerList, setCustomerList] = useState(customers);
   const [formStep, setFormStep] = useState(1);
   const [cart, setCart] = useState([]);
 
@@ -26,8 +25,10 @@ export default function NewOrder({ app }) {
   };
 
   const handleNewCustomer = customer => {
-    setCustomerList(() => [...customerList, customer]);
+    console.log(`customer - `, customer);
+    updateCustomerList(() => customer);
     setCustomer(() => customer);
+    // setCustomerList(() => [...customerList, customer]);
   };
 
   useEffect(() => {
