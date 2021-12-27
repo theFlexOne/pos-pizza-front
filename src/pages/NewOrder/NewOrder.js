@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
 
-export default function NewOrder({ menu, updateCustomerList, customerList }) {
+export default function NewOrder({ menu, addCustomerToList, customerList }) {
   // const { menu } = app;
   const [customer, setCustomer] = useState(null);
   const [isMenu, setIsMenu] = useState(false);
@@ -26,7 +26,7 @@ export default function NewOrder({ menu, updateCustomerList, customerList }) {
 
   const handleNewCustomer = customer => {
     console.log(`customer - `, customer);
-    updateCustomerList(() => customer);
+    addCustomerToList(customer);
     setCustomer(() => customer);
     // setCustomerList(() => [...customerList, customer]);
   };

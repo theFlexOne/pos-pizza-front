@@ -380,22 +380,6 @@
       "orderHistory": [],
       "id": "10f0683b",
       "created": 1640564758826
-    },
-    {
-      "phoneNumber": "612-111-1100",
-      "name": {
-        "firstName": "asdasd",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "185 Hwy 212 E, Trlr 53",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "ed20a36b",
-      "created": 1640565078554
     }
   ],
   "orderHistory": [],

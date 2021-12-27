@@ -19,8 +19,12 @@ function App() {
     }
   }, [app]);
 
-  const updateCustomerList = customer => {
+  const addCustomerToList = customer => {
     setCustomerList(() => [...customerList, customer]);
+  };
+
+  const removeCustomerFromList = id => {
+    setCustomerList(() => customerList.filter(customer => customer.id !== id));
   };
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -39,7 +43,7 @@ function App() {
               element={
                 <NewOrder
                   menu={menu}
-                  updateCustomerList={updateCustomerList}
+                  addCustomerToList={addCustomerToList}
                   customerList={customerList}
                 />
               }
@@ -49,14 +53,19 @@ function App() {
               element={
                 <NewOrder
                   menu={menu}
-                  updateCustomerList={updateCustomerList}
+                  addCustomerToList={addCustomerToList}
                   customerList={customerList}
                 />
               }
             />
             <Route
               path="/Customers"
-              element={<Customers customers={customerList} />}
+              element={
+                <Customers
+                  customers={customerList}
+                  removeCustomerFromList={removeCustomerFromList}
+                />
+              }
             />
           </Routes>
         )}

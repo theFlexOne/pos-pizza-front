@@ -16,7 +16,7 @@ import CustomerTableRow from './components/CustomerTableRow';
 
 const ROWS_PER_PAGE = 8;
 
-export default function Customers({ customers }) {
+export default function Customers({ customers, removeCustomerFromList }) {
   const [page, setPage] = useState(0);
 
   const theme = useTheme();
@@ -69,7 +69,11 @@ export default function Customers({ customers }) {
             </TableHead>
             <TableBody sx={{ backgroundColor: theme.palette.secondary[300] }}>
               {rows.map(row => (
-                <CustomerTableRow customer={row} key={row.id} />
+                <CustomerTableRow
+                  customer={row}
+                  removeCustomerFromList={removeCustomerFromList}
+                  key={row.id}
+                />
               ))}
             </TableBody>
           </Table>
@@ -77,13 +81,15 @@ export default function Customers({ customers }) {
         <Box
           sx={{
             mt: '.5rem',
-            mr: '1.5rem',
+            // mr: '1rem',
+            // ml: '1rem',
             display: 'flex',
             gap: '.5rem',
             minHeight: '3.5rem',
             flex: '1',
           }}
         >
+          <Button variant="contained">FILTER</Button>
           <Button
             variant="contained"
             sx={{ ml: 'auto' }}
