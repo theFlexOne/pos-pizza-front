@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   ButtonGroup,
   Dialog,
   DialogContent,
-  DialogContentText,
   TextField,
 } from '@mui/material';
 import Keyboard from '../../../components/Keyboard';
@@ -54,7 +53,7 @@ export default function FilterModal({
   // const [inputText, setInputText] = useState('');
   // const [filterType, setFilterType] = useState('name');
   const {
-    palette: { primary, secondary },
+    palette: { primary },
   } = useTheme();
 
   const filterSubmitBtn = {

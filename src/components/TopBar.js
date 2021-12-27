@@ -4,7 +4,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Box } from '@mui/system';
 import { useTheme } from '@mui/material/styles';
-import GroupIcon from '@mui/icons-material/Group';
 
 export default function TopBar() {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -44,9 +43,7 @@ export default function TopBar() {
         <LinkTab label="Customers" to="/Customers" />
         <LinkTab label="Settings" to="/Settings" />
         <LinkTab label="Reports" to="/Reports" />
-        <LinkTab label="Custom 2" />
-        <LinkTab label="Custom 3" />
-        <LinkTab label="Custom 4" />
+        <LinkTab label="Custom 1" />
       </Tabs>
     </Box>
   );

@@ -4,10 +4,22 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { v4 as uuid } from 'uuid';
 
-// const MenuButton = () => {};
+const MenuItemButton = ({ item, ...other }) => {
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      sx={{ minHeight: '5rem', gridColumn: 'span 1' }}
+      {...other}
+    >
+      {item.name.split('-').join(' ')}
+    </Button>
+  );
+};
 
 export default function MenuItems({ section, addToCart }) {
   const items = section?.items;
+
   const handleClick = item => {
     const { name, toppings, prices, type } = item;
     addToCart({
@@ -33,17 +45,11 @@ export default function MenuItems({ section, addToCart }) {
       {items &&
         items.map(item => {
           return (
-            <Button
-              variant="contained"
-              onClick={() => handleClick(item)}
-              color="primary"
+            <MenuItemButton
               key={item.id}
-              // flex="1"
-              // flexWrap="wrap"
-              sx={{ minHeight: '5rem', gridColumn: 'span 1' }}
-            >
-              {item.name.split('-').join(' ')}
-            </Button>
+              item={item}
+              onClick={() => handleClick(item)}
+            />
           );
         })}
     </Box>

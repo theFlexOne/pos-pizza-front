@@ -1,7 +1,6 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ClearIcon from '@mui/icons-material/Clear';
 
 const styles = {
@@ -76,7 +75,7 @@ export default function CustomerLookup({
             />
           </Box>
           <Button variant="contained" onClick={goToMenu}>
-            SWITCH TO MENU {<MenuBookIcon sx={{ ml: '1rem' }} />}
+            SWITCH TO MENU
           </Button>
         </Box>
       </Box>

@@ -66,8 +66,16 @@ const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-          <Button onClick={deleteCustomer}>Confirm</Button>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => setIsOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button variant="contained" size="large" onClick={deleteCustomer}>
+            Confirm
+          </Button>
         </DialogActions>
       </Dialog>
     </>

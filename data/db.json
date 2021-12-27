@@ -318,20 +318,20 @@
       "created": 1584592068850
     },
     {
-      "phoneNumber": "612-644-0596",
+      "phoneNumber": "555-111-1111",
       "name": {
-        "firstName": "Eric",
-        "lastName": "Hafvenstein"
+        "firstName": "Dave",
+        "lastName": ""
       },
       "address": {
-        "streetAddress": "185 Hwy 212 E",
-        "secondaryAddress": "TRLR 53",
+        "streetAddress": "123 fun street",
+        "secondaryAddress": "apt 1",
         "city": "Gravel Falls",
         "state": "Minnesota"
       },
       "orderHistory": [],
-      "id": "21e9128e",
-      "created": 1640628401802
+      "id": "474003c9",
+      "created": 1640629862286
     }
   ],
   "orderHistory": [],

@@ -4,7 +4,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
   TableRow,
 } from '@mui/material';
@@ -24,6 +23,30 @@ export default function Customers({ customers, removeCustomerFromList }) {
   const [isOpen, setIsOpen] = useState(false);
   const [filter, setFilter] = useState({ text: '', type: 'name' });
 
+  const filterCustomers = customer => {
+    let data;
+    const { firstName, lastName } = customer.name;
+    switch (filter.type) {
+      case 'name':
+        data = firstName + ' ' + lastName;
+        break;
+      case 'tel':
+        data = customer.phoneNumber;
+        break;
+      case 'address':
+        data =
+          customer.address.streetAddress +
+          ', ' +
+          customer.address.secondaryAddress;
+        break;
+      default:
+        data = firstName + ' ' + lastName;
+        break;
+    }
+    return data.toLowerCase().includes(filter.text.toLowerCase());
+    //*
+  };
+
   const theme = useTheme();
 
   const isLastPage = page >= Math.ceil(customers.length / ROWS_PER_PAGE - 1);
@@ -36,25 +59,7 @@ export default function Customers({ customers, removeCustomerFromList }) {
     setIsOpen(false);
   };
 
-  const customersToDisplay = customers.filter(customer => {
-    console.log(`customer: `, customer);
-    let data;
-    switch (filter.type) {
-      case 'name':
-        const { firstName, lastName } = customer.name;
-        data = firstName + ' ' + lastName;
-        break;
-      case 'tel':
-        data = customer.phoneNumber;
-        break;
-      case 'address':
-        data =
-          customer.address.streetAddress +
-          ', ' +
-          customer.address.secondaryAddress;
-    }
-    return data.toLowerCase().includes(filter.text.toLowerCase());
-  });
+  const customersToDisplay = customers.filter(filterCustomers);
   const rows = customersToDisplay
     .slice(page * ROWS_PER_PAGE, page * ROWS_PER_PAGE + ROWS_PER_PAGE)
     .map(({ name, phoneNumber, address, id, recentOrders }) => {
