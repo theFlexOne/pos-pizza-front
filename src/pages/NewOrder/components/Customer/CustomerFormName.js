@@ -3,24 +3,6 @@ import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 
-const styles = {
-  form: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-    '& > *': {
-      borderRadius: '4px',
-    },
-  },
-  firstName: {
-    flex: '1 1 30%',
-  },
-  lastName: {
-    flex: '1 1 40%',
-  },
-};
-
 export default function CustomerFormName({
   firstName,
   lastName,
@@ -30,6 +12,41 @@ export default function CustomerFormName({
   prevPage,
 }) {
   const theme = useTheme();
+  const styles = {
+    page: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: theme.palette.secondary[200],
+    },
+    formContainer: {
+      flex: '1',
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    form: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100%',
+      flexBasis: '70%',
+      gap: '1.5rem',
+
+      '& > *': {
+        borderRadius: '4px',
+      },
+    },
+    inputWrapper: {
+      backgroundColor: theme.palette.secondary[50],
+      flex: '1 1 35%',
+    },
+    firstName: {
+      flex: '1 1 30%',
+    },
+    lastName: {
+      flex: '1 1 40%',
+    },
+  };
 
   console.log(theme);
 
@@ -47,27 +64,11 @@ export default function CustomerFormName({
   console.dir(Keyboard);
 
   return (
-    <Box
-      width="100%"
-      display="flex"
-      flexDirection="column"
-      backgroundColor={theme.palette.secondary[200]}
-    >
-      <Box flex="1" display="flex" justifyContent="center">
-        <Box
-          component="form"
-          sx={styles.form}
-          display="inherit"
-          flexBasis="70%"
-          gap="1.5rem"
-        >
-          <Box
-            backgroundColor={theme.palette.secondary[50]}
-            flex="1 1 35%"
-            // borderRadius="4px"
-          >
+    <Box sx={styles.page}>
+      <Box sx={styles.formContainer}>
+        <Box component="form" sx={styles.form}>
+          <Box sx={styles.inputWrapper}>
             <TextField
-              id="setFirstName"
               label="First Name"
               sx={styles.firstName}
               value={firstName}
@@ -83,7 +84,6 @@ export default function CustomerFormName({
             backgroundColor={theme.palette.secondary[50]}
           >
             <TextField
-              id="lastName"
               label="Last Name"
               sx={styles.lastName}
               value={lastName}

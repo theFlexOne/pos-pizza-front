@@ -20,16 +20,16 @@ const styles = {
   },
   container: {
     backgroundColor: '#353536',
-    flexGrow: 1,
+    flexBasis: '100%',
     display: 'flex',
     justifyContent: 'center',
-    p: '2rem',
   },
   form: {
     flexGrow: '1',
     bgcolor: 'rgba(255, 255, 255, 0.25)',
     display: 'flex',
     alignItems: 'center',
+    m: '2rem',
     p: '0 5rem',
   },
   textFieldBox: {

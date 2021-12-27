@@ -8,4 +8,11 @@ const capAll = string => {
   return all;
 };
 
-export { capAll };
+const toMoneyString = num => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(num);
+};
+
+export { capAll, toMoneyString };

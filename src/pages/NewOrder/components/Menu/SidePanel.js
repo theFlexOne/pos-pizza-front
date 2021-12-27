@@ -6,7 +6,7 @@ import { useTheme } from '@emotion/react';
 import { Divider } from '@mui/material';
 
 export default function SidePanel({
-  order,
+  cart,
   removeFromCart,
   customer,
   changeCustomer,
@@ -21,7 +21,7 @@ export default function SidePanel({
     >
       <CustomerInfoBox customer={customer} changeCustomer={changeCustomer} />
       <Divider sx={{ borderColor: 'rgba(0,0,0,0.5)' }} />
-      <Cart order={order} />
+      <Cart removeFromCart={removeFromCart} cart={cart} />
     </Box>
   );
 }

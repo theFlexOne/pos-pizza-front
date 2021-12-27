@@ -3,7 +3,7 @@ import React from 'react';
 
 const styles = {
   keyboardContainer: {
-    flex: '1',
+    flexBasis: '100%',
     backgroundColor: '#38D435',
     display: 'flex',
     flexDirection: 'column',

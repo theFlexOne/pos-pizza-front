@@ -15,7 +15,7 @@ export default function Menu({
       <MainPanel menu={menu} addToCart={addToCart} customer={customer} />
       <SidePanel
         removeFromCart={removeFromCart}
-        order={cart}
+        cart={cart}
         customer={customer}
         changeCustomer={changeCustomer}
       />

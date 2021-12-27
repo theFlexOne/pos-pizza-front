@@ -67,7 +67,7 @@ export default function CustomerLookup({
               type="tel"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               label="Phone Number"
-              variant="filled"
+              // variant="filled"
               value={phone}
               onChange={onPhoneNumberChange}
               fullWidth
