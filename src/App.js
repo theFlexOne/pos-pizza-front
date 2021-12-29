@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import useApp from './hooks/useApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from './pages/NewOrder/NewOrder';
 import Layout from './components/Layout';
-// import useFetch from './hooks/useFetch';
 import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
+import useDragScroll from './hooks/useDragScroll';
 
 function App() {
   const [customerList, setCustomerList] = useState([]);
   const [menu, setMenu] = useState([]);
   const [app, err, isLoading] = useApp();
-  const dragScroll = useRef(false);
+
+  const dragScrollEvents = useDragScroll();
 
   useEffect(() => {
     if (app) {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <Layout app={app}>
-      <Box className="page" display="flex" flexBasis="100%">
+      <Box sx={{ display: 'flex', flexBasis: '100%' }} {...dragScrollEvents}>
         {app && (
           <Routes>
             <Route
