@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-const MainPanel = ({ menu, addToCart }) => {
+const MainPanel = ({ menu, addToCart, order }) => {
   const [sectionIndex, setSectionIndex] = useState(0);
 
   const theme = useTheme();

@@ -316,22 +316,6 @@
       "recentOrders": [],
       "id": "05e21643",
       "created": 1584592068850
-    },
-    {
-      "phoneNumber": "555-111-1111",
-      "name": {
-        "firstName": "Dave",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "123 fun street",
-        "secondaryAddress": "apt 1",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "474003c9",
-      "created": 1640629862286
     }
   ],
   "orderHistory": [],

@@ -9,12 +9,21 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
   const [isMenu, setIsMenu] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [cart, setCart] = useState([]);
+  const [orderObj, setOrderObj] = useState({
+    customer: {},
+    order: [],
+  });
 
   const addToCart = item => {
+    setOrderObj({ ...orderObj, ...orderObj.order.push(item) });
     setCart([...cart, item]);
   };
 
   const removeFromCart = id => {
+    setOrderObj({
+      ...orderObj,
+      order: orderObj.order.filter(x => x.id !== id),
+    });
     setCart(cart.filter(item => item.id !== id));
   };
 
@@ -35,8 +44,11 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
     if (customer) setIsMenu(true);
   }, [customer]);
 
+  console.log(orderObj);
+
   return isMenu ? (
     <Menu
+      order={orderObj}
       menu={menu}
       customer={customer}
       changeCustomer={changeCustomer}
@@ -46,6 +58,7 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
     />
   ) : (
     <Customer
+      order={orderObj}
       customerList={customerList}
       setCustomer={customer => setCustomer(customer)}
       formStep={formStep}

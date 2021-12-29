@@ -3,6 +3,7 @@ import MainPanel from './MainPanel';
 import SidePanel from './SidePanel';
 
 export default function Menu({
+  order,
   menu,
   customer,
   changeCustomer,
@@ -12,8 +13,9 @@ export default function Menu({
 }) {
   return (
     <>
-      <MainPanel menu={menu} addToCart={addToCart} customer={customer} />
+      <MainPanel order={order} menu={menu} addToCart={addToCart} />
       <SidePanel
+        order={order}
         removeFromCart={removeFromCart}
         cart={cart}
         customer={customer}

@@ -18,15 +18,7 @@ const theme = createTheme({
   },
 });
 
-const body = document.querySelector('body');
-
 export default function Layout({ app, children }) {
-  // const [isDragging, setIsDragging] = useState(false)
-  body.addEventListener('mousedown', e => {
-    e.stopImmediatePropagation();
-    console.log(e);
-    console.log('is down');
-  });
   return (
     <ThemeProvider theme={theme}>
       <Box

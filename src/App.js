@@ -36,9 +36,13 @@ function App() {
     return <h2>{err.message}</h2>;
   }
 
+  const styles = {
+    sx: { display: 'flex', flexBasis: '100%' },
+  };
+
   return (
     <Layout app={app}>
-      <Box sx={{ display: 'flex', flexBasis: '100%' }} {...dragScrollEvents}>
+      <Box {...dragScrollEvents}>
         {app && (
           <Routes>
             <Route

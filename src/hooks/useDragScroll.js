@@ -14,14 +14,19 @@ class DragScroll {
 
 const useDragScroll = () => {
   const mouseDown = useRef(false);
-  let ds;
+  const sx = {
+    display: 'flex',
+    flexBasis: '100%',
+  };
+  let a;
   return {
+    sx,
     onMouseDown: e => {
       mouseDown.current = true;
-      ds = new DragScroll(e);
+      a = new DragScroll(e);
       e.preventDefault();
     },
-    onMouseMove: e => mouseDown.current && ds.scrollToCoords(e),
+    onMouseMove: e => mouseDown.current && a.scrollToCoords(e),
     onMouseUp: () => (mouseDown.current = false),
   };
 };
