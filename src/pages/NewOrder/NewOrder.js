@@ -15,8 +15,6 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
   };
 
   const removeFromCart = id => {
-    console.log(id);
-    console.log(cart);
     setCart(cart.filter(item => item.id !== id));
   };
 

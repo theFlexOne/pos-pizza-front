@@ -26,7 +26,12 @@
         {
           "name": "meat-galore",
           "type": "specialty",
-          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
+          "toppings": [
+            "pepperoni",
+            "sausage",
+            "beef",
+            "bacon"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -38,7 +43,12 @@
         {
           "name": "veggie-lover",
           "type": "specialty",
-          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
+          "toppings": [
+            "onions",
+            "green peppers",
+            "mushrooms",
+            "black olives"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -50,7 +60,11 @@
         {
           "name": "chicken-bacon-ranch",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "ranch"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "ranch"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -62,7 +76,12 @@
         {
           "name": "bbq-bacon-chicken",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "bbq sauce",
+            "onions"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -107,7 +126,8 @@
           "prices": {
             "small": "8",
             "large": "12"
-          }
+          },
+          "id": 1
         },
         {
           "name": "Red",
@@ -115,7 +135,8 @@
           "prices": {
             "small": "8",
             "large": "12"
-          }
+          },
+          "id": 2
         }
       ],
       "id": "3"
@@ -10776,22 +10797,6 @@
     },
     {
       "name": {
-        "firstName": "Bianka",
-        "lastName": "Abshire"
-      },
-      "phoneNumber": "555-641-1073",
-      "address": {
-        "streetAddress": "9219 Heidenreich Tunnel",
-        "secondaryAddress": "Apt. 773",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "f7c6a6f2",
-      "created": 1595284686836
-    },
-    {
-      "name": {
         "firstName": "Barbara",
         "lastName": "Russel"
       },
@@ -12309,22 +12314,6 @@
       "recentOrders": [],
       "id": "d32235a7",
       "created": 1603846480977
-    },
-    {
-      "name": {
-        "firstName": "Nicole",
-        "lastName": "Abbott"
-      },
-      "phoneNumber": "555-188-7111",
-      "address": {
-        "streetAddress": "2382 Jones Trafficway",
-        "secondaryAddress": "Suite 252",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "1ec16cab",
-      "created": 1628121797602
     },
     {
       "name": {

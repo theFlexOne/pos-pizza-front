@@ -13,15 +13,33 @@ import { useTheme } from '@emotion/react';
 import { DateTime as dt } from 'luxon';
 import CustomerTableRow from './components/CustomerTableRow';
 import FilterModal from './components/FilterModal';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const ROWS_PER_PAGE = 8;
 
 const toDateTimeString = ms => dt.fromMillis(ms).toFormat('D T');
 
+const buildRows = (customers, page) => {
+  return customers
+    .slice(page * ROWS_PER_PAGE, page * ROWS_PER_PAGE + ROWS_PER_PAGE)
+    .map(({ name, phoneNumber, address, id, recentOrders }) => {
+      const fullName = name.firstName + ' ' + name.lastName;
+      const fullAddress =
+        address.streetAddress + ', ' + address.secondaryAddress;
+      const orderedLast = recentOrders?.[0]
+        ? toDateTimeString(recentOrders[0].timeStamp)
+        : 'n/a';
+
+      return { fullName, phoneNumber, fullAddress, id, orderedLast };
+    });
+};
+
 export default function Customers({ customers, removeCustomerFromList }) {
   const [page, setPage] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [filter, setFilter] = useState({ text: '', type: 'name' });
+  const [isDescending, setIsDescending] = useState(false);
 
   const filterCustomers = customer => {
     let data;
@@ -44,7 +62,6 @@ export default function Customers({ customers, removeCustomerFromList }) {
         break;
     }
     return data.toLowerCase().includes(filter.text.toLowerCase());
-    //*
   };
 
   const theme = useTheme();
@@ -60,18 +77,12 @@ export default function Customers({ customers, removeCustomerFromList }) {
   };
 
   const customersToDisplay = customers.filter(filterCustomers);
-  const rows = customersToDisplay
-    .slice(page * ROWS_PER_PAGE, page * ROWS_PER_PAGE + ROWS_PER_PAGE)
-    .map(({ name, phoneNumber, address, id, recentOrders }) => {
-      const fullName = name.firstName + ' ' + name.lastName;
-      const fullAddress =
-        address.streetAddress + ', ' + address.secondaryAddress;
-      const orderedLast = recentOrders?.[0]
-        ? toDateTimeString(recentOrders[0].timeStamp)
-        : 'n/a';
-
-      return { fullName, phoneNumber, fullAddress, id, orderedLast };
-    });
+  const sortedCustomersByName = customersToDisplay.sort((a, b) => {
+    if (a.name.lastName > b.name.lastName === isDescending) return -1;
+    else if (a.name.lastName < b.name.lastName === isDescending) return 1;
+    return 0;
+  });
+  const rows = buildRows(sortedCustomersByName, page);
 
   return (
     <>
@@ -87,14 +98,41 @@ export default function Customers({ customers, removeCustomerFromList }) {
       >
         <Box sx={{ m: '.5rem', display: 'flex', flexDirection: 'column' }}>
           <TableContainer
-            sx={{ flexGrow: '1', boxShadow: '.5px 2px 2px rgba(0,0,0,.3)' }}
+            sx={{
+              flexGrow: '1',
+              boxShadow: '.5px 2px 2px rgba(0,0,0,.3)',
+              minWidth: '700px',
+            }}
           >
             <Table>
               <TableHead>
                 <TableRow
                   sx={{ backgroundColor: theme.palette.secondary[700] }}
                 >
-                  <TableCell>Name</TableCell>
+                  <TableCell
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      '&:hover': {
+                        svg: {
+                          fontSize: '1.25rem',
+                          color: 'rgba(255, 255, 255, 0.25)',
+                        },
+                      },
+                    }}
+                    onClick={() => setIsDescending(() => !isDescending)}
+                  >
+                    {'Name'}
+                    {isDescending ? (
+                      <ArrowDownwardIcon
+                        sx={{ ml: '.75rem', fontSize: '1rem' }}
+                      />
+                    ) : (
+                      <ArrowUpwardIcon
+                        sx={{ ml: '.75rem', fontSize: '1rem' }}
+                      />
+                    )}
+                  </TableCell>
                   <TableCell align="right">Phone Number</TableCell>
                   <TableCell align="right">Address</TableCell>
                   <TableCell align="right">Ordered Last</TableCell>

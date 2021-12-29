@@ -29,7 +29,6 @@ export default function Settings() {
       <Tabs
         value={index}
         orientation="vertical"
-        sx={{ flexGrow: '1', '& .MuiTabs-flexContainer': { flexGrow: '1' } }}
         onChange={(_, val) => setIndex(val)}
       >
         <SettingsTab label="Menu" />

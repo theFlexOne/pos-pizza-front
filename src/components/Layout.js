@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import blueGrey from '@mui/material/colors/blueGrey';
 import orange from '@mui/material/colors/orange';
@@ -18,7 +18,15 @@ const theme = createTheme({
   },
 });
 
+const body = document.querySelector('body');
+
 export default function Layout({ app, children }) {
+  // const [isDragging, setIsDragging] = useState(false)
+  body.addEventListener('mousedown', e => {
+    e.stopImmediatePropagation();
+    console.log(e);
+    console.log('is down');
+  });
   return (
     <ThemeProvider theme={theme}>
       <Box

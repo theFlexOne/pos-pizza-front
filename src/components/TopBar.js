@@ -39,11 +39,11 @@ export default function TopBar() {
         onChange={handleChange}
       >
         <LinkTab label="New Order" to="/NewOrder" />
-        <LinkTab label="Order History" to="/OrderHistory" />
+        <LinkTab label="Order History" to="/OrderHistory" disabled />
         <LinkTab label="Customers" to="/Customers" />
         <LinkTab label="Settings" to="/Settings" />
-        <LinkTab label="Reports" to="/Reports" />
-        <LinkTab label="Custom 1" />
+        <LinkTab label="Reports" to="/Reports" disabled />
+        <LinkTab label="Custom 1" disabled />
       </Tabs>
     </Box>
   );

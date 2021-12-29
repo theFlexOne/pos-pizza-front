@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useApp from './hooks/useApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
@@ -12,6 +12,7 @@ function App() {
   const [customerList, setCustomerList] = useState([]);
   const [menu, setMenu] = useState([]);
   const [app, err, isLoading] = useApp();
+  const dragScroll = useRef(false);
 
   useEffect(() => {
     if (app) {
