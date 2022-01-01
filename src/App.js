@@ -36,6 +36,8 @@ function App() {
     return <h2>{err.message}</h2>;
   }
 
+  const props = { menu, addCustomerToList, customerList };
+
   return (
     app &&
     !isLoading && (
@@ -43,26 +45,8 @@ function App() {
         <Box {...dragScrollEvents}>
           {app && (
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <NewOrder
-                    menu={menu}
-                    addCustomerToList={addCustomerToList}
-                    customerList={customerList}
-                  />
-                }
-              />
-              <Route
-                path="/NewOrder"
-                element={
-                  <NewOrder
-                    menu={menu}
-                    addCustomerToList={addCustomerToList}
-                    customerList={customerList}
-                  />
-                }
-              />
+              <Route path="/" element={<NewOrder {...props} />} />
+              <Route path="/NewOrder" element={<NewOrder {...props} />} />
               <Route
                 path="/Customers"
                 element={

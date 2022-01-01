@@ -41,30 +41,42 @@ export default function Customers({ customers, removeCustomerFromList }) {
   const [filter, setFilter] = useState({ text: '', type: 'name' });
   const [isDescending, setIsDescending] = useState(false);
 
-  const filterCustomers = customer => {
-    let data;
-    const { firstName, lastName } = customer.name;
-    switch (filter.type) {
-      case 'name':
-        data = firstName + ' ' + lastName;
-        break;
-      case 'tel':
-        data = customer.phoneNumber;
-        break;
-      case 'address':
-        data =
-          customer.address.streetAddress +
-          ', ' +
-          customer.address.secondaryAddress;
-        break;
-      default:
-        data = firstName + ' ' + lastName;
-        break;
-    }
-    return data.toLowerCase().includes(filter.text.toLowerCase());
-  };
-
   const theme = useTheme();
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      background: theme.palette.secondary[500],
+      flex: '1',
+      overflow: 'hidden',
+    },
+    table: {
+      flexGrow: '1',
+      boxShadow: '.5px 2px 2px rgba(0,0,0,.3)',
+      minWidth: '700px',
+    },
+    cell: {
+      display: 'flex',
+      alignItems: 'center',
+      '&:hover': {
+        svg: {
+          fontSize: '1.25rem',
+          color: 'rgba(255, 255, 255, 0.25)',
+        },
+      },
+    },
+    arrowDown: { ml: '.75rem', fontSize: '1rem' },
+    arrowUp: { ml: '.75rem', fontSize: '1rem' },
+    buttons: {
+      mt: '.5rem',
+      // mr: '1rem',
+      // ml: '1rem',
+      display: 'flex',
+      gap: '.5rem',
+      minHeight: '3.5rem',
+      flex: '1',
+    },
+  };
 
   const isLastPage = page >= Math.ceil(customers.length / ROWS_PER_PAGE - 1);
 
@@ -76,8 +88,33 @@ export default function Customers({ customers, removeCustomerFromList }) {
     setIsOpen(false);
   };
 
-  const customersToDisplay = customers.filter(filterCustomers);
-  const sortedCustomersByName = customersToDisplay.sort((a, b) => {
+  const getCustomersToDisplay = () => {
+    const filterCustomers = customer => {
+      let data;
+      const { firstName, lastName } = customer.name;
+      switch (filter.type) {
+        case 'name':
+          data = firstName + ' ' + lastName;
+          break;
+        case 'tel':
+          data = customer.phoneNumber;
+          break;
+        case 'address':
+          data =
+            customer.address.streetAddress +
+            ', ' +
+            customer.address.secondaryAddress;
+          break;
+        default:
+          data = firstName + ' ' + lastName;
+          break;
+      }
+      return data.toLowerCase().includes(filter.text.toLowerCase());
+    };
+
+    return customers.filter(filterCustomers);
+  };
+  const sortedCustomersByName = getCustomersToDisplay().sort((a, b) => {
     if (a.name.lastName > b.name.lastName === isDescending) return -1;
     else if (a.name.lastName < b.name.lastName === isDescending) return 1;
     return 0;
@@ -86,51 +123,23 @@ export default function Customers({ customers, removeCustomerFromList }) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          background: theme.palette.secondary[500],
-          flex: '1',
-          overflow: 'hidden',
-          // padding: '1rem',
-        }}
-      >
+      <Box sx={styles.container}>
         <Box sx={{ m: '.5rem', display: 'flex', flexDirection: 'column' }}>
-          <TableContainer
-            sx={{
-              flexGrow: '1',
-              boxShadow: '.5px 2px 2px rgba(0,0,0,.3)',
-              minWidth: '700px',
-            }}
-          >
+          <TableContainer sx={styles.table}>
             <Table>
               <TableHead>
                 <TableRow
                   sx={{ backgroundColor: theme.palette.secondary[700] }}
                 >
                   <TableCell
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      '&:hover': {
-                        svg: {
-                          fontSize: '1.25rem',
-                          color: 'rgba(255, 255, 255, 0.25)',
-                        },
-                      },
-                    }}
+                    sx={styles.cell}
                     onClick={() => setIsDescending(() => !isDescending)}
                   >
                     {'Name'}
                     {isDescending ? (
-                      <ArrowDownwardIcon
-                        sx={{ ml: '.75rem', fontSize: '1rem' }}
-                      />
+                      <ArrowDownwardIcon sx={styles.arrowDown} />
                     ) : (
-                      <ArrowUpwardIcon
-                        sx={{ ml: '.75rem', fontSize: '1rem' }}
-                      />
+                      <ArrowUpwardIcon sx={styles.arrowUp} />
                     )}
                   </TableCell>
                   <TableCell align="right">Phone Number</TableCell>
@@ -150,17 +159,7 @@ export default function Customers({ customers, removeCustomerFromList }) {
               </TableBody>
             </Table>
           </TableContainer>
-          <Box
-            sx={{
-              mt: '.5rem',
-              // mr: '1rem',
-              // ml: '1rem',
-              display: 'flex',
-              gap: '.5rem',
-              minHeight: '3.5rem',
-              flex: '1',
-            }}
-          >
+          <Box sx={styles.buttons}>
             <Button variant="contained" onClick={() => setIsOpen(true)}>
               FILTER
             </Button>

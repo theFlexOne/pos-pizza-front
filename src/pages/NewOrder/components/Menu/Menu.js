@@ -5,22 +5,16 @@ import SidePanel from './SidePanel';
 export default function Menu({
   order,
   menu,
-  customer,
   changeCustomer,
-  addToCart,
-  removeFromCart,
-  cart,
+  // customer,
+  // addToCart,
+  // removeFromCart,
+  // cart,
 }) {
   return (
     <>
-      <MainPanel order={order} menu={menu} addToCart={addToCart} />
-      <SidePanel
-        order={order}
-        removeFromCart={removeFromCart}
-        cart={cart}
-        customer={customer}
-        changeCustomer={changeCustomer}
-      />
+      <MainPanel order={order} menu={menu} />
+      <SidePanel order={order} changeCustomer={changeCustomer} />
     </>
   );
 }

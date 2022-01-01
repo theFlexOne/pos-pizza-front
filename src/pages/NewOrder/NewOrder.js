@@ -2,65 +2,38 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
+import useOrder from '../../hooks/useOrder';
 
 export default function NewOrder({ menu, addCustomerToList, customerList }) {
-  // const { menu } = app;
-  const [customer, setCustomer] = useState(null);
   const [isMenu, setIsMenu] = useState(false);
   const [formStep, setFormStep] = useState(1);
-  const [cart, setCart] = useState([]);
-  const [orderObj, setOrderObj] = useState({
-    customer: {},
-    order: [],
-  });
-
-  const addToCart = item => {
-    setOrderObj({ ...orderObj, ...orderObj.order.push(item) });
-    setCart([...cart, item]);
-  };
-
-  const removeFromCart = id => {
-    setOrderObj({
-      ...orderObj,
-      order: orderObj.order.filter(x => x.id !== id),
-    });
-    setCart(cart.filter(item => item.id !== id));
-  };
+  const order = useOrder();
+  // const { menu } = app;
+  // const [customer, setCustomer] = useState(null);
+  // const [cart, setCart] = useState([]);
 
   const changeCustomer = () => {
+    order.resetCustomer();
     setIsMenu(() => false);
-    setCustomer(() => null);
     setFormStep(() => 1);
   };
 
   const handleNewCustomer = customer => {
     console.log(`customer - `, customer);
     addCustomerToList(customer);
-    setCustomer(() => customer);
-    // setCustomerList(() => [...customerList, customer]);
+    order.selectCustomer(customer);
   };
 
   useEffect(() => {
-    if (customer) setIsMenu(true);
-  }, [customer]);
-
-  console.log(orderObj);
+    if (order.customer) setIsMenu(true);
+  }, [order.customer]);
 
   return isMenu ? (
-    <Menu
-      order={orderObj}
-      menu={menu}
-      customer={customer}
-      changeCustomer={changeCustomer}
-      addToCart={addToCart}
-      removeFromCart={removeFromCart}
-      cart={cart}
-    />
+    <Menu order={order} menu={menu} changeCustomer={changeCustomer} />
   ) : (
     <Customer
-      order={orderObj}
+      selectCustomer={order.selectCustomer}
       customerList={customerList}
-      setCustomer={customer => setCustomer(customer)}
       formStep={formStep}
       changeFormStep={val => setFormStep(val)}
       onNewCustomer={handleNewCustomer}

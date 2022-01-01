@@ -17,7 +17,7 @@ const MenuItemButton = ({ item, ...other }) => {
   );
 };
 
-export default function MenuItems({ section, addToCart, order }) {
+export default function MenuItems({ section, addToCart }) {
   const items = section?.items;
 
   const handleClick = item => {

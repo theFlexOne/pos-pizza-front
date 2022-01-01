@@ -6,11 +6,13 @@ import { useTheme } from '@emotion/react';
 import { Divider } from '@mui/material';
 
 export default function SidePanel({
-  cart,
-  removeFromCart,
-  customer,
+  order,
   changeCustomer,
+  // cart,
+  // removeFromCart,
+  // customer,
 }) {
+  const { cart, customer, removeFromCart } = order;
   const theme = useTheme();
   return (
     <Box

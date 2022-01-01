@@ -32,7 +32,7 @@ const NewCustomer = ({
 };
 export default function Customer({
   customerList,
-  setCustomer,
+  selectCustomer,
   formStep,
   changeFormStep,
   onNewCustomer,
@@ -51,7 +51,7 @@ export default function Customer({
   const lookupPhoneNumber = () => {
     for (let i = 0; i < customerList.length; i++) {
       if (customerList[i].phoneNumber === phoneNumber)
-        return setCustomer(customerList[i]);
+        return selectCustomer(customerList[i]);
     }
     return nextPage();
   };

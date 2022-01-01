@@ -17,6 +17,20 @@ const POS_DATA_URL = 'http://localhost:8000/customers';
 const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
+  const styles = {
+    row: {
+      '&:nth-of-type(even)': {
+        backgroundColor: 'rgba(255, 255, 255, 0.25)',
+      },
+      '&:last-child td, &:last-child th': {
+        border: 0,
+      },
+    },
+    clearIcon: {
+      fontSize: '1.5rem',
+      '&:hover': { color: theme.palette.primary[600] },
+    },
+  };
   const {
     fullName: name,
     phoneNumber: phone,
@@ -34,28 +48,13 @@ const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
 
   return (
     <>
-      <TableRow
-        sx={{
-          '&:nth-of-type(even)': {
-            backgroundColor: 'rgba(255, 255, 255, 0.25)',
-          },
-          '&:last-child td, &:last-child th': {
-            border: 0,
-          },
-        }}
-      >
+      <TableRow sx={styles.row}>
         <TableCell>{name}</TableCell>
         <TableCell align="right">{phone}</TableCell>
         <TableCell align="right">{address}</TableCell>
         <TableCell align="right">{orderedLast}</TableCell>
         <TableCell align="right" sx={{ padding: '0 .35rem 0 0' }}>
-          <ClearIcon
-            sx={{
-              fontSize: '1.5rem',
-              '&:hover': { color: theme.palette.primary[600] },
-            }}
-            onClick={() => setIsOpen(true)}
-          />
+          <ClearIcon sx={styles.clearIcon} onClick={() => setIsOpen(true)} />
         </TableCell>
       </TableRow>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
