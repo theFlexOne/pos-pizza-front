@@ -18,7 +18,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const ROWS_PER_PAGE = 8;
 
-const toDateTimeString = ms => dt.fromMillis(ms).toFormat('D T');
+const toDateTimeFormat = ms => dt.fromMillis(ms).toFormat('D T');
 
 const buildRows = (customers, page) => {
   return customers
@@ -28,7 +28,7 @@ const buildRows = (customers, page) => {
       const fullAddress =
         address.streetAddress + ', ' + address.secondaryAddress;
       const orderedLast = recentOrders?.[0]
-        ? toDateTimeString(recentOrders[0].timeStamp)
+        ? toDateTimeFormat(recentOrders[0].timeStamp)
         : 'n/a';
 
       return { fullName, phoneNumber, fullAddress, id, orderedLast };

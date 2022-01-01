@@ -31,54 +31,53 @@ function App() {
   };
 
   if (isLoading) return <h2>Loading...</h2>;
-  if (err) {
+  if (err && !isLoading) {
     console.error(err);
     return <h2>{err.message}</h2>;
   }
 
-  const styles = {
-    sx: { display: 'flex', flexBasis: '100%' },
-  };
-
   return (
-    <Layout app={app}>
-      <Box {...dragScrollEvents}>
-        {app && (
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <NewOrder
-                  menu={menu}
-                  addCustomerToList={addCustomerToList}
-                  customerList={customerList}
-                />
-              }
-            />
-            <Route
-              path="/NewOrder"
-              element={
-                <NewOrder
-                  menu={menu}
-                  addCustomerToList={addCustomerToList}
-                  customerList={customerList}
-                />
-              }
-            />
-            <Route
-              path="/Customers"
-              element={
-                <Customers
-                  customers={customerList}
-                  removeCustomerFromList={removeCustomerFromList}
-                />
-              }
-            />
-            <Route path="/Settings" element={<Settings app={app} />} />
-          </Routes>
-        )}
-      </Box>
-    </Layout>
+    app &&
+    !isLoading && (
+      <Layout app={app}>
+        <Box {...dragScrollEvents}>
+          {app && (
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <NewOrder
+                    menu={menu}
+                    addCustomerToList={addCustomerToList}
+                    customerList={customerList}
+                  />
+                }
+              />
+              <Route
+                path="/NewOrder"
+                element={
+                  <NewOrder
+                    menu={menu}
+                    addCustomerToList={addCustomerToList}
+                    customerList={customerList}
+                  />
+                }
+              />
+              <Route
+                path="/Customers"
+                element={
+                  <Customers
+                    customers={customerList}
+                    removeCustomerFromList={removeCustomerFromList}
+                  />
+                }
+              />
+              <Route path="/Settings" element={<Settings app={app} />} />
+            </Routes>
+          )}
+        </Box>
+      </Layout>
+    )
   );
 }
 

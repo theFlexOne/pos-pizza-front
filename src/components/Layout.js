@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import blueGrey from '@mui/material/colors/blueGrey';
 import orange from '@mui/material/colors/orange';
@@ -19,14 +19,17 @@ const theme = createTheme({
 });
 
 export default function Layout({ app, children }) {
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      maxHeight: '100vh',
+    },
+  };
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        display="flex"
-        flexDirection="column"
-        height="100vh"
-        maxHeight="100vh"
-      >
+      <Box sx={styles.container}>
         <TopBar app={app} />
         {children}
         <InfoBar />

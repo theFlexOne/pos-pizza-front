@@ -7,43 +7,44 @@ import useDateTime from '../hooks/useDateTime';
 
 export default function InfoBar() {
   const theme = useTheme();
+  const styles = {
+    bar: {
+      borderTop: `1px solid ${theme.palette.secondary[800]}`,
+      display: 'flex',
+      backgroundColor: theme.palette.secondary[600],
+    },
+    cell: {
+      flex: '1',
+      align: 'center',
+      color: 'rgba(255,255,255,0.5)',
+    },
+    divider: { backgroundColor: 'rgba(255,255,255,0.7)' },
+  };
+  //* Custom components
+  const CellDivider = () => (
+    <Divider orientation="vertical" sx={styles.divider} flexItem />
+  );
 
-  const [date, time] = useDateTime();
-
-  const InfoCell = ({ children }) => {
+  const InfoCell = ({ children, ...other }) => {
     return (
-      <Typography
-        variant="caption"
-        component="p"
-        flex="1"
-        align="center"
-        color="rgba(255,255,255,0.5)"
-      >
+      <Typography variant="caption" component="p" sx={styles.cell}>
         {children}
       </Typography>
     );
   };
 
-  // const ClockCell = () => {
-  //   return <InfoCell />;
-  // };
+  const DateCell = () => {
+    const date = useDateTime().toFormat('D');
+    return <InfoCell>{date}</InfoCell>;
+  };
 
-  const CellDivider = () => (
-    <Divider
-      orientation="vertical"
-      sx={{ backgroundColor: 'rgba(255,255,255,0.7)' }}
-      flexItem
-    />
-  );
+  const TimeCell = () => {
+    const time = useDateTime().toFormat('tt');
+    return <InfoCell>{time}</InfoCell>;
+  };
 
   return (
-    <Box
-      borderTop={`1px solid ${theme.palette.secondary[800]}`}
-      component="footer"
-      className="Info-Bar"
-      display="flex"
-      backgroundColor={theme.palette.secondary[600]}
-    >
+    <Box component="footer" sx={styles.bar}>
       <InfoCell>USER</InfoCell>
       <CellDivider />
       <InfoCell>OTHER</InfoCell>
@@ -56,9 +57,9 @@ export default function InfoBar() {
       <CellDivider />
       <InfoCell>OTHER</InfoCell>
       <CellDivider />
-      <InfoCell>{date}</InfoCell>
+      <DateCell />
       <CellDivider />
-      <InfoCell>{time}</InfoCell>
+      <TimeCell />
     </Box>
   );
 }
