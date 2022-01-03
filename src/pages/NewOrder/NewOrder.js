@@ -8,9 +8,6 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
   const [isMenu, setIsMenu] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const order = useOrder();
-  // const { menu } = app;
-  // const [customer, setCustomer] = useState(null);
-  // const [cart, setCart] = useState([]);
 
   const changeCustomer = () => {
     order.resetCustomer();

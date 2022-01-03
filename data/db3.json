@@ -8362,22 +8362,6 @@
       "orders": [],
       "id": "008c77fb",
       "created": 1634005503842
-    },
-    {
-      "phoneNumber": "1",
-      "name": {
-        "firstName": "1",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "1",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "9aac3b95",
-      "created": 1641017094440
     }
   ],
   "orderHistory": [

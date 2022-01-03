@@ -2,39 +2,17 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
+import Cleave from 'cleave.js/react';
 
-const styles = {
-  page: {
-    display: 'flex',
-    flex: '1',
-  },
-  formContainer: {
-    flex: '2',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    paddingTop: '4rem',
-    backgroundColor: '',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  buttonsBox: {
-    flex: '1',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '.5rem',
-  },
-  keypadContainer: {
-    flex: '1',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '3rem 1rem',
-    gap: '1rem',
-  },
+const MaskedTextField = props => {
+  const { inputRef, ...otherProps } = props;
+  const options = {
+    blocks: [0, 3, 3, 4],
+    delimiters: ['(', ') ', '-', '-'],
+    numericOnly: true,
+    href: ref => inputRef(ref),
+  };
+  return <Cleave {...otherProps} />;
 };
 
 export default function CustomerLookup({
@@ -45,28 +23,55 @@ export default function CustomerLookup({
   goToMenu,
 }) {
   const theme = useTheme();
+  const styles = {
+    page: {
+      display: 'flex',
+      flex: '1',
+    },
+    formContainer: {
+      flex: '2',
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      paddingTop: '4rem',
+      bgColor: theme.palette.secondary[200],
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    inputWrapper: {
+      bgcolor: theme.palette.secondary[50],
+      mb: '1rem',
+    },
+    buttonsBox: {
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '.5rem',
+      bgcolor: '#ff00d4',
+    },
+    keypadContainer: {
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '3rem 1rem',
+      gap: '1rem',
+    },
+  };
 
   return (
     <Box sx={styles.page}>
-      <Box
-        sx={{
-          ...styles.formContainer,
-          backgroundColor: theme.palette.secondary[200],
-        }}
-      >
+      <Box sx={styles.formContainer}>
         <Box sx={styles.form}>
           <Typography variant="h5" component="h1" marginBottom="2rem">
             Please enter telephone number:
           </Typography>
-          <Box
-            backgroundColor={theme.palette.secondary[50]}
-            sx={{ mb: '1rem' }}
-          >
+          <Box sx={styles.inputWrapper}>
             <TextField
-              type="tel"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               label="Phone Number"
-              // variant="filled"
               value={phone}
               onChange={onPhoneNumberChange}
               fullWidth
@@ -85,12 +90,7 @@ export default function CustomerLookup({
           backgroundColor: theme.palette.secondary[900],
         }}
       >
-        <Box
-          sx={{
-            ...styles.buttonsBox,
-            backgroundColor: '#38D435',
-          }}
-        >
+        <Box sx={styles.buttonsBox}>
           <Typography
             component="h3"
             variant="body2"
