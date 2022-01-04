@@ -84,7 +84,7 @@ export default function Customer({
       });
   };
 
-  const formPage = () => {
+  const useFormPage = () => {
     switch (formStep) {
       case 1:
         return (
@@ -131,7 +131,7 @@ export default function Customer({
         );
     }
   };
-
-  return formPage();
+  const content = useFormPage();
+  return <>{content}</>;
   // <CustomerLookup phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} />
 }
