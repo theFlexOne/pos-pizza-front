@@ -5,10 +5,12 @@ import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 
 export default function CustomerFormAddress({
+  onInputChange,
+  focusTextField,
   streetAddress,
   secondaryAddress,
-  onStreetAddressChange,
-  onSecondaryAddressChange,
+  // onStreetAddressChange,
+  // onSecondaryAddressChange,
   onCustomerSubmit,
   prevPage,
 }) {
@@ -74,10 +76,11 @@ export default function CustomerFormAddress({
         <Box component="form" sx={styles.form}>
           <Box sx={{ ...styles.inputWrapper, ...styles.streetAddress }}>
             <TextField
-              id="streetAddress"
+              name="streetAddress"
               label="Street Address"
               value={streetAddress}
-              onChange={onStreetAddressChange}
+              onChange={onInputChange}
+              onClick={focusTextField}
               fullWidth
               autoFocus
               required
@@ -85,16 +88,18 @@ export default function CustomerFormAddress({
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.secondaryAddress }}>
             <TextField
-              id="secondaryAddress"
+              onClick={focusTextField}
+              name="secondaryAddress"
               label="Apt/Suite/Other"
               value={secondaryAddress}
-              onChange={onSecondaryAddressChange}
+              onChange={onInputChange}
               fullWidth
             />
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.city }}>
             <TextField
-              id="city"
+              onClick={focusTextField}
+              name="city"
               label="City"
               value="Gravel Falls"
               disabled
@@ -103,7 +108,8 @@ export default function CustomerFormAddress({
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.state }}>
             <TextField
-              id="state"
+              onClick={focusTextField}
+              name="state"
               label="State"
               value="Minnesota"
               disabled

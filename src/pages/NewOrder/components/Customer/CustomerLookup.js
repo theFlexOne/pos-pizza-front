@@ -18,9 +18,11 @@ const MaskedTextField = props => {
 export default function CustomerLookup({
   phone,
   onPhoneNumberChange,
+  focusTextField,
   lookupPhoneNumber,
   clearField,
   goToMenu,
+  onInputChange,
 }) {
   const theme = useTheme();
   const styles = {
@@ -71,9 +73,12 @@ export default function CustomerLookup({
           </Typography>
           <Box sx={styles.inputWrapper}>
             <TextField
+              name="phoneNumber"
               label="Phone Number"
               value={phone}
-              onChange={onPhoneNumberChange}
+              // onChange={handleChange}
+              onChange={onInputChange}
+              onClick={focusTextField}
               fullWidth
               autoFocus
               required

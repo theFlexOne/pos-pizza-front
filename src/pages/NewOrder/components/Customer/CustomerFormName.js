@@ -6,8 +6,10 @@ import { useTheme } from '@emotion/react';
 export default function CustomerFormName({
   firstName,
   lastName,
-  onFirstNameChange,
-  onLastNameChange,
+  onInputChange,
+  focusTextField,
+  // onFirstNameChange,
+  // onLastNameChange,
   nextPage,
   prevPage,
 }) {
@@ -68,7 +70,9 @@ export default function CustomerFormName({
               label="First Name"
               sx={styles.firstName}
               value={firstName}
-              onChange={onFirstNameChange}
+              onChange={onInputChange}
+              onClick={focusTextField}
+              name="firstName"
               fullWidth
               autoFocus
               required
@@ -81,9 +85,11 @@ export default function CustomerFormName({
           >
             <TextField
               label="Last Name"
+              name="lastName"
               sx={styles.lastName}
               value={lastName}
-              onChange={onLastNameChange}
+              onChange={onInputChange}
+              onClick={focusTextField}
               fullWidth
             />
           </Box>

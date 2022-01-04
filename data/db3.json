@@ -26,12 +26,7 @@
         {
           "name": "meat-galore",
           "type": "specialty",
-          "toppings": [
-            "pepperoni",
-            "sausage",
-            "beef",
-            "bacon"
-          ],
+          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -43,12 +38,7 @@
         {
           "name": "veggie-lover",
           "type": "specialty",
-          "toppings": [
-            "onions",
-            "green peppers",
-            "mushrooms",
-            "black olives"
-          ],
+          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -60,11 +50,7 @@
         {
           "name": "chicken-bacon-ranch",
           "type": "specialty",
-          "toppings": [
-            "chicken",
-            "bacon",
-            "ranch"
-          ],
+          "toppings": ["chicken", "bacon", "ranch"],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -76,12 +62,7 @@
         {
           "name": "bbq-bacon-chicken",
           "type": "specialty",
-          "toppings": [
-            "chicken",
-            "bacon",
-            "bbq sauce",
-            "onions"
-          ],
+          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
           "prices": {
             "small": 12,
             "medium": 16,
