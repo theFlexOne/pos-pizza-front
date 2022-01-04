@@ -72,12 +72,13 @@ const reducer = (state, action) => {
     case 'clearAll': {
       return initialState;
     }
-    case 'test':
+    case 'TEST':
       console.log('TESTING');
       return state;
     default:
-      console.log(action);
-      console.log(state);
+      console.log('NOT A VALID TYPE: ', action.type);
+      console.log('state: ', state);
+      console.log('action: ', action);
       return state;
   }
 };
@@ -94,11 +95,14 @@ export default function Customer({
   const { phoneNumber, firstName, lastName, streetAddress, secondaryAddress } =
     state;
 
+  //* displays all input values in real time so I can make sure they are correct
   console.log(state);
 
-  //* Auto-formatting phone number - "###-###-####"
+  // // Auto-formatting phone number - "###-###-####"
   // if (phoneNumber.length === 3 || phoneNumber.length === 7)
   //   setPhoneNumber(() => phoneNumber + '-');
+
+  const handleChange = props => {};
 
   const handleInputChange = ({ target }) => {
     const action = { type: 'update', name: target.name, value: target.value };
