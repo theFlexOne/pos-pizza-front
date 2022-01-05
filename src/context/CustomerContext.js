@@ -11,11 +11,6 @@ const initialState = {
 };
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'update': {
-      const { name, value } = action;
-      const newState = { ...state, [name]: value };
-      return newState;
-    }
     case 'clear-field': {
       const { name } = action;
       const newState = { ...state, [name]: '' };
@@ -49,20 +44,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
-// class Customer {
-//   constructor() {
-//     const [state, dispatch] = useReducer(reducer, initialState);
-//   }
-// }
-
-// class Action {
-//   constructor({ type, value, name }) {
-//     this.type = type || 'error';
-//     this.name = name || '';
-//     this.value = value || undefined;
-//   }
-// }
 
 const _action = { type: 'error', value: undefined, name: '' };
 
@@ -119,7 +100,6 @@ const CustomerProvider = ({ children, ...otherProps }) => {
 
   console.log(`customerContext: `, { customerContext });
   console.log('children: ', { children });
-  // const customer = { state, actions };
 
   return (
     <CustomerContext.Provider value={customerContext} {...otherProps}>
