@@ -67,39 +67,36 @@ const CustomerProvider = ({ children, ...otherProps }) => {
       const action = { ..._action, type: 'reset' };
       dispatch(action);
     },
+    test() {
+      const action = { ..._action, type: 'TEST' };
+      dispatch(action);
+    },
   };
 
-  class Context {
-    constructor() {
-      this.state = state;
-      this.actions = actions;
-      this.customer = {
-        fullName() {
-          const { firstName, lastName } = state;
-          const fullName = `${firstName} ${lastName}`;
-          return fullName;
-        },
-        fullAddress() {
-          const { streetAddress, secondaryAddress } = state;
-          const fullAddress = `${streetAddress}, ${secondaryAddress}`;
-          return fullAddress;
-        },
-        phoneNumber() {
-          const { phoneNumber } = state;
-          const formattedPhoneNumber = `${phoneNumber.slice(
-            0,
-            3
-          )}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
-          return formattedPhoneNumber;
-        },
-      };
-    }
-  }
-
-  const customerContext = new Context();
-
-  console.log(`customerContext: `, { customerContext });
-  console.log('children: ', { children });
+  const customerContext = {
+    state,
+    actions,
+    customer: {
+      fullName() {
+        const { firstName, lastName } = state;
+        const fullName = `${firstName} ${lastName}`;
+        return fullName;
+      },
+      fullAddress() {
+        const { streetAddress, secondaryAddress } = state;
+        const fullAddress = `${streetAddress}, ${secondaryAddress}`;
+        return fullAddress;
+      },
+      phoneNumber() {
+        const { phoneNumber } = state;
+        const formattedPhoneNumber = `${phoneNumber.slice(
+          0,
+          3
+        )}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+        return formattedPhoneNumber;
+      },
+    },
+  };
 
   return (
     <CustomerContext.Provider value={customerContext} {...otherProps}>

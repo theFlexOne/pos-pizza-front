@@ -63,8 +63,6 @@ export default function CustomerLookup({
   const { state, actions, customer } = useCustomer();
   const { phoneNumber } = state;
   const { handleInputChange, clearField } = actions;
-  console.log(`state: `, { state });
-  console.log(`actions: `, { actions });
 
   return (
     <Box sx={styles.page}>
