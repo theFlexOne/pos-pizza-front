@@ -4,6 +4,10 @@ import CustomerFormName from './CustomerFormName';
 import CustomerFormAddress from './CustomerFormAddress';
 import { v4 as uuid } from 'uuid';
 import { focusTextField } from '../../../../utils/utilityFunctions';
+import {
+  useCustomer,
+  CustomerProvider,
+} from '../../../../context/CustomerContext';
 
 const POS_DATA_URL = 'http://localhost:8000';
 
@@ -24,6 +28,13 @@ const POS_DATA_URL = 'http://localhost:8000';
 //   get name() {
 //     return this.firstName + ' ' + this.lastName
 //   }
+// }
+
+// const FormPage = ({ children, ...otherProps }) => {
+//   // const { state: state1, actions, customer } = useCustomer();
+//   return (
+//     <CustomerProvider>{children}</CustomerProvider>
+//   )
 // }
 
 const NewCustomer = ({
@@ -91,30 +102,34 @@ export default function Customer({
   onNewCustomer,
   goToMenu,
 }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { phoneNumber, firstName, lastName, streetAddress, secondaryAddress } =
-    state;
+  // const [state1, dispatch] = useReducer(reducer, initialState);
+  // const { state, actions, customer } = useCustomer();
+  // const { phoneNumber, firstName, lastName, streetAddress, secondaryAddress } =
+  //   state;
 
+  // console.log({ state1, actions, customer });
   //* displays all input values in real time so I can make sure they are correct
-  console.log(state);
+  // console.log(state);
 
   // // Auto-formatting phone number - "###-###-####"
   // if (phoneNumber.length === 3 || phoneNumber.length === 7)
   //   setPhoneNumber(() => phoneNumber + '-');
 
-  const handleChange = props => {};
+  // const handleInputChange = ({ target }) => {
+  //   const action = {
+  //     type: 'update-field',
+  //     name: target.name,
+  //     value: target.value,
+  //   };
+  //   dispatch(action);
+  // };
 
-  const handleInputChange = ({ target }) => {
-    const action = { type: 'update', name: target.name, value: target.value };
-    dispatch(action);
-  };
+  // const clearField = ({ target }) => {
+  //   const action = { type: 'clearField', name: target.name };
+  //   dispatch(action);
+  // };
 
-  const clearField = ({ target }) => {
-    const action = { type: 'clearField', name: target.name };
-    dispatch(action);
-  };
-
-  const lookupPhoneNumber = () => {
+  const lookupPhoneNumber = phoneNumber => {
     for (let i = 0; i < customerList.length; i++) {
       if (customerList[i].phoneNumber === phoneNumber)
         return selectCustomer(customerList[i]);
@@ -130,36 +145,32 @@ export default function Customer({
     changeFormStep(formStep - 1);
   };
 
-  const handleCustomerSubmit = () => {
-    const customer = NewCustomer({
-      phoneNumber,
-      firstName,
-      lastName,
-      streetAddress,
-      secondaryAddress,
-    });
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(customer),
-    };
-    fetch(POS_DATA_URL + '/customers', options)
-      .then(res => res.json())
-      .then(data => {
-        onNewCustomer(data);
-      });
-  };
+  // const handleCustomerSubmit = () => {
+  //   const customer = NewCustomer({
+  //     phoneNumber,
+  //     firstName,
+  //     lastName,
+  //     streetAddress,
+  //     secondaryAddress,
+  //   });
+  //   const options = {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(customer),
+  //   };
+  //   fetch(POS_DATA_URL + '/customers', options)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       onNewCustomer(data);
+  //     });
+  // };
 
-  const formContent = (() => {
+  const getFormPage = () => {
     switch (formStep) {
       case 1:
         return (
           <CustomerLookup
-            onInputChange={handleInputChange}
             focusTextField={focusTextField}
-            clearField={clearField}
-            phone={phoneNumber}
-            // onPhoneNumberChange={handlePhoneNumberChange}
             lookupPhoneNumber={lookupPhoneNumber}
             goToMenu={goToMenu}
           />
@@ -168,12 +179,7 @@ export default function Customer({
       case 2:
         return (
           <CustomerFormName
-            onInputChange={handleInputChange}
             focusTextField={focusTextField}
-            firstName={firstName}
-            lastName={lastName}
-            // onFirstNameChange={e => setFirstName(e.target.value)}
-            // onLastNameChange={e => setLastName(e.target.value)}
             nextPage={nextPage}
             prevPage={prevPage}
           />
@@ -181,21 +187,17 @@ export default function Customer({
       case 3:
         return (
           <CustomerFormAddress
-            onInputChange={handleInputChange}
             focusTextField={focusTextField}
-            streetAddress={streetAddress}
-            secondaryAddress={secondaryAddress}
-            // onStreetAddressChange={e => setStreetAddress(e.target.value)}
-            // onSecondaryAddressChange={e => setSecondaryAddress(e.target.value)}
-            onCustomerSubmit={handleCustomerSubmit}
             prevPage={prevPage}
           />
         );
       default:
         return new Error('form page not found');
     }
-  })();
+  };
+
+  const formContent = getFormPage();
   // const content = useFormPage();
-  return <>{formContent}</>;
+  return <CustomerProvider>{formContent}</CustomerProvider>;
   // <CustomerLookup phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} />
 }

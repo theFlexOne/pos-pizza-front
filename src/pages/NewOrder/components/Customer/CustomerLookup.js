@@ -3,6 +3,7 @@ import React from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
 import Cleave from 'cleave.js/react';
+import { useCustomer } from '../../../../context/CustomerContext';
 
 const MaskedTextField = props => {
   const { inputRef, ...otherProps } = props;
@@ -16,13 +17,9 @@ const MaskedTextField = props => {
 };
 
 export default function CustomerLookup({
-  phone,
-  onPhoneNumberChange,
   focusTextField,
-  lookupPhoneNumber,
-  clearField,
   goToMenu,
-  onInputChange,
+  lookupPhoneNumber,
 }) {
   const theme = useTheme();
   const styles = {
@@ -63,6 +60,11 @@ export default function CustomerLookup({
       gap: '1rem',
     },
   };
+  const { state, actions, customer } = useCustomer();
+  const { phoneNumber } = state;
+  const { handleInputChange, clearField } = actions;
+  console.log(`state: `, { state });
+  console.log(`actions: `, { actions });
 
   return (
     <Box sx={styles.page}>
@@ -75,9 +77,9 @@ export default function CustomerLookup({
             <TextField
               name="phoneNumber"
               label="Phone Number"
-              value={phone}
+              value={phoneNumber}
               // onChange={handleChange}
-              onChange={onInputChange}
+              onChange={handleInputChange}
               onClick={focusTextField}
               fullWidth
               autoFocus
@@ -108,7 +110,7 @@ export default function CustomerLookup({
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
           <Button
-            onClick={lookupPhoneNumber}
+            onClick={() => lookupPhoneNumber(phoneNumber)}
             variant="contained"
             sx={{ mt: 'auto' }}
           >

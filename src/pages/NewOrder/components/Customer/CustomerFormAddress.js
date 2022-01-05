@@ -3,19 +3,20 @@ import { Box } from '@mui/system';
 import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
+import { useCustomer } from '../../../../context/CustomerContext';
 
 export default function CustomerFormAddress({
-  onInputChange,
   focusTextField,
-  streetAddress,
-  secondaryAddress,
-  // onStreetAddressChange,
-  // onSecondaryAddressChange,
   onCustomerSubmit,
   prevPage,
 }) {
-  const theme = useTheme();
+  const { state, actions, customer } = useCustomer();
+  const { streetAddress, secondaryAddress } = state;
+  const { handleInputChange } = actions;
+  const { fullAddress } = customer;
+  console.log(fullAddress());
 
+  const theme = useTheme();
   const styles = {
     page: {
       width: '100%',
@@ -79,7 +80,7 @@ export default function CustomerFormAddress({
               name="streetAddress"
               label="Street Address"
               value={streetAddress}
-              onChange={onInputChange}
+              onChange={handleInputChange}
               onClick={focusTextField}
               fullWidth
               autoFocus
@@ -92,7 +93,7 @@ export default function CustomerFormAddress({
               name="secondaryAddress"
               label="Apt/Suite/Other"
               value={secondaryAddress}
-              onChange={onInputChange}
+              onChange={handleInputChange}
               fullWidth
             />
           </Box>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
 import useOrder from '../../hooks/useOrder';
+import { CustomerProvider } from '../../context/CustomerContext';
 
 export default function NewOrder({ menu, addCustomerToList, customerList }) {
   const [isMenu, setIsMenu] = useState(false);
@@ -28,13 +29,15 @@ export default function NewOrder({ menu, addCustomerToList, customerList }) {
   return isMenu ? (
     <Menu order={order} menu={menu} changeCustomer={changeCustomer} />
   ) : (
-    <Customer
-      selectCustomer={order.selectCustomer}
-      customerList={customerList}
-      formStep={formStep}
-      changeFormStep={val => setFormStep(val)}
-      onNewCustomer={handleNewCustomer}
-      goToMenu={() => setIsMenu(() => true)}
-    />
+    <CustomerProvider>
+      <Customer
+        selectCustomer={order.selectCustomer}
+        customerList={customerList}
+        formStep={formStep}
+        changeFormStep={val => setFormStep(val)}
+        onNewCustomer={handleNewCustomer}
+        goToMenu={() => setIsMenu(() => true)}
+      />
+    </CustomerProvider>
   );
 }

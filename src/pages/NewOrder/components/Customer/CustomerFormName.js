@@ -2,11 +2,12 @@ import { Box, TextField } from '@mui/material';
 import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
+import { useCustomer } from '../../../../context/CustomerContext';
 
 export default function CustomerFormName({
-  firstName,
-  lastName,
-  onInputChange,
+  // firstName,
+  // lastName,
+  // onInputChange,
   focusTextField,
   // onFirstNameChange,
   // onLastNameChange,
@@ -50,6 +51,10 @@ export default function CustomerFormName({
     },
   };
 
+  const { state, actions, customer } = useCustomer();
+  const { firstName, lastName } = state;
+  const { handleInputChange } = actions;
+
   const nextBtn = {
     label: 'Next Page',
     action: nextPage,
@@ -70,7 +75,7 @@ export default function CustomerFormName({
               label="First Name"
               sx={styles.firstName}
               value={firstName}
-              onChange={onInputChange}
+              onChange={handleInputChange}
               onClick={focusTextField}
               name="firstName"
               fullWidth
@@ -88,7 +93,7 @@ export default function CustomerFormName({
               name="lastName"
               sx={styles.lastName}
               value={lastName}
-              onChange={onInputChange}
+              onChange={handleInputChange}
               onClick={focusTextField}
               fullWidth
             />
