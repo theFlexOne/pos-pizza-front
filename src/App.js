@@ -7,36 +7,37 @@ import Layout from './components/Layout';
 import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
 import useDragScroll from './hooks/useDragScroll';
+import {
+  addToSessionsStorage,
+  getFromSessionStorage,
+} from './utils/utilityFunctions';
+
+console.log(getFromSessionStorage('menu'));
 
 function App() {
-  const [customerList, setCustomerList] = useState([]);
-  const [menu, setMenu] = useState([]);
   const [app, err, isLoading] = useApp();
-
   const dragScrollEvents = useDragScroll();
 
   useEffect(() => {
     if (app) {
-      setCustomerList(() => app.customers);
-      setMenu(() => app.menu);
+      sessionStorage.clear();
+      addToSessionsStorage(app);
     }
   }, [app]);
 
-  const addCustomerToList = customer => {
-    setCustomerList(() => [...customerList, customer]);
-  };
+  useEffect(() => {
+    sessionStorage.setItem('order', JSON.stringify({ customer: {}, cart: {} }));
+  }, []);
 
-  const removeCustomerFromList = id => {
-    setCustomerList(() => customerList.filter(customer => customer.id !== id));
-  };
+  // const removeCustomerFromList = id => {
+  //   setCustomerList(() => customerList.filter(customer => customer.id !== id));
+  // };
 
   if (isLoading) return <h2>Loading...</h2>;
   if (err && !isLoading) {
     console.error(err);
     return <h2>{err.message}</h2>;
   }
-
-  const props = { menu, addCustomerToList, customerList };
 
   return (
     app &&
@@ -45,14 +46,14 @@ function App() {
         <Box {...dragScrollEvents}>
           {app && (
             <Routes>
-              <Route path="/" element={<NewOrder {...props} />} />
-              <Route path="/NewOrder" element={<NewOrder {...props} />} />
+              <Route path="/" element={<NewOrder />} />
+              <Route path="/NewOrder" element={<NewOrder />} />
               <Route
                 path="/Customers"
                 element={
                   <Customers
-                    customers={customerList}
-                    removeCustomerFromList={removeCustomerFromList}
+                  // customers={customerList}
+                  // removeCustomerFromList={removeCustomerFromList}
                   />
                 }
               />

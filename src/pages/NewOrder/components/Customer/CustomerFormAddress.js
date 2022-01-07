@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
@@ -12,7 +12,7 @@ export default function CustomerFormAddress({
 }) {
   const { state, actions, customer } = useCustomer();
   const { streetAddress, secondaryAddress } = state;
-  const { handleInputChange } = actions;
+  const { handleInputChange, addCustomerToList } = actions;
   const { fullAddress } = customer;
   console.log(fullAddress());
 
@@ -120,6 +120,7 @@ export default function CustomerFormAddress({
         </Box>
       </Box>
       <Box sx={styles.keyboardContainer}>
+        <Button onClick={() => console.log('click')}>SEND</Button>
         <Keyboard next={nextBtn} prev={prevBtn} />
       </Box>
       {/* <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" /> */}

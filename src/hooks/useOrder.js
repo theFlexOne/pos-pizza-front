@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useOrder = () => {
   const [customer, setCustomer] = useState(null);
@@ -7,10 +7,13 @@ const useOrder = () => {
   //   customer: {},
   //   cart: [],
   // });
+  useEffect(() => {
+    customer && console.log(`customer: `, customer);
+  }, [customer]);
 
   class Order {
     constructor() {
-      this.customer = customer;
+      // this.customer = customer;
       this.cart = cart;
     }
     addToCart = item => {
@@ -22,9 +25,15 @@ const useOrder = () => {
     resetCustomer = () => {
       setCustomer(null);
     };
-    selectCustomer = customer => {
-      setCustomer(customer);
+    selectCustomer = cust => {
+      setCustomer(cust);
     };
+    set customer(customer) {
+      setCustomer(customer);
+    }
+    get customer() {
+      return customer;
+    }
   }
 
   return new Order();

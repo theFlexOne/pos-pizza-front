@@ -1,9 +1,3 @@
-const focusTextField = ({ target }) => {
-  // console.log({ target });
-  // TODO - validate target to be an HTMLElementInput with a type of "text"
-  target.focus();
-};
-
 const addToSessionsStorage = data => {
   for (const section in data) {
     sessionStorage.setItem(`${section}`, JSON.stringify(data[section]));
@@ -20,4 +14,4 @@ const getFromSessionStorage = arg => {
   return data;
 };
 
-export { focusTextField, addToSessionsStorage, getFromSessionStorage };
+export { addToSessionsStorage, getFromSessionStorage };

@@ -13,16 +13,19 @@ const MyCleaveInput = forwardRef((props, ref) => {
   return <Cleave options={options} htmlRef={ref} {...props} />;
 });
 
-export default function MaskedPhoneInput() {
+const MaskedPhoneInput = (props, ref) => {
   const { state, actions } = useCustomer();
   const { phoneNumber } = state;
-  const { handleChange } = actions;
+  const { handleInputChange } = actions;
   const inputRef = useRef();
 
-  // const handleChange = e => setPhone(e.target.rawValue);
-  const handleClick = () => ref.current.focus();
+  const handleChange = () => {
+    const element = inputRef.current;
+    handleInputChange(element);
+  };
+  const handleClick = () => inputRef.current.focus();
 
-  console.log('phoneNumber: ', phoneNumber);
+  // console.log('phoneNumber: ', phoneNumber);
 
   return (
     <TextField
@@ -38,8 +41,9 @@ export default function MaskedPhoneInput() {
       inputRef={inputRef}
     />
   );
-}
+};
 
+export default MaskedPhoneInput;
 {
   /* <TextField
   value={phoneNumber}
