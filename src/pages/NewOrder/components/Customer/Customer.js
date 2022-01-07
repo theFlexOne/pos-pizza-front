@@ -62,38 +62,6 @@ const NewCustomer = ({
   };
 };
 
-const initialState = {
-  phoneNumber: '',
-  firstName: '',
-  lastName: '',
-  streetAddress: '',
-  secondaryAddress: '',
-};
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'update': {
-      const { name, value } = action;
-      const newState = { ...state, [name]: value };
-      return newState;
-    }
-    case 'clearField': {
-      const { name } = action;
-      const newState = { ...state, [name]: '' };
-    }
-    case 'clearAll': {
-      return initialState;
-    }
-    case 'TEST':
-      console.log('TESTING');
-      return state;
-    default:
-      console.log('NOT A VALID TYPE: ', action.type);
-      console.log('state: ', state);
-      console.log('action: ', action);
-      return state;
-  }
-};
-
 export default function Customer({
   customerList,
   selectCustomer,
@@ -102,33 +70,6 @@ export default function Customer({
   onNewCustomer,
   goToMenu,
 }) {
-  // const [state1, dispatch] = useReducer(reducer, initialState);
-  // const { state, actions, customer } = useCustomer();
-  // const { phoneNumber, firstName, lastName, streetAddress, secondaryAddress } =
-  //   state;
-
-  // console.log({ state1, actions, customer });
-  //* displays all input values in real time so I can make sure they are correct
-  // console.log(state);
-
-  // // Auto-formatting phone number - "###-###-####"
-  // if (phoneNumber.length === 3 || phoneNumber.length === 7)
-  //   setPhoneNumber(() => phoneNumber + '-');
-
-  // const handleInputChange = ({ target }) => {
-  //   const action = {
-  //     type: 'update-field',
-  //     name: target.name,
-  //     value: target.value,
-  //   };
-  //   dispatch(action);
-  // };
-
-  // const clearField = ({ target }) => {
-  //   const action = { type: 'clearField', name: target.name };
-  //   dispatch(action);
-  // };
-
   const lookupPhoneNumber = phoneNumber => {
     for (let i = 0; i < customerList.length; i++) {
       if (customerList[i].phoneNumber === phoneNumber)

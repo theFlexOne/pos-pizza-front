@@ -51,10 +51,10 @@ const CustomerProvider = ({ children, ...otherProps }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const actions = {
-    handleInputChange({ target }) {
+    handleChange({ target }) {
       const action = {
         type: 'update-field',
-        value: target.value,
+        value: target.rawValue || target.value,
         name: target.name,
       };
       dispatch(action);
@@ -67,6 +67,7 @@ const CustomerProvider = ({ children, ...otherProps }) => {
       const action = { ..._action, type: 'reset' };
       dispatch(action);
     },
+    lookupCustomer() {},
     test() {
       const action = { ..._action, type: 'TEST' };
       dispatch(action);
@@ -76,7 +77,7 @@ const CustomerProvider = ({ children, ...otherProps }) => {
   const customerContext = {
     state,
     actions,
-    customer: {
+    more: {
       fullName() {
         const { firstName, lastName } = state;
         const fullName = `${firstName} ${lastName}`;

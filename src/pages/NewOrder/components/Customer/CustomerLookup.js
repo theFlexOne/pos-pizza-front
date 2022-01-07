@@ -4,22 +4,23 @@ import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
 import Cleave from 'cleave.js/react';
 import { useCustomer } from '../../../../context/CustomerContext';
+import MaskedPhoneInput from '../../../../components/MaskedPhoneInput';
 
-const MaskedTextField = props => {
-  const { inputRef, ...otherProps } = props;
-  const options = {
-    blocks: [0, 3, 3, 4],
-    delimiters: ['(', ') ', '-', '-'],
-    numericOnly: true,
-    href: ref => inputRef(ref),
-  };
-  return <Cleave {...otherProps} />;
-};
+// const MaskedTextField = props => {
+//   const { inputRef, ...otherProps } = props;
+//   const options = {
+//     blocks: [0, 3, 3, 4],
+//     delimiters: ['(', ') ', '-', '-'],
+//     numericOnly: true,
+//     href: ref => inputRef(ref),
+//   };
+//   return <Cleave {...otherProps} />;
+// };
 
 export default function CustomerLookup({
   focusTextField,
   goToMenu,
-  lookupPhoneNumber,
+  // lookupPhoneNumber,
 }) {
   const theme = useTheme();
   const styles = {
@@ -60,9 +61,9 @@ export default function CustomerLookup({
       gap: '1rem',
     },
   };
-  const { state, actions, customer } = useCustomer();
+  const { state, actions } = useCustomer();
   const { phoneNumber } = state;
-  const { handleInputChange, clearField } = actions;
+  const { lookupCustomer } = actions;
 
   return (
     <Box sx={styles.page}>
@@ -72,7 +73,8 @@ export default function CustomerLookup({
             Please enter telephone number:
           </Typography>
           <Box sx={styles.inputWrapper}>
-            <TextField
+            <MaskedPhoneInput />
+            {/* <TextField
               name="phoneNumber"
               label="Phone Number"
               value={phoneNumber}
@@ -82,7 +84,7 @@ export default function CustomerLookup({
               fullWidth
               autoFocus
               required
-            />
+            /> */}
           </Box>
           <Button variant="contained" onClick={goToMenu}>
             SWITCH TO MENU
@@ -108,13 +110,17 @@ export default function CustomerLookup({
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
           <Button
-            onClick={() => lookupPhoneNumber(phoneNumber)}
+            onClick={() => lookupCustomer(phoneNumber)}
             variant="contained"
             sx={{ mt: 'auto' }}
           >
             LOOKUP TEL
           </Button>
-          <Button variant="contained" onClick={clearField} sx={{ mb: 'auto' }}>
+          <Button
+            variant="contained"
+            // onClick={clearField}
+            sx={{ mb: 'auto' }}
+          >
             CLEAR <ClearIcon sx={{ ml: '1rem' }} />
           </Button>
         </Box>
