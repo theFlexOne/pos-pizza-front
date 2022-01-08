@@ -4,19 +4,7 @@ import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useCustomer } from '../../../../context/CustomerContext';
 import MaskedPhoneInput from '../../../../components/MaskedPhoneInput';
-import {
-  addToSessionsStorage,
-  getFromSessionStorage,
-} from '../../../../utils/utilityFunctions';
-
-// const useRefs = () => {
-//   const refs = {
-//     toMenu: useRef(),
-//     lookup: useRef(),
-//     clear: useRef(),
-//   };
-//   return refs;
-// };
+import { getFromSessionStorage } from '../../../../utils/utilityFunctions';
 
 const CustomerContextButton = forwardRef(
   ({ onClick: onBtnClick, children, ...other }, ref) => {
@@ -39,7 +27,7 @@ const CustomerContextButton = forwardRef(
   }
 );
 
-export default function CustomerLookup({ focusTextField, goToMenu }) {
+export default function CustomerLookup({ goToMenu, toNextStep }) {
   const theme = useTheme();
   const styles = {
     page: {
@@ -91,12 +79,10 @@ export default function CustomerLookup({ focusTextField, goToMenu }) {
         'order',
         JSON.stringify({ ...order, customer: customer })
       );
-      // addToSessionsStorage(
-      //   'order',
-      //   JSON.stringify({ ...{ ...order, customer: customer } })
-      // );
       goToMenu();
+      return;
     }
+    toNextStep();
   };
 
   return (

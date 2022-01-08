@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const POS_DATA_URL = 'http://localhost:8000';
 
@@ -7,28 +7,28 @@ const useApp = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      console.log('Loading...');
-      try {
-        const res = await fetch(POS_DATA_URL + '/db');
-        if (!res.ok) {
-          console.error(res.message);
-          return null;
-        }
-        const data = await res.json();
-        setResult(data);
-      } catch (e) {
-        console.error('Error:' + e.message, e);
-        setError(e);
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    console.log('Loading...');
+    try {
+      const res = await fetch(POS_DATA_URL + '/db');
+      if (!res.ok) {
+        console.error(res.message);
+        return null;
       }
-      setIsLoading(false);
-    };
-
-    fetchData();
+      const data = await res.json();
+      setResult(data);
+    } catch (e) {
+      console.error('Error:' + e.message, e);
+      setError(e);
+    }
+    setIsLoading(false);
   }, []);
 
-  return [result, error, isLoading];
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { state: [result, error, isLoading], refreshApp: fetchData };
 };
 export default useApp;

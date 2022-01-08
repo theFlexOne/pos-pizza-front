@@ -10,6 +10,10 @@ const addToSessionsStorage = data => {
   }
 };
 
+const updateSessionStorage = (key, data) => {
+  sessionStorage.setItem(`${key}`, JSON.stringify(data));
+};
+
 const getFromSessionStorage = arg => {
   if (Array.isArray(arg)) {
     const data = arg.map(key => sessionStorage.getItem(`${key}`));
@@ -20,4 +24,9 @@ const getFromSessionStorage = arg => {
   return data;
 };
 
-export { focusTextField, addToSessionsStorage, getFromSessionStorage };
+export {
+  focusTextField,
+  addToSessionsStorage,
+  updateSessionStorage,
+  getFromSessionStorage,
+};

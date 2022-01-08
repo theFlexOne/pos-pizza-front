@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { addToSessionsStorage } from '../utils/utilityFunctions';
 import useOrder from '../hooks/useOrder';
@@ -18,7 +18,7 @@ const initialState = {
   lastName: '',
   streetAddress: '',
   secondaryAddress: '',
-  formStep: '1',
+  formStep: 1,
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,6 +30,7 @@ const reducer = (state, action) => {
 
     case 'update-field': {
       const { name, value } = action;
+      console.log({ name, value });
       const newState = { ...state, [name]: value };
       console.log({ newState });
       return newState;
@@ -44,9 +45,15 @@ const reducer = (state, action) => {
     }
     case 'initCustomerList': {
       const { value } = action;
-      const newState = { ...state };
+      const newState = { value };
+      return newState;
     }
-
+    case 'setFormStep': {
+      const { value } = action;
+      console.log(`value: `, value);
+      const newState = { ...state, formStep: value };
+      return newState;
+    }
     case 'reset': {
       return initialState;
     }
@@ -75,7 +82,7 @@ const reducer = (state, action) => {
 
 const CustomerProvider = ({ children, ...otherProps }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { phoneNumber } = state;
+  const { phoneNumber, formStep } = state;
 
   const order = useOrder();
   console.log(`order: `, order);
@@ -115,7 +122,7 @@ const CustomerProvider = ({ children, ...otherProps }) => {
     handleInputChange(element) {
       const action = {
         type: 'update-field',
-        value: element.rawValue || element.value,
+        value: element?.rawValue || element.value,
         name: element.name,
       };
       dispatch(action);
@@ -131,6 +138,30 @@ const CustomerProvider = ({ children, ...otherProps }) => {
     },
     resetCustomer() {
       const action = { ...DEFAULT_ACTION, type: 'reset' };
+      dispatch(action);
+    },
+    toNextStep() {
+      const action = {
+        ...DEFAULT_ACTION,
+        type: 'setFormStep',
+        value: formStep + 1,
+      };
+      dispatch(action);
+    },
+    toPrevStep() {
+      const action = {
+        ...DEFAULT_ACTION,
+        type: 'setFormStep',
+        value: formStep - 1,
+      };
+      dispatch(action);
+    },
+    backToStart() {
+      const action = {
+        ...DEFAULT_ACTION,
+        type: 'setFormStep',
+        value: formStep + 1,
+      };
       dispatch(action);
     },
     lookupCustomer() {
@@ -155,7 +186,6 @@ const CustomerProvider = ({ children, ...otherProps }) => {
     focusInput(element) {
       element.focus();
     },
-
     test() {
       const action = { ...DEFAULT_ACTION, type: 'TEST' };
       dispatch(action);

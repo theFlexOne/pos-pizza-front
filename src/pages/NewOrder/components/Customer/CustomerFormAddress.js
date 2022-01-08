@@ -4,16 +4,16 @@ import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import { useCustomer } from '../../../../context/CustomerContext';
+import CustomerTextField from './CustomerTextField';
 
 export default function CustomerFormAddress({
   focusTextField,
   onCustomerSubmit,
   prevPage,
 }) {
-  const { state, actions, customer } = useCustomer();
-  const { streetAddress, secondaryAddress } = state;
+  const { actions, more } = useCustomer();
   const { handleInputChange, addCustomerToList } = actions;
-  const { fullAddress } = customer;
+  const { fullAddress } = more;
   console.log(fullAddress());
 
   const theme = useTheme();
@@ -63,7 +63,7 @@ export default function CustomerFormAddress({
   const nextBtn = {
     label: 'Next Page',
     action: onCustomerSubmit,
-    disabled: !streetAddress,
+    // disabled: !streetAddress,
   };
 
   const prevBtn = {
@@ -76,30 +76,21 @@ export default function CustomerFormAddress({
       <Box sx={styles.formContainer}>
         <Box component="form" sx={styles.form}>
           <Box sx={{ ...styles.inputWrapper, ...styles.streetAddress }}>
-            <TextField
+            <CustomerTextField
               name="streetAddress"
               label="Street Address"
-              value={streetAddress}
-              onChange={handleInputChange}
-              onClick={focusTextField}
-              fullWidth
               autoFocus
               required
             />
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.secondaryAddress }}>
-            <TextField
-              onClick={focusTextField}
+            <CustomerTextField
               name="secondaryAddress"
               label="Apt/Suite/Other"
-              value={secondaryAddress}
-              onChange={handleInputChange}
-              fullWidth
             />
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.city }}>
             <TextField
-              onClick={focusTextField}
               name="city"
               label="City"
               value="Gravel Falls"
@@ -109,7 +100,6 @@ export default function CustomerFormAddress({
           </Box>
           <Box sx={{ ...styles.inputWrapper, ...styles.state }}>
             <TextField
-              onClick={focusTextField}
               name="state"
               label="State"
               value="Minnesota"

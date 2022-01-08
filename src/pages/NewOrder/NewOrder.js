@@ -5,6 +5,7 @@ import Customer from './components/Customer/Customer';
 import useOrder from '../../hooks/useOrder';
 import { CustomerProvider } from '../../context/CustomerContext';
 import { getFromSessionStorage } from '../../utils/utilityFunctions';
+import { OrderProvider } from '../../context/OrderContext';
 
 export default function NewOrder() {
   const [isMenu, setIsMenu] = useState(false);
@@ -30,17 +31,22 @@ export default function NewOrder() {
     if (order.customer) setIsMenu(true);
   }, [order.customer]);
 
-  return isMenu ? (
-    <Menu order={order} />
-  ) : (
-    <CustomerProvider>
-      <Customer
-        formStep={formStep}
-        changeFormStep={val => setFormStep(val)}
-        order={order}
-        // onNewCustomer={handleNewCustomer}
-        goToMenu={() => setIsMenu(() => true)}
-      />
-    </CustomerProvider>
+  return (
+    <OrderProvider>
+      {isMenu ? (
+        <Menu order={order} />
+      ) : (
+        <CustomerProvider>
+          <Customer
+            formStep={formStep}
+            changeFormStep={val => setFormStep(val)}
+            order={order}
+            // onNewCustomer={handleNewCustomer}
+            goToMenu={() => setIsMenu(() => true)}
+          />
+        </CustomerProvider>
+      )}
+      ;
+    </OrderProvider>
   );
 }

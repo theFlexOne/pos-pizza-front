@@ -2,6 +2,8 @@ import React, { forwardRef, useRef, useState } from 'react';
 import { TextField } from '@mui/material';
 import Cleave from 'cleave.js/react';
 import { useCustomer } from '../context/CustomerContext';
+import { useOrder } from '../context/OrderContext';
+import CustomerTextField from '../pages/NewOrder/components/Customer/CustomerTextField';
 
 const options = {
   blocks: [0, 3, 3, 4],
@@ -18,6 +20,8 @@ const MaskedPhoneInput = (props, ref) => {
   const { phoneNumber } = state;
   const { handleInputChange } = actions;
   const inputRef = useRef();
+  const order = useOrder();
+  console.log(`order: `, { order });
 
   const handleChange = () => {
     const element = inputRef.current;
@@ -28,18 +32,28 @@ const MaskedPhoneInput = (props, ref) => {
   // console.log('phoneNumber: ', phoneNumber);
 
   return (
-    <TextField
-      name="phoneNumber"
-      label="Phone Number"
-      value={phoneNumber}
-      onChange={handleChange}
-      onClick={handleClick}
-      InputProps={{ inputComponent: MyCleaveInput }}
-      fullWidth
-      autoFocus
-      required
-      inputRef={inputRef}
-    />
+    <>
+      <CustomerTextField
+        name="phoneNumber"
+        label="Phone Number"
+        InputProps={{ inputComponent: MyCleaveInput }}
+        inputRef={inputRef}
+        required
+        autoFocus
+      />
+      {/* <TextField
+        name="phoneNumber"
+        label="Phone Number"
+        value={phoneNumber}
+        onChange={handleChange}
+        onClick={handleClick}
+        InputProps={{ inputComponent: MyCleaveInput }}
+        fullWidth
+        autoFocus
+        required
+        inputRef={inputRef}
+      /> */}
+    </>
   );
 };
 

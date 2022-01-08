@@ -7,21 +7,22 @@ import Layout from './components/Layout';
 import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
 import useDragScroll from './hooks/useDragScroll';
-import {
-  addToSessionsStorage,
-  getFromSessionStorage,
-} from './utils/utilityFunctions';
+import { initSS, getFromSS, findInSS } from './utils/sessionStorageHelpers';
 
-console.log(getFromSessionStorage('menu'));
+// findInSS();
+
+console.log(getFromSS('menu'));
 
 function App() {
-  const [app, err, isLoading] = useApp();
+  const {
+    state: [app, err, isLoading],
+  } = useApp();
   const dragScrollEvents = useDragScroll();
 
   useEffect(() => {
     if (app) {
       sessionStorage.clear();
-      addToSessionsStorage(app);
+      initSS(app);
     }
   }, [app]);
 
