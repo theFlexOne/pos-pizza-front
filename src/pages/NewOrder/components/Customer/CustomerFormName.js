@@ -80,9 +80,6 @@ export default function CustomerFormName({ nextPage, prevPage }) {
               label="Last Name"
               name="lastName"
               sx={styles.lastName}
-              // value={lastName}
-              // onChange={handleInputChange}
-              // onClick={focusTextField}
             />
           </Box>
         </Box>
