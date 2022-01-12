@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useState } from 'react';
+import useFetchApp from '../hooks/useFetchApp';
+import { addCustomerToSS, getFromSS } from '../utils/sessionStorageHelpers';
+import { useOrder } from './OrderContext';
+import { v4 as uuid } from 'uuid';
+import { postNewCustomer } from '../utils/fetchHelpers';
+
+const DEFAULT_ACTION = { type: 'error', value: undefined, name: '' };
 
 const CustomerContext = createContext();
 
@@ -9,26 +16,47 @@ const initialState = {
   streetAddress: '',
   secondaryAddress: '',
 };
+
+const buildCustomer = ({
+  phoneNumber,
+  firstName,
+  lastName,
+  streetAddress,
+  secondaryAddress,
+}) => {
+  return {
+    phoneNumber,
+    name: {
+      firstName,
+      lastName,
+    },
+    address: {
+      streetAddress,
+      secondaryAddress,
+      city: 'Gravel Falls',
+      state: 'Minnesota',
+    },
+    orderHistory: [],
+    id: uuid().split('-')[0],
+    created: Date.now(),
+  };
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'update-field': {
+      const { name, value } = action;
+      if (!name || value === undefined)
+        throw new Error(
+          "action.type 'update-field' needs a 'name' & 'value' prop"
+        );
+      const newState = { ...state, [name]: value };
+      console.log(`state: `, newState);
+      return newState;
+    }
     case 'clear-field': {
       const { name } = action;
       const newState = { ...state, [name]: '' };
-      return newState;
-    }
-    case 'update-field': {
-      const { name, value } = action;
-      const newState = { ...state, [name]: value };
-      return newState;
-    }
-    case 'clear-page': {
-      const { fields } = action;
-      const newState = fields.reduce(
-        (acc, name) => {
-          return { ...acc, [name]: '' };
-        },
-        { ...state }
-      );
       return newState;
     }
     case 'reset': {
@@ -45,31 +73,64 @@ const reducer = (state, action) => {
   }
 };
 
-const _action = { type: 'error', value: undefined, name: '' };
-
-const CustomerProvider = ({ children, ...otherProps }) => {
+const CustomerProvider = ({ children }) => {
+  const [formStep, setFormStep] = useState(1);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { selectCustomer } = useOrder();
 
+  // const newCustomer = new NewCustomer(initialState);
+  // console.log(`newCustomer: `, { newCustomer });
   const actions = {
-    handleChange({ target }) {
+    logThis() {
+      console.log('this: ', this);
+    },
+    handleInputChange(element) {
+      const value = element.rawValue || element.value || '';
       const action = {
         type: 'update-field',
-        value: target.rawValue || target.value,
-        name: target.name,
+        value,
+        name: element.name,
       };
       dispatch(action);
     },
-    clearField({ target }) {
-      const action = { type: 'clear-field', value: '', name: target.name };
-      dispatch(action);
+    handleCustomerSubmit() {
+      const customer = buildCustomer({ ...state });
+      console.log(customer);
+      postNewCustomer(customer);
+      addCustomerToSS(customer);
+      selectCustomer(customer);
     },
-    resetCustomer() {
-      const action = { ..._action, type: 'reset' };
-      dispatch(action);
+    lookupCustomer() {
+      const customerList = getFromSS('customers');
+      const customer = customerList.find(
+        ({ phoneNumber }) => phoneNumber === state.phoneNumber
+      );
+      if (customer) {
+        selectCustomer(customer);
+        return customer;
+      }
+      this.toNextPage();
+      return {};
     },
-    lookupCustomer() {},
+    toNextPage() {
+      setFormStep(() => formStep + 1);
+    },
+    toPrevPage() {
+      setFormStep(() => formStep - 1);
+    },
+    getFormStep() {
+      return formStep;
+    },
+    // clearField({ element }) {
+    //   const action = { type: 'clear-field', value: '', name: element.name };
+    //   dispatch(action);
+    // },
+    // resetCustomer() {
+    //   const action = { ...DEFAULT_ACTION, type: 'reset' };
+    //   dispatch(action);
+    // },
     test() {
-      const action = { ..._action, type: 'TEST' };
+      const action = { ...DEFAULT_ACTION, type: 'TEST' };
       dispatch(action);
     },
   };
@@ -100,7 +161,7 @@ const CustomerProvider = ({ children, ...otherProps }) => {
   };
 
   return (
-    <CustomerContext.Provider value={customerContext} {...otherProps}>
+    <CustomerContext.Provider value={customerContext}>
       {children}
     </CustomerContext.Provider>
   );

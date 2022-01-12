@@ -50,8 +50,6 @@ export default function FilterModal({
 }) {
   const inputText = filter.text;
   const filterType = filter.type;
-  // const [inputText, setInputText] = useState('');
-  // const [filterType, setFilterType] = useState('name');
   const {
     palette: { primary },
   } = useTheme();
@@ -95,6 +93,7 @@ export default function FilterModal({
                 value={inputText}
                 onChange={e => setFilter({ ...filter, text: e.target.value })}
                 sx={styles.textField}
+                inputProps={{ autoFocus: true }}
                 fullWidth
               />
             </Box>

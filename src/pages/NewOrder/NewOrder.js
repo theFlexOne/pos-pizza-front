@@ -2,42 +2,24 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
-import useOrder from '../../hooks/useOrder';
 import { CustomerProvider } from '../../context/CustomerContext';
+import { useOrder } from '../../context/OrderContext';
 
-export default function NewOrder({ menu, addCustomerToList, customerList }) {
+export default function NewOrder() {
   const [isMenu, setIsMenu] = useState(false);
-  const [formStep, setFormStep] = useState(1);
   const order = useOrder();
 
-  const changeCustomer = () => {
-    order.resetCustomer();
-    setIsMenu(() => false);
-    setFormStep(() => 1);
-  };
-
-  const handleNewCustomer = customer => {
-    console.log(`customer - `, customer);
-    addCustomerToList(customer);
-    order.selectCustomer(customer);
-  };
+  console.log(`order`, order);
 
   useEffect(() => {
-    if (order.customer) setIsMenu(true);
-  }, [order.customer]);
+    order.customer && setIsMenu(() => true);
+  }, [order]);
 
   return isMenu ? (
-    <Menu order={order} menu={menu} changeCustomer={changeCustomer} />
+    <Menu goToCustomer={() => setIsMenu(false)} />
   ) : (
     <CustomerProvider>
-      <Customer
-        selectCustomer={order.selectCustomer}
-        customerList={customerList}
-        formStep={formStep}
-        changeFormStep={val => setFormStep(val)}
-        onNewCustomer={handleNewCustomer}
-        goToMenu={() => setIsMenu(() => true)}
-      />
+      <Customer goToMenu={() => setIsMenu(true)} />
     </CustomerProvider>
   );
 }

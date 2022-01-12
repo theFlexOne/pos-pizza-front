@@ -2,26 +2,10 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
-import Cleave from 'cleave.js/react';
+import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
-import MaskedPhoneInput from '../../../../components/MaskedPhoneInput';
 
-// const MaskedTextField = props => {
-//   const { inputRef, ...otherProps } = props;
-//   const options = {
-//     blocks: [0, 3, 3, 4],
-//     delimiters: ['(', ') ', '-', '-'],
-//     numericOnly: true,
-//     href: ref => inputRef(ref),
-//   };
-//   return <Cleave {...otherProps} />;
-// };
-
-export default function CustomerLookup({
-  focusTextField,
-  goToMenu,
-  // lookupPhoneNumber,
-}) {
+export default function CustomerLookup({ goToMenu }) {
   const theme = useTheme();
   const styles = {
     page: {
@@ -34,7 +18,8 @@ export default function CustomerLookup({
       alignItems: 'center',
       flexDirection: 'column',
       paddingTop: '4rem',
-      bgColor: theme.palette.secondary[200],
+      borderRight: `1.5px solid ${theme.palette.secondary[500]}`,
+      backgroundColor: theme.palette.secondary[200],
     },
     form: {
       display: 'flex',
@@ -43,6 +28,14 @@ export default function CustomerLookup({
     inputWrapper: {
       bgcolor: theme.palette.secondary[50],
       mb: '1rem',
+    },
+    keypadContainer: {
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '3rem 1rem',
+      gap: '1rem',
+      bgcolor: theme.palette.secondary[400],
     },
     buttonsBox: {
       flex: '1',
@@ -53,17 +46,12 @@ export default function CustomerLookup({
       gap: '.5rem',
       bgcolor: '#ff00d4',
     },
-    keypadContainer: {
-      flex: '1',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '3rem 1rem',
-      gap: '1rem',
-    },
   };
-  const { state, actions } = useCustomer();
-  const { phoneNumber } = state;
-  const { lookupCustomer } = actions;
+  const { actions } = useCustomer();
+
+  // const handleClick =
+
+  // console.log(styles);
 
   return (
     <Box sx={styles.page}>
@@ -73,30 +61,18 @@ export default function CustomerLookup({
             Please enter telephone number:
           </Typography>
           <Box sx={styles.inputWrapper}>
-            <MaskedPhoneInput />
-            {/* <TextField
+            <CustomerTextField
               name="phoneNumber"
               label="Phone Number"
-              value={phoneNumber}
-              // onChange={handleChange}
-              onChange={handleInputChange}
-              onClick={focusTextField}
-              fullWidth
               autoFocus
-              required
-            /> */}
+            />
           </Box>
           <Button variant="contained" onClick={goToMenu}>
             SWITCH TO MENU
           </Button>
         </Box>
       </Box>
-      <Box
-        sx={{
-          ...styles.keypadContainer,
-          backgroundColor: theme.palette.secondary[900],
-        }}
-      >
+      <Box sx={styles.keypadContainer}>
         <Box sx={styles.buttonsBox}>
           <Typography
             component="h3"
@@ -110,7 +86,7 @@ export default function CustomerLookup({
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
           <Button
-            onClick={() => lookupCustomer(phoneNumber)}
+            onClick={() => actions.lookupCustomer()}
             variant="contained"
             sx={{ mt: 'auto' }}
           >
@@ -128,3 +104,15 @@ export default function CustomerLookup({
     </Box>
   );
 }
+
+/* <TextField
+              name="phoneNumber"
+              label="Phone Number"
+              value={phoneNumber}
+              // onChange={handleChange}
+              onChange={handleInputChange}
+              onClick={focusTextField}
+              fullWidth
+              autoFocus
+              required
+            /> */

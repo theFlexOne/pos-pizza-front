@@ -20,7 +20,7 @@ export default function MaskedPhoneInput() {
   const inputRef = useRef();
 
   // const handleChange = e => setPhone(e.target.rawValue);
-  const handleClick = () => ref.current.focus();
+  const handleClick = () => inputRef.current.focus();
 
   console.log('phoneNumber: ', phoneNumber);
 

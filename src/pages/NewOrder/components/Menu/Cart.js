@@ -5,16 +5,13 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@emotion/react';
 import CartItem from './CartItem';
 import { toMoneyString } from '../../../../utils/textMods';
+import { useOrder } from '../../../../context/OrderContext';
 
 const SALES_TAX = 0.07;
 
 const CartTotal = ({ subtotal }) => {
   return (
-    <Box
-      display="flex"
-      marginTop="auto"
-      bcartTop="2px solid rgba(0, 0, 0, 0.5)"
-    >
+    <Box display="flex" marginTop="auto" bTop="2px solid rgba(0, 0, 0, 0.5)">
       <Box
         flex="1"
         display="flex"
@@ -73,8 +70,9 @@ const CartTotal = ({ subtotal }) => {
   );
 };
 
-export default function Cart({ cart, removeFromCart }) {
+export default function Cart(props) {
   const [subtotal, setSubtotal] = useState(0);
+  const { cart, removeFromCart } = useOrder();
 
   const theme = useTheme();
 

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import CustomerLookup from './CustomerLookup';
 import CustomerFormName from './CustomerFormName';
 import CustomerFormAddress from './CustomerFormAddress';
@@ -62,29 +62,15 @@ const NewCustomer = ({
   };
 };
 
-export default function Customer({
-  customerList,
-  selectCustomer,
-  formStep,
-  changeFormStep,
-  onNewCustomer,
-  goToMenu,
-}) {
-  const lookupPhoneNumber = phoneNumber => {
-    for (let i = 0; i < customerList.length; i++) {
-      if (customerList[i].phoneNumber === phoneNumber)
-        return selectCustomer(customerList[i]);
-    }
-    return nextPage();
-  };
-
-  const nextPage = () => {
-    changeFormStep(formStep + 1);
-  };
-
-  const prevPage = () => {
-    changeFormStep(formStep - 1);
-  };
+export default function Customer({ goToMenu }) {
+  // const [formStep, setFormStep] = useState(1);
+  // const lookupPhoneNumber = phoneNumber => {
+  //   for (let i = 0; i < customerList.length; i++) {
+  //     if (customerList[i].phoneNumber === phoneNumber)
+  //       return selectCustomer(customerList[i]);
+  //   }
+  //   return nextPage();
+  // };
 
   // const handleCustomerSubmit = () => {
   //   const customer = NewCustomer({
@@ -106,39 +92,29 @@ export default function Customer({
   //     });
   // };
 
-  const getFormPage = () => {
+  const FormPage = () => {
+    const { actions } = useCustomer();
+    const { getFormStep, toNextPage, toPrevPage } = actions;
+
+    const formStep = getFormStep();
+
     switch (formStep) {
       case 1:
-        return (
-          <CustomerLookup
-            focusTextField={focusTextField}
-            lookupPhoneNumber={lookupPhoneNumber}
-            goToMenu={goToMenu}
-          />
-        );
+        return <CustomerLookup goToMenu={goToMenu} nextPage={toNextPage} />;
 
       case 2:
-        return (
-          <CustomerFormName
-            focusTextField={focusTextField}
-            nextPage={nextPage}
-            prevPage={prevPage}
-          />
-        );
+        return <CustomerFormName nextPage={toNextPage} prevPage={toPrevPage} />;
       case 3:
-        return (
-          <CustomerFormAddress
-            focusTextField={focusTextField}
-            prevPage={prevPage}
-          />
-        );
+        return <CustomerFormAddress prevPage={toPrevPage} />;
       default:
         return new Error('form page not found');
     }
   };
 
-  const formContent = getFormPage();
-  // const content = useFormPage();
-  return <CustomerProvider>{formContent}</CustomerProvider>;
+  return (
+    <CustomerProvider>
+      <FormPage />
+    </CustomerProvider>
+  );
   // <CustomerLookup phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} />
 }

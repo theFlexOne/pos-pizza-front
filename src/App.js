@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import useApp from './hooks/useApp';
+import useFetchApp from './hooks/useFetchApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from './pages/NewOrder/NewOrder';
@@ -7,28 +7,20 @@ import Layout from './components/Layout';
 import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
 import useDragScroll from './hooks/useDragScroll';
+import { OrderProvider } from './context/OrderContext';
 
 function App() {
-  const [customerList, setCustomerList] = useState([]);
-  const [menu, setMenu] = useState([]);
-  const [app, err, isLoading] = useApp();
-
+  const [err, isLoading] = useFetchApp();
+  const isSS = sessionStorage.length > 0;
   const dragScrollEvents = useDragScroll();
 
-  useEffect(() => {
-    if (app) {
-      setCustomerList(() => app.customers);
-      setMenu(() => app.menu);
-    }
-  }, [app]);
+  // const addCustomerToList = customer => {
+  //   setCustomerList(() => [...customerList, customer]);
+  // };
 
-  const addCustomerToList = customer => {
-    setCustomerList(() => [...customerList, customer]);
-  };
-
-  const removeCustomerFromList = id => {
-    setCustomerList(() => customerList.filter(customer => customer.id !== id));
-  };
+  // const removeCustomerFromList = id => {
+  //   setCustomerList(() => customerList.filter(customer => customer.id !== id));
+  // };
 
   if (isLoading) return <h2>Loading...</h2>;
   if (err && !isLoading) {
@@ -36,29 +28,23 @@ function App() {
     return <h2>{err.message}</h2>;
   }
 
-  const props = { menu, addCustomerToList, customerList };
+  const NewOrderProvider = () => (
+    <OrderProvider>
+      <NewOrder />
+    </OrderProvider>
+  );
 
   return (
-    app &&
+    isSS &&
     !isLoading && (
-      <Layout app={app}>
+      <Layout>
         <Box {...dragScrollEvents}>
-          {app && (
-            <Routes>
-              <Route path="/" element={<NewOrder {...props} />} />
-              <Route path="/NewOrder" element={<NewOrder {...props} />} />
-              <Route
-                path="/Customers"
-                element={
-                  <Customers
-                    customers={customerList}
-                    removeCustomerFromList={removeCustomerFromList}
-                  />
-                }
-              />
-              <Route path="/Settings" element={<Settings app={app} />} />
-            </Routes>
-          )}
+          <Routes>
+            <Route path="/" element={<NewOrderProvider />} />
+            <Route path="/NewOrder" element={<NewOrderProvider />}></Route>
+            <Route path="/Customers" element={<Customers />} />
+            <Route path="/Settings" element={<Settings />} />
+          </Routes>
         </Box>
       </Layout>
     )
