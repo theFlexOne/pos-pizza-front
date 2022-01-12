@@ -173,22 +173,6 @@
     },
     {
       "name": {
-        "firstName": "Kelli",
-        "lastName": "Breitenberg"
-      },
-      "phoneNumber": "555-397-9631",
-      "address": {
-        "streetAddress": "5318 Marcella Port",
-        "secondaryAddress": "Apt. 487",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "22bd26f6",
-      "created": 1607155170504
-    },
-    {
-      "name": {
         "firstName": "Kristopher",
         "lastName": "Rolfson"
       },
@@ -253,22 +237,6 @@
     },
     {
       "name": {
-        "firstName": "Jermaine",
-        "lastName": "Brakus"
-      },
-      "phoneNumber": "555-438-1171",
-      "address": {
-        "streetAddress": "2821 Tillman Circle",
-        "secondaryAddress": "Suite 772",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "e8cbfc6c",
-      "created": 1620937112513
-    },
-    {
-      "name": {
         "firstName": "Garret",
         "lastName": "Grant"
       },
@@ -314,22 +282,6 @@
       "recentOrders": [],
       "id": "3dd5322d",
       "created": 1621069891126
-    },
-    {
-      "name": {
-        "firstName": "Casimir",
-        "lastName": "Brekke"
-      },
-      "phoneNumber": "555-088-5709",
-      "address": {
-        "streetAddress": "3219 Beier Extensions",
-        "secondaryAddress": "Suite 457",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "60a8baee",
-      "created": 1597171672857
     },
     {
       "name": {
@@ -541,22 +493,6 @@
     },
     {
       "name": {
-        "firstName": "Xander",
-        "lastName": "Casper"
-      },
-      "phoneNumber": "555-358-2114",
-      "address": {
-        "streetAddress": "34787 Mustafa Views",
-        "secondaryAddress": "Apt. 493",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "9488b535",
-      "created": 1632189807001
-    },
-    {
-      "name": {
         "firstName": "Eudora",
         "lastName": "Conn"
       },
@@ -570,22 +506,6 @@
       "recentOrders": [],
       "id": "a1697cbd",
       "created": 1614643003841
-    },
-    {
-      "name": {
-        "firstName": "Domenick",
-        "lastName": "Beahan"
-      },
-      "phoneNumber": "555-371-0461",
-      "address": {
-        "streetAddress": "1070 Bailey Crest",
-        "secondaryAddress": "Apt. 426",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "b0fa39b5",
-      "created": 1629100939046
     },
     {
       "name": {
@@ -877,22 +797,6 @@
     },
     {
       "name": {
-        "firstName": "Dayne",
-        "lastName": "Bayer"
-      },
-      "phoneNumber": "555-713-7351",
-      "address": {
-        "streetAddress": "16483 Roberts Camp",
-        "secondaryAddress": "Suite 601",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "2bc5e7b5",
-      "created": 1604832536590
-    },
-    {
-      "name": {
         "firstName": "Jaime",
         "lastName": "Wiegand"
       },
@@ -938,6 +842,22 @@
       "recentOrders": [],
       "id": "bbfcdf36",
       "created": 1641753682755
+    },
+    {
+      "phoneNumber": "6126440596",
+      "name": {
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
+      },
+      "address": {
+        "streetAddress": "185 Hwy 212 E",
+        "secondaryAddress": "TRLR 53",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "c6ab2478",
+      "created": 1641970614971
     }
   ],
   "orderHistory": [

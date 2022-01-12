@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
-import useFetchApp from '../hooks/useFetchApp';
 import { addCustomerToSS, getFromSS } from '../utils/sessionStorageHelpers';
 import { useOrder } from './OrderContext';
 import { v4 as uuid } from 'uuid';
@@ -78,8 +77,6 @@ const CustomerProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { selectCustomer } = useOrder();
 
-  // const newCustomer = new NewCustomer(initialState);
-  // console.log(`newCustomer: `, { newCustomer });
   const actions = {
     logThis() {
       console.log('this: ', this);
@@ -121,14 +118,6 @@ const CustomerProvider = ({ children }) => {
     getFormStep() {
       return formStep;
     },
-    // clearField({ element }) {
-    //   const action = { type: 'clear-field', value: '', name: element.name };
-    //   dispatch(action);
-    // },
-    // resetCustomer() {
-    //   const action = { ...DEFAULT_ACTION, type: 'reset' };
-    //   dispatch(action);
-    // },
     test() {
       const action = { ...DEFAULT_ACTION, type: 'TEST' };
       dispatch(action);

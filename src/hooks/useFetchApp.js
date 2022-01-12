@@ -9,13 +9,13 @@ const populateSessionStorage = data => {
   });
 };
 
-const postNewCustomer = async customer => {
-  const res = await fetch(POS_DATA_URL + '/customers', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(customer),
-  });
-};
+// const postNewCustomer = async customer => {
+//   const res = await fetch(POS_DATA_URL + '/customers', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(customer),
+//   });
+// };
 
 const useFetchApp = () => {
   const [results, setResult] = useState(null);

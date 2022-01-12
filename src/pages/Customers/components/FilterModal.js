@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Button,
   ButtonGroup,
@@ -48,6 +48,7 @@ export default function FilterModal({
   setFilter,
   handleFilter,
 }) {
+  const inputRef = useRef();
   const inputText = filter.text;
   const filterType = filter.type;
   const {
@@ -82,6 +83,8 @@ export default function FilterModal({
     );
   };
 
+  const handleClick = () => inputRef.current.focus();
+
   return (
     <Dialog fullScreen open={isOpen} onClose={() => setIsOpen(false)}>
       <DialogContent sx={styles.dialog}>
@@ -92,9 +95,11 @@ export default function FilterModal({
                 label={`Filter customers by ${filterType}:`}
                 value={inputText}
                 onChange={e => setFilter({ ...filter, text: e.target.value })}
+                onClick={handleClick}
                 sx={styles.textField}
                 inputProps={{ autoFocus: true }}
                 fullWidth
+                inputRef={inputRef}
               />
             </Box>
             <ButtonGroup sx={{ flexBasis: '40%' }}>

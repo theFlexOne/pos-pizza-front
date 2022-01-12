@@ -4,7 +4,6 @@ import React from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import { useCustomer } from '../../../../context/CustomerContext';
-import { useOrder } from '../../../../context/OrderContext';
 import CustomerTextField from './CustomerTextField';
 
 export default function CustomerFormAddress({ prevPage }) {

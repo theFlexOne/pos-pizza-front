@@ -4,7 +4,6 @@ import Cart from './Cart';
 import CustomerInfoBox from './CustomerInfoBox';
 import { useTheme } from '@emotion/react';
 import { Divider } from '@mui/material';
-import { useOrder } from '../../../../context/OrderContext';
 
 export default function SidePanel({ goToCustomer }) {
   const theme = useTheme();

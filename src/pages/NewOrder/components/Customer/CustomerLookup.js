@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -48,10 +48,6 @@ export default function CustomerLookup({ goToMenu }) {
     },
   };
   const { actions } = useCustomer();
-
-  // const handleClick =
-
-  // console.log(styles);
 
   return (
     <Box sx={styles.page}>

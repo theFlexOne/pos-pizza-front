@@ -20,6 +20,13 @@ const postNewCustomer = async customer => {
   };
   const res = await fetch(APP_DATA_URL + '/customers', options);
   const newCustomer = await res.json();
+  return newCustomer;
 };
 
-export { fetchAppData, postNewCustomer };
+const deleteCustomer = id => {
+  fetch(APP_DATA_URL + `/customers/${id}`, { method: 'DELETE' }).then(res => {
+    if (!res.ok) return console.error(res.status, res.statusText);
+  });
+};
+
+export { fetchAppData, postNewCustomer, deleteCustomer };

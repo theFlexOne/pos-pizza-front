@@ -16,6 +16,7 @@ import FilterModal from './components/FilterModal';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { getFromSS } from '../../utils/sessionStorageHelpers';
+import { deleteCustomer } from '../../utils/fetchHelpers';
 
 const ROWS_PER_PAGE = 8;
 const INITIAL_FILTER = { text: '', type: 'name' };
@@ -93,6 +94,13 @@ export default function Customers(props) {
 
   const resetFilter = () => setFilter(INITIAL_FILTER);
 
+  const handleDeleteCustomer = id => {
+    deleteCustomer(id);
+    const newCustomerList = customerList.filter(customer => id !== customer.id);
+    setCustomerList(newCustomerList);
+    setIsOpen(false);
+  };
+
   const getCustomersToDisplay = () => {
     const filterCallback = customer => {
       let data;
@@ -166,7 +174,7 @@ export default function Customers(props) {
                     <CustomerTableRow
                       customer={row}
                       key={row.id}
-                      // removeCustomerFromList={removeCustomerFromList}
+                      onDeleteCustomer={handleDeleteCustomer}
                     />
                   ))}
               </TableBody>
