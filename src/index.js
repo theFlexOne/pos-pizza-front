@@ -8,7 +8,6 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <App
-        className="App"
         display="flex"
         flexDirection="column"
         height="100vh"

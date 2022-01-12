@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import useApp from './hooks/useApp';
+import React from 'react';
+import useFetchApp from './hooks/useFetchApp';
 import { Route, Routes } from 'react-router-dom';
 import { Box } from '@mui/material';
 import NewOrder from './pages/NewOrder/NewOrder';
@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
 import useDragScroll from './hooks/useDragScroll';
+<<<<<<< HEAD
 import { initSS, getFromSS, findInSS } from './utils/sessionStorageHelpers';
 
 // findInSS();
@@ -29,6 +30,18 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem('order', JSON.stringify({ customer: {}, cart: {} }));
   }, []);
+=======
+import { OrderProvider } from './context/OrderContext';
+
+function App() {
+  const [err, isLoading] = useFetchApp();
+  const isSS = sessionStorage.length > 0;
+  const dragScrollEvents = useDragScroll();
+
+  // const addCustomerToList = customer => {
+  //   setCustomerList(() => [...customerList, customer]);
+  // };
+>>>>>>> main_MaskedPhoneInput
 
   // const removeCustomerFromList = id => {
   //   setCustomerList(() => customerList.filter(customer => customer.id !== id));
@@ -40,11 +53,21 @@ function App() {
     return <h2>{err.message}</h2>;
   }
 
+<<<<<<< HEAD
+=======
+  const NewOrderProvider = () => (
+    <OrderProvider>
+      <NewOrder />
+    </OrderProvider>
+  );
+
+>>>>>>> main_MaskedPhoneInput
   return (
-    app &&
+    isSS &&
     !isLoading && (
-      <Layout app={app}>
+      <Layout>
         <Box {...dragScrollEvents}>
+<<<<<<< HEAD
           {app && (
             <Routes>
               <Route path="/" element={<NewOrder />} />
@@ -61,6 +84,14 @@ function App() {
               <Route path="/Settings" element={<Settings app={app} />} />
             </Routes>
           )}
+=======
+          <Routes>
+            <Route path="/" element={<NewOrderProvider />} />
+            <Route path="/NewOrder" element={<NewOrderProvider />}></Route>
+            <Route path="/Customers" element={<Customers />} />
+            <Route path="/Settings" element={<Settings />} />
+          </Routes>
+>>>>>>> main_MaskedPhoneInput
         </Box>
       </Layout>
     )

@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 import { Box, TextField } from '@mui/material';
 import React, { useRef } from 'react';
+=======
+import { Box } from '@mui/material';
+import React from 'react';
+>>>>>>> main_MaskedPhoneInput
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
+import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
 import CustomerTextField from './CustomerTextField';
 
+<<<<<<< HEAD
 export default function CustomerFormName({ toNextStep, toPrevStep }) {
+=======
+export default function CustomerFormName({ nextPage, prevPage }) {
+  const { firstName } = useCustomer().state;
+>>>>>>> main_MaskedPhoneInput
   const theme = useTheme();
   const styles = {
     page: {
@@ -26,11 +37,11 @@ export default function CustomerFormName({ toNextStep, toPrevStep }) {
       height: '100%',
       flexBasis: '70%',
       gap: '1.5rem',
-
       '& > *': {
         borderRadius: '4px',
       },
     },
+    // keyboardContainer: { backgroundColor: theme.palette.secondary[900] },
     inputWrapper: {
       backgroundColor: theme.palette.secondary[50],
       flex: '1 1 35%',
@@ -43,12 +54,18 @@ export default function CustomerFormName({ toNextStep, toPrevStep }) {
     },
   };
 
+<<<<<<< HEAD
   const CustomerTextField2 = props => {
     const inputRef = useRef();
     const { state, actions } = useCustomer();
     const { handleInputChange, focusInput } = actions;
     const { name } = props;
     // const element = inputRef.current;
+=======
+  // const { state, actions, customer } = useCustomer();
+  // const { firstName, lastName } = state;
+  // const { handleInputChange } = actions;
+>>>>>>> main_MaskedPhoneInput
 
     const focusTextField = () => focusInput(inputRef.current);
 
@@ -89,10 +106,13 @@ export default function CustomerFormName({ toNextStep, toPrevStep }) {
           <Box sx={styles.inputWrapper}>
             <CustomerTextField
               label="First Name"
+<<<<<<< HEAD
               sx={styles.firstName}
+=======
+>>>>>>> main_MaskedPhoneInput
               name="firstName"
               autoFocus
-              required
+              sx={styles.firstName}
             />
           </Box>
           <Box
@@ -101,6 +121,7 @@ export default function CustomerFormName({ toNextStep, toPrevStep }) {
             backgroundColor={theme.palette.secondary[50]}
           >
             <CustomerTextField
+<<<<<<< HEAD
               label="Last Name"
               sx={styles.lastName}
               name="lastName"
@@ -111,6 +132,15 @@ export default function CustomerFormName({ toNextStep, toPrevStep }) {
               sx={styles.lastName}
               value={lastName}
             /> */}
+=======
+              label="Last Name"
+              name="lastName"
+              sx={styles.lastName}
+              // value={lastName}
+              // onChange={handleInputChange}
+              // onClick={focusTextField}
+            />
+>>>>>>> main_MaskedPhoneInput
           </Box>
         </Box>
       </Box>

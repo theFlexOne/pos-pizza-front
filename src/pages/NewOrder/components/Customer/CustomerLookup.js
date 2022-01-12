@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+<<<<<<< HEAD
 import React, { forwardRef, useRef } from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -28,6 +29,15 @@ const CustomerContextButton = forwardRef(
 );
 
 export default function CustomerLookup({ goToMenu, toNextStep }) {
+=======
+import React from 'react';
+import { useTheme } from '@emotion/react';
+import ClearIcon from '@mui/icons-material/Clear';
+import CustomerTextField from './CustomerTextField';
+import { useCustomer } from '../../../../context/CustomerContext';
+
+export default function CustomerLookup({ goToMenu }) {
+>>>>>>> main_MaskedPhoneInput
   const theme = useTheme();
   const styles = {
     page: {
@@ -40,7 +50,8 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
       alignItems: 'center',
       flexDirection: 'column',
       paddingTop: '4rem',
-      bgColor: theme.palette.secondary[200],
+      borderRight: `1.5px solid ${theme.palette.secondary[500]}`,
+      backgroundColor: theme.palette.secondary[200],
     },
     form: {
       display: 'flex',
@@ -49,6 +60,14 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
     inputWrapper: {
       bgcolor: theme.palette.secondary[50],
       mb: '1rem',
+    },
+    keypadContainer: {
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '3rem 1rem',
+      gap: '1rem',
+      bgcolor: theme.palette.secondary[400],
     },
     buttonsBox: {
       flex: '1',
@@ -59,14 +78,8 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
       gap: '.5rem',
       bgcolor: '#ff00d4',
     },
-    keypadContainer: {
-      flex: '1',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '3rem 1rem',
-      gap: '1rem',
-    },
   };
+<<<<<<< HEAD
   const lookup = useRef();
   const { lookupCustomer } = useCustomer().actions;
 
@@ -84,6 +97,9 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
     }
     toNextStep();
   };
+=======
+  const { actions } = useCustomer();
+>>>>>>> main_MaskedPhoneInput
 
   return (
     <Box sx={styles.page}>
@@ -93,30 +109,18 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
             Please enter telephone number:
           </Typography>
           <Box sx={styles.inputWrapper}>
-            <MaskedPhoneInput />
-            {/* <TextField
+            <CustomerTextField
               name="phoneNumber"
               label="Phone Number"
-              value={phoneNumber}
-              // onChange={handleChange}
-              onChange={handleInputChange}
-              onClick={focusTextField}
-              fullWidth
               autoFocus
-              required
-            /> */}
+            />
           </Box>
           <Button variant="contained" onClick={goToMenu}>
             SWITCH TO MENU
           </Button>
         </Box>
       </Box>
-      <Box
-        sx={{
-          ...styles.keypadContainer,
-          backgroundColor: theme.palette.secondary[900],
-        }}
-      >
+      <Box sx={styles.keypadContainer}>
         <Box sx={styles.buttonsBox}>
           <Typography
             component="h3"
@@ -129,9 +133,19 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
           >
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
+<<<<<<< HEAD
           <CustomerContextButton ref={lookup} onClick={handleLookup}>
             LOOKUP
           </CustomerContextButton>
+=======
+          <Button
+            onClick={() => actions.lookupCustomer()}
+            variant="contained"
+            sx={{ mt: 'auto' }}
+          >
+            LOOKUP TEL
+          </Button>
+>>>>>>> main_MaskedPhoneInput
           <Button
             variant="contained"
             // onClick={clearField}
@@ -144,3 +158,15 @@ export default function CustomerLookup({ goToMenu, toNextStep }) {
     </Box>
   );
 }
+
+/* <TextField
+              name="phoneNumber"
+              label="Phone Number"
+              value={phoneNumber}
+              // onChange={handleChange}
+              onChange={handleInputChange}
+              onClick={focusTextField}
+              fullWidth
+              autoFocus
+              required
+            /> */

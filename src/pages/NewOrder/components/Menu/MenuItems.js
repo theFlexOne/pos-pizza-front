@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { v4 as uuid } from 'uuid';
+import { useOrder } from '../../../../context/OrderContext';
 
 const MenuItemButton = ({ item, ...other }) => {
   return (
@@ -17,8 +18,11 @@ const MenuItemButton = ({ item, ...other }) => {
   );
 };
 
-export default function MenuItems({ section, addToCart }) {
+export default function MenuItems({ section }) {
+  const { addToCart } = useOrder();
   const items = section?.items;
+
+  // console.log(`order: `, order);
 
   const handleClick = item => {
     const { name, toppings, prices, type } = item;

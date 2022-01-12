@@ -2,16 +2,19 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Menu from './components/Menu/Menu';
 import Customer from './components/Customer/Customer';
-import useOrder from '../../hooks/useOrder';
 import { CustomerProvider } from '../../context/CustomerContext';
+<<<<<<< HEAD
 import { getFromSessionStorage } from '../../utils/utilityFunctions';
 import { OrderProvider } from '../../context/OrderContext';
+=======
+import { useOrder } from '../../context/OrderContext';
+>>>>>>> main_MaskedPhoneInput
 
 export default function NewOrder() {
   const [isMenu, setIsMenu] = useState(false);
-  const [formStep, setFormStep] = useState(1);
   const order = useOrder();
 
+<<<<<<< HEAD
   const menu = getFromSessionStorage('menu');
   console.log(`menu: `, menu);
 
@@ -26,11 +29,15 @@ export default function NewOrder() {
   //   addCustomerToList(customer);
   //   order.selectCustomer(customer);
   // };
+=======
+  console.log(`order`, order);
+>>>>>>> main_MaskedPhoneInput
 
   useEffect(() => {
-    if (order.customer) setIsMenu(true);
-  }, [order.customer]);
+    order.customer && setIsMenu(() => true);
+  }, [order]);
 
+<<<<<<< HEAD
   return (
     <OrderProvider>
       {isMenu ? (
@@ -48,5 +55,13 @@ export default function NewOrder() {
       )}
       ;
     </OrderProvider>
+=======
+  return isMenu ? (
+    <Menu goToCustomer={() => setIsMenu(false)} />
+  ) : (
+    <CustomerProvider>
+      <Customer goToMenu={() => setIsMenu(true)} />
+    </CustomerProvider>
+>>>>>>> main_MaskedPhoneInput
   );
 }

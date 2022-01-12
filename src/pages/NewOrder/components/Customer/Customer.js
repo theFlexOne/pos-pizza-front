@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import CustomerLookup from './CustomerLookup';
 import CustomerFormName from './CustomerFormName';
@@ -42,11 +43,45 @@ export default function Customer({ goToMenu, ...otherProps }) {
       case 4:
         setFormStep(() => (formStep = 3));
 
+=======
+import React from 'react';
+import CustomerLookup from './CustomerLookup';
+import CustomerFormName from './CustomerFormName';
+import CustomerFormAddress from './CustomerFormAddress';
+import {
+  useCustomer,
+  CustomerProvider,
+} from '../../../../context/CustomerContext';
+
+export default function Customer({ goToMenu }) {
+  const FormPage = () => {
+    const { actions } = useCustomer();
+    const { getFormStep, toNextPage, toPrevPage } = actions;
+
+    const formStep = getFormStep();
+
+    switch (formStep) {
+      case 1:
+        return <CustomerLookup goToMenu={goToMenu} nextPage={toNextPage} />;
+
+      case 2:
+        return <CustomerFormName nextPage={toNextPage} prevPage={toPrevPage} />;
+      case 3:
+        return <CustomerFormAddress prevPage={toPrevPage} />;
+>>>>>>> main_MaskedPhoneInput
       default:
         return new Error('form page not found');
     }
   };
 
+<<<<<<< HEAD
   const formContent = getFormPage();
   return <>{formContent}</>;
+=======
+  return (
+    <CustomerProvider>
+      <FormPage />
+    </CustomerProvider>
+  );
+>>>>>>> main_MaskedPhoneInput
 }

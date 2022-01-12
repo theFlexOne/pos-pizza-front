@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const EMPTY_ORDER = {
   customer: {},
   cart: {},
@@ -59,3 +60,23 @@ export { initSS, updateSS, getCustomerList, getFromSS, findInSS };
 //   const data = JSON.parse(sessionStorage.getItem(`${key}`));
 //   return data;
 // };
+=======
+const getFromSS = section => {
+  return JSON.parse(sessionStorage.getItem(section));
+};
+
+const addCustomerToSS = customer => {
+  const customers = getFromSS('customers');
+  sessionStorage.setItem('customers', JSON.stringify([...customers, customer]));
+};
+
+const removeCustomerFromSS = ({ id }) => {
+  const customers = getFromSS('customers');
+  const newList = JSON.stringify(
+    customers.filter(customer => id !== customer.id)
+  );
+  sessionStorage.setItem('customers', newList);
+};
+
+export { addCustomerToSS, getFromSS, removeCustomerFromSS };
+>>>>>>> main_MaskedPhoneInput

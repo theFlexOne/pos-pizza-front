@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
+<<<<<<< HEAD
 import { v4 as uuid } from 'uuid';
 import { addToSessionsStorage } from '../utils/utilityFunctions';
 import useOrder from '../hooks/useOrder';
@@ -9,6 +10,14 @@ const DEFAULT_ACTION = {
   name: '',
   state: undefined,
 };
+=======
+import { addCustomerToSS, getFromSS } from '../utils/sessionStorageHelpers';
+import { useOrder } from './OrderContext';
+import { v4 as uuid } from 'uuid';
+import { postNewCustomer } from '../utils/fetchHelpers';
+
+const DEFAULT_ACTION = { type: 'error', value: undefined, name: '' };
+>>>>>>> main_MaskedPhoneInput
 
 const CustomerContext = createContext();
 
@@ -20,8 +29,35 @@ const initialState = {
   secondaryAddress: '',
   formStep: 1,
 };
+
+const buildCustomer = ({
+  phoneNumber,
+  firstName,
+  lastName,
+  streetAddress,
+  secondaryAddress,
+}) => {
+  return {
+    phoneNumber,
+    name: {
+      firstName,
+      lastName,
+    },
+    address: {
+      streetAddress,
+      secondaryAddress,
+      city: 'Gravel Falls',
+      state: 'Minnesota',
+    },
+    orderHistory: [],
+    id: uuid().split('-')[0],
+    created: Date.now(),
+  };
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
+<<<<<<< HEAD
     case 'clear-field': {
       const { name } = action;
       const newState = { ...state, [name]: '' };
@@ -52,6 +88,21 @@ const reducer = (state, action) => {
       const { value } = action;
       console.log(`value: `, value);
       const newState = { ...state, formStep: value };
+=======
+    case 'update-field': {
+      const { name, value } = action;
+      if (!name || value === undefined)
+        throw new Error(
+          "action.type 'update-field' needs a 'name' & 'value' prop"
+        );
+      const newState = { ...state, [name]: value };
+      console.log(`state: `, newState);
+      return newState;
+    }
+    case 'clear-field': {
+      const { name } = action;
+      const newState = { ...state, [name]: '' };
+>>>>>>> main_MaskedPhoneInput
       return newState;
     }
     case 'reset': {
@@ -74,6 +125,7 @@ const reducer = (state, action) => {
   }
 };
 
+<<<<<<< HEAD
 // const addToSessionsStorage = data => {
 //   for (const section in data) {
 //     sessionStorage.setItem(`${section}`, JSON.stringify(data[section]));
@@ -123,10 +175,27 @@ const CustomerProvider = ({ children, ...otherProps }) => {
       const action = {
         type: 'update-field',
         value: element?.rawValue || element.value,
+=======
+const CustomerProvider = ({ children }) => {
+  const [formStep, setFormStep] = useState(1);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { selectCustomer } = useOrder();
+
+  const actions = {
+    logThis() {
+      console.log('this: ', this);
+    },
+    handleInputChange(element) {
+      const value = element.rawValue || element.value || '';
+      const action = {
+        type: 'update-field',
+        value,
+>>>>>>> main_MaskedPhoneInput
         name: element.name,
       };
       dispatch(action);
     },
+<<<<<<< HEAD
     clearField({ element }) {
       const action = {
         ...DEFAULT_ACTION,
@@ -186,6 +255,36 @@ const CustomerProvider = ({ children, ...otherProps }) => {
     focusInput(element) {
       element.focus();
     },
+=======
+    handleCustomerSubmit() {
+      const customer = buildCustomer({ ...state });
+      console.log(customer);
+      postNewCustomer(customer);
+      addCustomerToSS(customer);
+      selectCustomer(customer);
+    },
+    lookupCustomer() {
+      const customerList = getFromSS('customers');
+      const customer = customerList.find(
+        ({ phoneNumber }) => phoneNumber === state.phoneNumber
+      );
+      if (customer) {
+        selectCustomer(customer);
+        return customer;
+      }
+      this.toNextPage();
+      return {};
+    },
+    toNextPage() {
+      setFormStep(() => formStep + 1);
+    },
+    toPrevPage() {
+      setFormStep(() => formStep - 1);
+    },
+    getFormStep() {
+      return formStep;
+    },
+>>>>>>> main_MaskedPhoneInput
     test() {
       const action = { ...DEFAULT_ACTION, type: 'TEST' };
       dispatch(action);
@@ -218,7 +317,7 @@ const CustomerProvider = ({ children, ...otherProps }) => {
   };
 
   return (
-    <CustomerContext.Provider value={customerContext} {...otherProps}>
+    <CustomerContext.Provider value={customerContext}>
       {children}
     </CustomerContext.Provider>
   );

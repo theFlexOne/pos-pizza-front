@@ -23,10 +23,14 @@ const MaskedPhoneInput = (props, ref) => {
   const order = useOrder();
   console.log(`order: `, { order });
 
+<<<<<<< HEAD
   const handleChange = () => {
     const element = inputRef.current;
     handleInputChange(element);
   };
+=======
+  // const handleChange = e => setPhone(e.target.rawValue);
+>>>>>>> main_MaskedPhoneInput
   const handleClick = () => inputRef.current.focus();
 
   // console.log('phoneNumber: ', phoneNumber);

@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React from 'react';
 import Typography from '@mui/material/Typography';
+import { useOrder } from '../../../../context/OrderContext';
 
 const styles = {
   parent: {
@@ -25,10 +26,8 @@ const styles = {
   },
 };
 
-export default function CustomerInfoBox({
-  customer = undefined,
-  changeCustomer,
-}) {
+export default function CustomerInfoBox({ goToCustomer }) {
+  const { customer } = useOrder();
   let firstName, lastName, phoneNumber, streetAddress, secondaryAddress;
   customer &&
     ({
@@ -80,7 +79,7 @@ export default function CustomerInfoBox({
           variant="contained"
           size="small"
           color="primary"
-          onClick={changeCustomer}
+          onClick={goToCustomer}
           fullWidth
           sx={{ fontSize: 'smaller' }}
         >

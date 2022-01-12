@@ -5,14 +5,7 @@ import CustomerInfoBox from './CustomerInfoBox';
 import { useTheme } from '@emotion/react';
 import { Divider } from '@mui/material';
 
-export default function SidePanel({
-  order,
-  changeCustomer,
-  // cart,
-  // removeFromCart,
-  // customer,
-}) {
-  const { cart, customer, removeFromCart } = order;
+export default function SidePanel({ goToCustomer }) {
   const theme = useTheme();
   return (
     <Box
@@ -21,9 +14,9 @@ export default function SidePanel({
       flexDirection="column"
       backgroundColor={theme.palette.secondary[500]}
     >
-      <CustomerInfoBox customer={customer} changeCustomer={changeCustomer} />
+      <CustomerInfoBox goToCustomer={goToCustomer} />
       <Divider sx={{ borderColor: 'rgba(0,0,0,0.5)' }} />
-      <Cart removeFromCart={removeFromCart} cart={cart} />
+      <Cart />
     </Box>
   );
 }

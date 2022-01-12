@@ -12,9 +12,7 @@ import {
 import ClearIcon from '@mui/icons-material/Clear';
 import { useTheme } from '@emotion/react';
 
-const POS_DATA_URL = 'http://localhost:8000/customers';
-
-const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
+const CustomerTableRow = ({ customer, onDeleteCustomer }) => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
   const styles = {
@@ -38,13 +36,6 @@ const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
     orderedLast,
     id,
   } = customer;
-
-  const deleteCustomer = () => {
-    fetch(POS_DATA_URL + `/${id}`, { method: 'DELETE' }).then(res => {
-      if (!res.ok) return console.error(res.status, res.statusText);
-    });
-    removeCustomerFromList(id);
-  };
 
   return (
     <>
@@ -72,7 +63,11 @@ const CustomerTableRow = ({ customer, removeCustomerFromList }) => {
           >
             Cancel
           </Button>
-          <Button variant="contained" size="large" onClick={deleteCustomer}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => onDeleteCustomer(id)}
+          >
             Confirm
           </Button>
         </DialogActions>

@@ -6,6 +6,7 @@ import { useTheme } from '@emotion/react';
 import { useCustomer } from '../../../../context/CustomerContext';
 import CustomerTextField from './CustomerTextField';
 
+<<<<<<< HEAD
 export default function CustomerFormAddress({
   focusTextField,
   onCustomerSubmit,
@@ -16,6 +17,12 @@ export default function CustomerFormAddress({
   const { fullAddress } = more;
   console.log(fullAddress());
 
+=======
+export default function CustomerFormAddress({ prevPage }) {
+  const { state, actions } = useCustomer();
+  const { streetAddress } = state;
+  const { handleCustomerSubmit } = actions;
+>>>>>>> main_MaskedPhoneInput
   const theme = useTheme();
   const styles = {
     page: {
@@ -62,8 +69,13 @@ export default function CustomerFormAddress({
 
   const nextBtn = {
     label: 'Next Page',
+<<<<<<< HEAD
     action: onCustomerSubmit,
     // disabled: !streetAddress,
+=======
+    action: handleCustomerSubmit,
+    disabled: !streetAddress,
+>>>>>>> main_MaskedPhoneInput
   };
 
   const prevBtn = {

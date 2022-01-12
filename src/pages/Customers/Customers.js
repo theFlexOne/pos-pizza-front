@@ -8,15 +8,18 @@ import {
   TableRow,
 } from '@mui/material';
 import Box from '@mui/system/Box';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
 import { DateTime as dt } from 'luxon';
 import CustomerTableRow from './components/CustomerTableRow';
 import FilterModal from './components/FilterModal';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { getFromSS } from '../../utils/sessionStorageHelpers';
+import { deleteCustomer } from '../../utils/fetchHelpers';
 
 const ROWS_PER_PAGE = 8;
+const INITIAL_FILTER = { text: '', type: 'name' };
 
 const toDateTimeFormat = ms => dt.fromMillis(ms).toFormat('D T');
 
@@ -35,11 +38,12 @@ const buildRows = (customers, page) => {
     });
 };
 
-export default function Customers({ customers, removeCustomerFromList }) {
+export default function Customers(props) {
   const [page, setPage] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [filter, setFilter] = useState({ text: '', type: 'name' });
+  const [filter, setFilter] = useState(INITIAL_FILTER);
   const [isDescending, setIsDescending] = useState(false);
+  const [customerList, setCustomerList] = useState([]);
 
   const theme = useTheme();
   const styles = {
@@ -78,7 +82,7 @@ export default function Customers({ customers, removeCustomerFromList }) {
     },
   };
 
-  const isLastPage = page >= Math.ceil(customers.length / ROWS_PER_PAGE - 1);
+  const isLastPage = page >= Math.ceil(customerList.length / ROWS_PER_PAGE - 1);
 
   const handleNextPage = () => setPage(() => page + 1);
   const handlePrevPage = () => setPage(() => page - 1);
@@ -88,8 +92,17 @@ export default function Customers({ customers, removeCustomerFromList }) {
     setIsOpen(false);
   };
 
+  const resetFilter = () => setFilter(INITIAL_FILTER);
+
+  const handleDeleteCustomer = id => {
+    deleteCustomer(id);
+    const newCustomerList = customerList.filter(customer => id !== customer.id);
+    setCustomerList(newCustomerList);
+    setIsOpen(false);
+  };
+
   const getCustomersToDisplay = () => {
-    const filterCustomers = customer => {
+    const filterCallback = customer => {
       let data;
       const { firstName, lastName } = customer.name;
       switch (filter.type) {
@@ -112,7 +125,7 @@ export default function Customers({ customers, removeCustomerFromList }) {
       return data.toLowerCase().includes(filter.text.toLowerCase());
     };
 
-    return customers.filter(filterCustomers);
+    return customerList.filter(filterCallback);
   };
   const sortedCustomersByName = getCustomersToDisplay().sort((a, b) => {
     if (a.name.lastName > b.name.lastName === isDescending) return -1;
@@ -120,6 +133,13 @@ export default function Customers({ customers, removeCustomerFromList }) {
     return 0;
   });
   const rows = buildRows(sortedCustomersByName, page);
+
+  useEffect(() => {
+    const customers = getFromSS('customers');
+    setCustomerList(customers);
+  }, []);
+
+  console.log(`rows: `, rows);
 
   return (
     <>
@@ -149,13 +169,14 @@ export default function Customers({ customers, removeCustomerFromList }) {
                 </TableRow>
               </TableHead>
               <TableBody sx={{ backgroundColor: theme.palette.secondary[300] }}>
-                {rows.map(row => (
-                  <CustomerTableRow
-                    customer={row}
-                    removeCustomerFromList={removeCustomerFromList}
-                    key={row.id}
-                  />
-                ))}
+                {rows &&
+                  rows.map(row => (
+                    <CustomerTableRow
+                      customer={row}
+                      key={row.id}
+                      onDeleteCustomer={handleDeleteCustomer}
+                    />
+                  ))}
               </TableBody>
             </Table>
           </TableContainer>
@@ -164,10 +185,7 @@ export default function Customers({ customers, removeCustomerFromList }) {
               FILTER
             </Button>
             {filter.text && (
-              <Button
-                variant="contained"
-                onClick={() => setFilter({ text: '', type: 'name' })}
-              >
+              <Button variant="contained" onClick={resetFilter}>
                 CLEAR FILTER
               </Button>
             )}

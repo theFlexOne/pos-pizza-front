@@ -5,6 +5,7 @@ import useOrder from '../../../../hooks/useOrder';
 import { getFromSessionStorage } from '../../../../utils/utilityFunctions';
 import { useEffect } from 'react';
 
+<<<<<<< HEAD
 export default function Menu({ changeCustomer, order }) {
   const menu = getFromSessionStorage('menu');
 
@@ -13,10 +14,13 @@ export default function Menu({ changeCustomer, order }) {
   useEffect(() => {
     console.log(order);
   }, [order.customer]);
+=======
+export default function Menu({ goToCustomer }) {
+>>>>>>> main_MaskedPhoneInput
   return (
     <>
-      <MainPanel order={order} menu={menu} />
-      <SidePanel order={order} changeCustomer={changeCustomer} />
+      <MainPanel />
+      <SidePanel goToCustomer={goToCustomer} />
     </>
   );
 }
