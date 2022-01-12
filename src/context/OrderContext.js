@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-import React, { createContext, useContext, useReducer, useRef } from 'react';
-
-const OrderContext = React.createContext();
-
-const useOrderRef = () => {
-  const ref = useRef({
-    phoneNumber: '',
-    firstName: '',
-    lastName: '',
-    streetAddress: '',
-    secondaryAddress: '',
-  });
-  return ref;
-};
-
-const OrderProvider = ({ children, ...other }) => {
-  const ref = useOrderRef({});
-  // const [state, dispatch] = useReducer(reducer, initialState);
-  const actions = {};
-  return (
-    <OrderContext.Provider value={(ref, actions)} {...other}>
-      {children}
-    </OrderContext.Provider>
-=======
 import React, { createContext, useContext, useState } from 'react';
 
 const OrderContext = createContext();
@@ -67,7 +42,6 @@ const OrderProvider = ({ children, menu, customers }) => {
 
   return (
     <OrderContext.Provider value={order}>{children}</OrderContext.Provider>
->>>>>>> main_MaskedPhoneInput
   );
 };
 
@@ -77,23 +51,4 @@ const useOrder = () => {
   return context;
 };
 
-<<<<<<< HEAD
-export { OrderProvider, useOrder };
-
-// const initialState = {
-//   formStep: 1,
-// };
-
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'nextStep':
-//       return { ...state, formStep: formStep + 1 };
-//     case 'prevStep':
-//       return { ...state, formStep: formStep - 1 };
-//     case 'firstStep':
-//       return { ...state, formStep: (formStep = initialState.formStep) };
-//   }
-// };
-=======
 export { useOrder, OrderProvider };
->>>>>>> main_MaskedPhoneInput

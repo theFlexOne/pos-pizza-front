@@ -855,31 +855,25 @@
         "city": "Gravel Falls",
         "state": "Minnesota"
       },
-<<<<<<< HEAD
-      "orders": [],
-      "id": "008c77fb",
-      "created": 1634005503842
-    },
-    {
-      "name": {
-        "firstName": "YAY!",
-        "lastName": "YAY!"
-      },
-      "phoneNumber": "1",
-      "address": {
-        "streetAddress": "33191 Pagac Pines",
-        "secondaryAddress": "Apt. 135",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orders": [],
-      "id": "008c77fb",
-      "created": 1634005503842
-=======
       "orderHistory": [],
       "id": "c6ab2478",
       "created": 1641970614971
->>>>>>> main_MaskedPhoneInput
+    },
+    {
+      "phoneNumber": "111",
+      "name": {
+        "firstName": "111",
+        "lastName": ""
+      },
+      "address": {
+        "streetAddress": "111",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "b7cfacc3",
+      "created": 1641972824522
     }
   ],
   "orderHistory": [

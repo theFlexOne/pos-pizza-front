@@ -1,35 +1,4 @@
 import { Box, Button, Typography } from '@mui/material';
-<<<<<<< HEAD
-import React, { forwardRef, useRef } from 'react';
-import { useTheme } from '@emotion/react';
-import ClearIcon from '@mui/icons-material/Clear';
-import { useCustomer } from '../../../../context/CustomerContext';
-import MaskedPhoneInput from '../../../../components/MaskedPhoneInput';
-import { getFromSessionStorage } from '../../../../utils/utilityFunctions';
-
-const CustomerContextButton = forwardRef(
-  ({ onClick: onBtnClick, children, ...other }, ref) => {
-    const { actions } = useCustomer();
-
-    const handleClick = () => {
-      onBtnClick(ref);
-    };
-    return (
-      <Button
-        ref={ref}
-        variant="contained"
-        sx={{ mt: 'auto' }}
-        onClick={handleClick}
-        {...other}
-      >
-        {children}
-      </Button>
-    );
-  }
-);
-
-export default function CustomerLookup({ goToMenu, toNextStep }) {
-=======
 import React from 'react';
 import { useTheme } from '@emotion/react';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -37,7 +6,6 @@ import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
 
 export default function CustomerLookup({ goToMenu }) {
->>>>>>> main_MaskedPhoneInput
   const theme = useTheme();
   const styles = {
     page: {
@@ -79,27 +47,7 @@ export default function CustomerLookup({ goToMenu }) {
       bgcolor: '#ff00d4',
     },
   };
-<<<<<<< HEAD
-  const lookup = useRef();
-  const { lookupCustomer } = useCustomer().actions;
-
-  const handleLookup = async () => {
-    const customer = await lookupCustomer();
-    if (customer) {
-      const order = await getFromSessionStorage('order');
-      console.log(`order: `, order);
-      sessionStorage.setItem(
-        'order',
-        JSON.stringify({ ...order, customer: customer })
-      );
-      goToMenu();
-      return;
-    }
-    toNextStep();
-  };
-=======
   const { actions } = useCustomer();
->>>>>>> main_MaskedPhoneInput
 
   return (
     <Box sx={styles.page}>
@@ -133,11 +81,6 @@ export default function CustomerLookup({ goToMenu }) {
           >
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
-<<<<<<< HEAD
-          <CustomerContextButton ref={lookup} onClick={handleLookup}>
-            LOOKUP
-          </CustomerContextButton>
-=======
           <Button
             onClick={() => actions.lookupCustomer()}
             variant="contained"
@@ -145,7 +88,6 @@ export default function CustomerLookup({ goToMenu }) {
           >
             LOOKUP TEL
           </Button>
->>>>>>> main_MaskedPhoneInput
           <Button
             variant="contained"
             // onClick={clearField}

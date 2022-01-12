@@ -1,22 +1,12 @@
-<<<<<<< HEAD
-import { Box, TextField } from '@mui/material';
-import React, { useRef } from 'react';
-=======
 import { Box } from '@mui/material';
 import React from 'react';
->>>>>>> main_MaskedPhoneInput
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
-import CustomerTextField from './CustomerTextField';
 
-<<<<<<< HEAD
-export default function CustomerFormName({ toNextStep, toPrevStep }) {
-=======
 export default function CustomerFormName({ nextPage, prevPage }) {
   const { firstName } = useCustomer().state;
->>>>>>> main_MaskedPhoneInput
   const theme = useTheme();
   const styles = {
     page: {
@@ -54,49 +44,19 @@ export default function CustomerFormName({ nextPage, prevPage }) {
     },
   };
 
-<<<<<<< HEAD
-  const CustomerTextField2 = props => {
-    const inputRef = useRef();
-    const { state, actions } = useCustomer();
-    const { handleInputChange, focusInput } = actions;
-    const { name } = props;
-    // const element = inputRef.current;
-=======
   // const { state, actions, customer } = useCustomer();
   // const { firstName, lastName } = state;
   // const { handleInputChange } = actions;
->>>>>>> main_MaskedPhoneInput
 
-    const focusTextField = () => focusInput(inputRef.current);
-
-    const handleChange = () => handleInputChange(inputRef.current);
-
-    return (
-      <TextField
-        value={state[name]}
-        inputRef={inputRef}
-        onChange={handleChange}
-        onClick={focusTextField}
-        fullWidth
-        {...props}
-      />
-    );
+  const nextBtn = {
+    label: 'Next Page',
+    action: nextPage,
+    disabled: !firstName,
   };
 
-  const { state, actions, more } = useCustomer();
-  const { firstName, lastName, formStep } = state;
-  const { handleInputChange, focusInput } = actions;
-
-  const keyboardOptions = {
-    next: {
-      label: 'Next Page',
-      action: toNextStep,
-      // disabled: !firstName,
-    },
-    prev: {
-      label: 'Prev Page',
-      action: toPrevStep,
-    },
+  const prevBtn = {
+    label: 'Prev Page',
+    action: prevPage,
   };
 
   return (
@@ -106,10 +66,6 @@ export default function CustomerFormName({ nextPage, prevPage }) {
           <Box sx={styles.inputWrapper}>
             <CustomerTextField
               label="First Name"
-<<<<<<< HEAD
-              sx={styles.firstName}
-=======
->>>>>>> main_MaskedPhoneInput
               name="firstName"
               autoFocus
               sx={styles.firstName}
@@ -121,18 +77,6 @@ export default function CustomerFormName({ nextPage, prevPage }) {
             backgroundColor={theme.palette.secondary[50]}
           >
             <CustomerTextField
-<<<<<<< HEAD
-              label="Last Name"
-              sx={styles.lastName}
-              name="lastName"
-            />
-            {/* <TextField
-              label="Last Name"
-              name="lastName"
-              sx={styles.lastName}
-              value={lastName}
-            /> */}
-=======
               label="Last Name"
               name="lastName"
               sx={styles.lastName}
@@ -140,7 +84,6 @@ export default function CustomerFormName({ nextPage, prevPage }) {
               // onChange={handleInputChange}
               // onClick={focusTextField}
             />
->>>>>>> main_MaskedPhoneInput
           </Box>
         </Box>
       </Box>
@@ -151,7 +94,7 @@ export default function CustomerFormName({ nextPage, prevPage }) {
         padding=".75rem 1.25rem"
         backgroundColor={theme.palette.secondary[900]}
       >
-        <Keyboard {...keyboardOptions} />
+        <Keyboard next={{ ...nextBtn }} prev={{ ...prevBtn }} />
       </Box>
     </Box>
   );
