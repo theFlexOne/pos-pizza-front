@@ -954,38 +954,6 @@
       "orderHistory": [],
       "id": "5ee42d56-bbef-4ac3-a7d5-3d2c58fb3926",
       "created": 1642053156067
-    },
-    {
-      "phoneNumber": "555",
-      "name": {
-        "firstName": "1",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "555",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "9a8887ee",
-      "created": 1642059426516
-    },
-    {
-      "phoneNumber": "55500",
-      "name": {
-        "firstName": "ii",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "ii",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "64ea6b97",
-      "created": 1642059763967
     }
   ],
   "orderHistory": [],

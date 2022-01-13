@@ -7,29 +7,28 @@ import {
   CustomerProvider,
 } from '../../../../context/CustomerContext';
 
+const FormPage = ({ goToMenu }) => {
+  const { actions } = useCustomer();
+  const { getFormStep, toNextPage, toPrevPage } = actions;
+
+  const formStep = getFormStep();
+
+  switch (formStep) {
+    case 1:
+      return <CustomerLookup goToMenu={goToMenu} nextPage={toNextPage} />;
+    case 2:
+      return <CustomerFormName nextPage={toNextPage} prevPage={toPrevPage} />;
+    case 3:
+      return <CustomerFormAddress prevPage={toPrevPage} />;
+    default:
+      return new Error('form page not found');
+  }
+};
+
 export default function Customer({ goToMenu }) {
-  const FormPage = () => {
-    const { actions } = useCustomer();
-    const { getFormStep, toNextPage, toPrevPage } = actions;
-
-    const formStep = getFormStep();
-
-    switch (formStep) {
-      case 1:
-        return <CustomerLookup goToMenu={goToMenu} nextPage={toNextPage} />;
-
-      case 2:
-        return <CustomerFormName nextPage={toNextPage} prevPage={toPrevPage} />;
-      case 3:
-        return <CustomerFormAddress prevPage={toPrevPage} />;
-      default:
-        return new Error('form page not found');
-    }
-  };
-
   return (
     <CustomerProvider>
-      <FormPage />
+      <FormPage goToMenu={goToMenu} />
     </CustomerProvider>
   );
 }
