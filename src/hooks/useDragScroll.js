@@ -14,20 +14,29 @@ class DragScroll {
 
 const useDragScroll = () => {
   const mouseDown = useRef(false);
-  const sx = {
-    display: 'flex',
-    flexBasis: '100%',
+
+  const handleMouseDown = e => {
+    mouseDown.current = true;
+    a = new DragScroll(e);
+    e.preventDefault();
   };
+  const handleMouseMove = e => {
+    mouseDown.current && a.scrollToCoords(e);
+  };
+  const handleMouseUp = () => (mouseDown.current = false);
   let a;
   return {
-    sx,
-    onMouseDown: e => {
-      mouseDown.current = true;
-      a = new DragScroll(e);
-      e.preventDefault();
+    sx: {
+      // To span the entire window
+      display: 'flex',
+      flexBasis: '100%',
+      //* Uncomment below to demo drag scrolling
+      // minHeight: '120vh',
+      // minWidth: '120vw',
     },
-    onMouseMove: e => mouseDown.current && a.scrollToCoords(e),
-    onMouseUp: () => (mouseDown.current = false),
+    onMouseDown: handleMouseDown,
+    onMouseMove: handleMouseMove,
+    onMouseUp: handleMouseUp,
   };
 };
 

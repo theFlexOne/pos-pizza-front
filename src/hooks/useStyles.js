@@ -1,7 +1,8 @@
 import { useTheme } from '@emotion/react';
 
-const useStyles = component => {
-  const theme = useTheme();
+const useStyles = (newTheme = undefined) => {
+  const currentTheme = useTheme();
+  const theme = newTheme || currentTheme;
   const styles = () => ({
     menu: {
       mainPanel: {
@@ -166,6 +167,66 @@ const useStyles = component => {
         display: 'flex',
         flexDirection: 'column',
         borderRadius: '4px',
+      },
+    },
+    customers: {
+      container: {
+        display: 'flex',
+        flexDirection: 'column',
+        background: theme.palette.secondary[500],
+        flex: '1',
+        overflow: 'hidden',
+      },
+      wrapper: {
+        m: '.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      table: {
+        flexGrow: '1',
+        boxShadow: '.5px 2px 2px rgba(0,0,0,.3)',
+        minWidth: '700px',
+      },
+      body: {
+        backgroundColor: theme.palette.secondary[300],
+      },
+      row: {
+        backgroundColor: theme.palette.secondary[700],
+      },
+      cell: {
+        display: 'flex',
+        alignItems: 'center',
+        '&:hover': {
+          svg: {
+            fontSize: '1.25rem',
+            color: 'rgba(255, 255, 255, 0.25)',
+          },
+        },
+      },
+      arrowDown: { ml: '.75rem', fontSize: '1rem' },
+      arrowUp: { ml: '.75rem', fontSize: '1rem' },
+      buttons: {
+        mt: '.5rem',
+        // mr: '1rem',
+        // ml: '1rem',
+        display: 'flex',
+        gap: '.5rem',
+        minHeight: '3.5rem',
+        flex: '1',
+      },
+    },
+    customerTableRow: {
+      row: {
+        '&:nth-of-type(even)': {
+          backgroundColor: 'rgba(255, 255, 255, 0.25)',
+        },
+        '&:last-child td, &:last-child th': {
+          border: 0,
+        },
+      },
+      clearIcon: {
+        fontSize: '1.5rem',
+        '&:hover': { color: theme.palette.primary[600] },
       },
     },
   });

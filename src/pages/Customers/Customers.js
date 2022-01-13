@@ -18,6 +18,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { getFromSS } from '../../utils/sessionStorageHelpers';
 import { deleteCustomer } from '../../utils/fetchHelpers';
 import { formatForDisplay } from '../../utils/formatPhoneNumber';
+import useStyles from '../../hooks/useStyles';
 
 const ROWS_PER_PAGE = 8;
 const INITIAL_FILTER = { text: '', type: 'name' };
@@ -47,42 +48,7 @@ export default function Customers(props) {
   const [isDescending, setIsDescending] = useState(false);
   const [customerList, setCustomerList] = useState([]);
 
-  const theme = useTheme();
-  const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      background: theme.palette.secondary[500],
-      flex: '1',
-      overflow: 'hidden',
-    },
-    table: {
-      flexGrow: '1',
-      boxShadow: '.5px 2px 2px rgba(0,0,0,.3)',
-      minWidth: '700px',
-    },
-    cell: {
-      display: 'flex',
-      alignItems: 'center',
-      '&:hover': {
-        svg: {
-          fontSize: '1.25rem',
-          color: 'rgba(255, 255, 255, 0.25)',
-        },
-      },
-    },
-    arrowDown: { ml: '.75rem', fontSize: '1rem' },
-    arrowUp: { ml: '.75rem', fontSize: '1rem' },
-    buttons: {
-      mt: '.5rem',
-      // mr: '1rem',
-      // ml: '1rem',
-      display: 'flex',
-      gap: '.5rem',
-      minHeight: '3.5rem',
-      flex: '1',
-    },
-  };
+  const styles = useStyles().customers;
 
   const isLastPage = page >= Math.ceil(customerList.length / ROWS_PER_PAGE - 1);
 
@@ -126,7 +92,6 @@ export default function Customers(props) {
       }
       return data.toLowerCase().includes(filter.text.toLowerCase());
     };
-
     return customerList.filter(filterCallback);
   };
   const sortedCustomersByName = getCustomersToDisplay().sort((a, b) => {
@@ -144,13 +109,11 @@ export default function Customers(props) {
   return (
     <>
       <Box sx={styles.container}>
-        <Box sx={{ m: '.5rem', display: 'flex', flexDirection: 'column' }}>
+        <Box sx={styles.wrapper}>
           <TableContainer sx={styles.table}>
             <Table>
               <TableHead>
-                <TableRow
-                  sx={{ backgroundColor: theme.palette.secondary[700] }}
-                >
+                <TableRow sx={styles.row}>
                   <TableCell
                     sx={styles.cell}
                     onClick={() => setIsDescending(() => !isDescending)}
@@ -168,7 +131,7 @@ export default function Customers(props) {
                   <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody sx={{ backgroundColor: theme.palette.secondary[300] }}>
+              <TableBody sx={styles.body}>
                 {rows &&
                   rows.map(row => (
                     <CustomerTableRow

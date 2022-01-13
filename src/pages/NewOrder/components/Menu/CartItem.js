@@ -46,7 +46,6 @@ export default function CartItem({ item, removeFromCart }) {
           )}
         </Box>
       </Box>
-      {/* {i < order.length && <Divider />} */}
     </>
   );
 }

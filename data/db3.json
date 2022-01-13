@@ -332,22 +332,6 @@
       "created": 1642053156066
     },
     {
-      "phoneNumber": "5550379531",
-      "name": {
-        "firstName": "Sammie",
-        "lastName": "Bernhard"
-      },
-      "address": {
-        "streetAddress": "930 Ora Causeway",
-        "secondaryAddress": "Apt. 760",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "dafde252-65f4-46d4-9b6c-ffd660744138",
-      "created": 1642053156066
-    },
-    {
       "phoneNumber": "5559672086",
       "name": {
         "firstName": "Carolanne",
@@ -425,22 +409,6 @@
       },
       "orderHistory": [],
       "id": "283d4480-8518-4eab-b838-9458b54c886c",
-      "created": 1642053156066
-    },
-    {
-      "phoneNumber": "5552882386",
-      "name": {
-        "firstName": "Aisha",
-        "lastName": "Ferry"
-      },
-      "address": {
-        "streetAddress": "46171 Considine Ferry",
-        "secondaryAddress": "Suite 463",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "270200a8-d7fd-4066-8018-e1da1359a31b",
       "created": 1642053156066
     },
     {
@@ -873,22 +841,6 @@
       },
       "orderHistory": [],
       "id": "cb5267bc-2016-44b4-ba53-e1dfc8334c82",
-      "created": 1642053156067
-    },
-    {
-      "phoneNumber": "5556221834",
-      "name": {
-        "firstName": "Melba",
-        "lastName": "Denesik"
-      },
-      "address": {
-        "streetAddress": "37952 Karolann Ways",
-        "secondaryAddress": "Apt. 202",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "1269ccf7-bbe5-4054-b65d-c0ff8827e4fa",
       "created": 1642053156067
     },
     {

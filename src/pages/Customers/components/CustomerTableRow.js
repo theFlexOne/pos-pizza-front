@@ -1,34 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  TableCell,
-  TableRow,
-} from '@mui/material';
+import { TableCell, TableRow } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import { useTheme } from '@emotion/react';
+import useStyles from '../../../hooks/useStyles';
+import ConfirmationModal from '../../../components/ConfirmationModal';
 
 const CustomerTableRow = ({ customer, onDeleteCustomer }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const theme = useTheme();
-  const styles = {
-    row: {
-      '&:nth-of-type(even)': {
-        backgroundColor: 'rgba(255, 255, 255, 0.25)',
-      },
-      '&:last-child td, &:last-child th': {
-        border: 0,
-      },
-    },
-    clearIcon: {
-      fontSize: '1.5rem',
-      '&:hover': { color: theme.palette.primary[600] },
-    },
-  };
+  const styles = useStyles().customerTableRow;
   const {
     fullName: name,
     phoneNumber: phone,
@@ -36,6 +14,16 @@ const CustomerTableRow = ({ customer, onDeleteCustomer }) => {
     orderedLast,
     id,
   } = customer;
+
+  const handleClose = () => setIsOpen(false);
+
+  const modalOptions = {
+    open: isOpen,
+    onClose: handleClose,
+    title: 'Delete Customer?',
+    cancel: handleClose,
+    confirm: () => onDeleteCustomer(id),
+  };
 
   return (
     <>
@@ -48,30 +36,9 @@ const CustomerTableRow = ({ customer, onDeleteCustomer }) => {
           <ClearIcon sx={styles.clearIcon} onClick={() => setIsOpen(true)} />
         </TableCell>
       </TableRow>
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <DialogTitle id="delete-dialog-title">{'Delete Customer?'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="delete-dialog-description">
-            Are you sure you want to delete this customer?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => setIsOpen(false)}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => onDeleteCustomer(id)}
-          >
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <ConfirmationModal {...modalOptions}>
+        Are you sure you want to delete this customer?
+      </ConfirmationModal>
     </>
   );
 };

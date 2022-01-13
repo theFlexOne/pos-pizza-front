@@ -12,12 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-/*
-  display="flex"
-  flexDirection="column"
-  height="100vh"
-  maxHeight="100vh"
-  width="100vw"
-  maxwidth="100vw"
-*/
