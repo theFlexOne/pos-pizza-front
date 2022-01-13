@@ -9,7 +9,7 @@ const DEFAULT_ACTION = { type: 'error', value: undefined, name: '' };
 const CustomerContext = createContext();
 
 const initialState = {
-  phoneNumber: '',
+  phoneNumber: '555',
   firstName: '',
   lastName: '',
   streetAddress: '',
@@ -61,10 +61,6 @@ const reducer = (state, action) => {
     }
     case 'reset': {
       return initialState;
-    }
-
-    case 'lookup': {
-      // return nextPage();
     }
 
     case 'TEST':

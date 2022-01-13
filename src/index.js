@@ -7,15 +7,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App
-        display="flex"
-        flexDirection="column"
-        height="100vh"
-        maxHeight="100vh"
-        width="100vw"
-        maxwidth="100vw"
-      />
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+/*
+  display="flex"
+  flexDirection="column"
+  height="100vh"
+  maxHeight="100vh"
+  width="100vw"
+  maxwidth="100vw"
+*/

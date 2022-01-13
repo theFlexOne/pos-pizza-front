@@ -1,53 +1,19 @@
 import { Box, Button, Typography } from '@mui/material';
-import React from 'react';
-import { useTheme } from '@emotion/react';
+import React, { useRef } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
+import useStyles from '../../../../hooks/useStyles';
 
 export default function CustomerLookup({ goToMenu }) {
-  const theme = useTheme();
-  const styles = {
-    page: {
-      display: 'flex',
-      flex: '1',
-    },
-    formContainer: {
-      flex: '2',
-      display: 'flex',
-      alignItems: 'center',
-      flexDirection: 'column',
-      paddingTop: '4rem',
-      borderRight: `1.5px solid ${theme.palette.secondary[500]}`,
-      backgroundColor: theme.palette.secondary[200],
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    inputWrapper: {
-      bgcolor: theme.palette.secondary[50],
-      mb: '1rem',
-    },
-    keypadContainer: {
-      flex: '1',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '3rem 1rem',
-      gap: '1rem',
-      bgcolor: theme.palette.secondary[400],
-    },
-    buttonsBox: {
-      flex: '1',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '.5rem',
-      bgcolor: '#ff00d4',
-    },
-  };
+  const styles = useStyles().customerLookup;
   const { actions } = useCustomer();
+  const inputRef = useRef();
+
+  const clearField = () => (inputRef.current.value = '');
+  const handleEnter = ({ key }) => {
+    if (key === 'Enter') actions.lookupCustomer();
+  };
 
   return (
     <Box sx={styles.page}>
@@ -58,6 +24,8 @@ export default function CustomerLookup({ goToMenu }) {
           </Typography>
           <Box sx={styles.inputWrapper}>
             <CustomerTextField
+              onEnter={handleEnter}
+              ref={inputRef}
               name="phoneNumber"
               label="Phone Number"
               autoFocus
@@ -88,11 +56,7 @@ export default function CustomerLookup({ goToMenu }) {
           >
             LOOKUP TEL
           </Button>
-          <Button
-            variant="contained"
-            // onClick={clearField}
-            sx={{ mb: 'auto' }}
-          >
+          <Button variant="contained" onClick={clearField} sx={{ mb: 'auto' }}>
             CLEAR <ClearIcon sx={{ ml: '1rem' }} />
           </Button>
         </Box>

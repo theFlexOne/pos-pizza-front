@@ -205,22 +205,6 @@
     },
     {
       "name": {
-        "firstName": "Emmanuel",
-        "lastName": "Hills"
-      },
-      "phoneNumber": "555-519-4101",
-      "address": {
-        "streetAddress": "84779 Haley Shoal",
-        "secondaryAddress": "Suite 198",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "recentOrders": [],
-      "id": "f0c41771",
-      "created": 1631892464991
-    },
-    {
-      "name": {
         "firstName": "Austin",
         "lastName": "Quitzon"
       },
@@ -860,10 +844,10 @@
       "created": 1641970614971
     },
     {
-      "phoneNumber": "111",
+      "phoneNumber": "555",
       "name": {
-        "firstName": "111",
-        "lastName": ""
+        "firstName": "Eric",
+        "lastName": "Hafvenstein"
       },
       "address": {
         "streetAddress": "111",
@@ -872,40 +856,8 @@
         "state": "Minnesota"
       },
       "orderHistory": [],
-      "id": "b7cfacc3",
-      "created": 1641972824522
-    },
-    {
-      "phoneNumber": "1",
-      "name": {
-        "firstName": "1",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "1",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "bd2b3222",
-      "created": 1641973382947
-    },
-    {
-      "phoneNumber": "11",
-      "name": {
-        "firstName": "11",
-        "lastName": ""
-      },
-      "address": {
-        "streetAddress": "11",
-        "secondaryAddress": "",
-        "city": "Gravel Falls",
-        "state": "Minnesota"
-      },
-      "orderHistory": [],
-      "id": "1b773383",
-      "created": 1641973480777
+      "id": "ad12f5b5",
+      "created": 1642048155454
     }
   ],
   "orderHistory": [

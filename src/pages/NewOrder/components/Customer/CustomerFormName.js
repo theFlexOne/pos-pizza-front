@@ -4,49 +4,12 @@ import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
+import useStyles from '../../../../hooks/useStyles';
 
 export default function CustomerFormName({ nextPage, prevPage }) {
   const { firstName } = useCustomer().state;
   const theme = useTheme();
-  const styles = {
-    page: {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: theme.palette.secondary[200],
-    },
-    formContainer: {
-      flex: '1',
-      display: 'flex',
-      justifyContent: 'center',
-    },
-    form: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100%',
-      flexBasis: '70%',
-      gap: '1.5rem',
-      '& > *': {
-        borderRadius: '4px',
-      },
-    },
-    // keyboardContainer: { backgroundColor: theme.palette.secondary[900] },
-    inputWrapper: {
-      backgroundColor: theme.palette.secondary[50],
-      flex: '1 1 35%',
-    },
-    firstName: {
-      flex: '1 1 30%',
-    },
-    lastName: {
-      flex: '1 1 40%',
-    },
-  };
-
-  // const { state, actions, customer } = useCustomer();
-  // const { firstName, lastName } = state;
-  // const { handleInputChange } = actions;
+  const styles = useStyles().customerFormName;
 
   const nextBtn = {
     label: 'Next Page',
@@ -63,7 +26,7 @@ export default function CustomerFormName({ nextPage, prevPage }) {
     <Box sx={styles.page}>
       <Box sx={styles.formContainer}>
         <Box component="form" sx={styles.form}>
-          <Box sx={styles.inputWrapper}>
+          <Box sx={styles.firstNameWrapper}>
             <CustomerTextField
               label="First Name"
               name="firstName"
@@ -71,11 +34,7 @@ export default function CustomerFormName({ nextPage, prevPage }) {
               sx={styles.firstName}
             />
           </Box>
-          <Box
-            flex="1 1 55%"
-            borderRadius="4px"
-            backgroundColor={theme.palette.secondary[50]}
-          >
+          <Box sx={styles.lastNameWrapper}>
             <CustomerTextField
               label="Last Name"
               name="lastName"
@@ -84,13 +43,7 @@ export default function CustomerFormName({ nextPage, prevPage }) {
           </Box>
         </Box>
       </Box>
-      <Box
-        display="flex"
-        flex="1"
-        height="auto"
-        padding=".75rem 1.25rem"
-        backgroundColor={theme.palette.secondary[900]}
-      >
+      <Box sx={styles.keyboardContainer}>
         <Keyboard next={{ ...nextBtn }} prev={{ ...prevBtn }} />
       </Box>
     </Box>

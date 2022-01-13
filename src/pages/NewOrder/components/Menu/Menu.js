@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import { Divider } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
@@ -7,21 +6,13 @@ import MenuItems from './MenuItems';
 import MenuSectionBar from './MenuSectionBar';
 import Cart from './Cart';
 import CustomerInfoBox from './CustomerInfoBox';
+import useStyles from '../../../../hooks/useStyles';
 
 const MainPanel = props => {
   const [sectionIndex, setSectionIndex] = useState(0);
   const menu = getFromSS('menu');
   console.log(`menu: `, menu);
-
-  const theme = useTheme();
-  const styles = {
-    mainPanel: {
-      flex: '3',
-      alignSelf: 'stretch',
-      display: 'flex',
-      backgroundColor: theme.palette.secondary[200],
-    },
-  };
+  const styles = useStyles().menu;
 
   return (
     <Box sx={styles.mainPanel}>
@@ -36,14 +27,9 @@ const MainPanel = props => {
 };
 
 const SidePanel = ({ goToCustomer }) => {
-  const theme = useTheme();
+  const styles = useStyles().menu;
   return (
-    <Box
-      flex="1"
-      display="flex"
-      flexDirection="column"
-      backgroundColor={theme.palette.secondary[500]}
-    >
+    <Box sx={styles.sidePanel}>
       <CustomerInfoBox goToCustomer={goToCustomer} />
       <Divider sx={{ borderColor: 'rgba(0,0,0,0.5)' }} />
       <Cart />

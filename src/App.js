@@ -14,14 +14,6 @@ function App() {
   const isSS = sessionStorage.length > 0;
   const dragScrollEvents = useDragScroll();
 
-  // const addCustomerToList = customer => {
-  //   setCustomerList(() => [...customerList, customer]);
-  // };
-
-  // const removeCustomerFromList = id => {
-  //   setCustomerList(() => customerList.filter(customer => customer.id !== id));
-  // };
-
   if (isLoading) return <h2>Loading...</h2>;
   if (err && !isLoading) {
     console.error(err);
@@ -41,7 +33,7 @@ function App() {
         <Box {...dragScrollEvents}>
           <Routes>
             <Route path="/" element={<NewOrderProvider />} />
-            <Route path="/NewOrder" element={<NewOrderProvider />}></Route>
+            <Route path="/NewOrder" element={<NewOrderProvider />} />
             <Route path="/Customers" element={<Customers />} />
             <Route path="/Settings" element={<Settings />} />
           </Routes>

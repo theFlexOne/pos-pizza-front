@@ -9,8 +9,6 @@ export default function NewOrder() {
   const [isMenu, setIsMenu] = useState(false);
   const order = useOrder();
 
-  console.log(`order`, order);
-
   useEffect(() => {
     order.customer && setIsMenu(() => true);
   }, [order]);

@@ -5,55 +5,14 @@ import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import { useCustomer } from '../../../../context/CustomerContext';
 import CustomerTextField from './CustomerTextField';
+import useStyles from '../../../../hooks/useStyles';
 
 export default function CustomerFormAddress({ prevPage }) {
   const { state, actions } = useCustomer();
   const { streetAddress } = state;
   const { handleCustomerSubmit } = actions;
   const theme = useTheme();
-  const styles = {
-    page: {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    formContainer: {
-      flex: 1,
-      bgcolor: theme.palette.secondary[200],
-    },
-    form: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100%',
-      gap: '1rem',
-    },
-    inputWrapper: {
-      backgroundColor: theme.palette.secondary[50],
-      borderRadius: '4px',
-    },
-    streetAddress: {
-      flexBasis: '60%',
-    },
-    secondaryAddress: {
-      flexBasis: '35%',
-    },
-    city: {
-      flexBasis: '65%',
-    },
-    state: {
-      flexBasis: '30%',
-    },
-    keyboardContainer: {
-      display: 'flex',
-      flex: '1',
-      height: 'auto',
-      padding: '.75rem 1.25rem',
-      backgroundColor: theme.palette.secondary[900],
-    },
-  };
-
+  const styles = useStyles().customerFormAddress;
   const nextBtn = {
     label: 'Next Page',
     action: handleCustomerSubmit,
@@ -104,7 +63,6 @@ export default function CustomerFormAddress({ prevPage }) {
         </Box>
       </Box>
       <Box sx={styles.keyboardContainer}>
-        <Button onClick={() => console.log('click')}>SEND</Button>
         <Keyboard next={nextBtn} prev={prevBtn} />
       </Box>
       {/* <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" /> */}
