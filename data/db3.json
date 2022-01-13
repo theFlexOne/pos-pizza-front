@@ -26,7 +26,12 @@
         {
           "name": "meat-galore",
           "type": "specialty",
-          "toppings": ["pepperoni", "sausage", "beef", "bacon"],
+          "toppings": [
+            "pepperoni",
+            "sausage",
+            "beef",
+            "bacon"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -38,7 +43,12 @@
         {
           "name": "veggie-lover",
           "type": "specialty",
-          "toppings": ["onions", "green peppers", "mushrooms", "black olives"],
+          "toppings": [
+            "onions",
+            "green peppers",
+            "mushrooms",
+            "black olives"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -50,7 +60,11 @@
         {
           "name": "chicken-bacon-ranch",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "ranch"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "ranch"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -62,7 +76,12 @@
         {
           "name": "bbq-bacon-chicken",
           "type": "specialty",
-          "toppings": ["chicken", "bacon", "bbq sauce", "onions"],
+          "toppings": [
+            "chicken",
+            "bacon",
+            "bbq sauce",
+            "onions"
+          ],
           "prices": {
             "small": 12,
             "medium": 16,
@@ -935,30 +954,41 @@
       "orderHistory": [],
       "id": "5ee42d56-bbef-4ac3-a7d5-3d2c58fb3926",
       "created": 1642053156067
-    }
-  ],
-  "orderHistory": [
+    },
     {
-      "customer": {
-        "name": {
-          "first": "joe",
-          "last": "nobody"
-        },
-        "phone": "555-800-8555",
-        "address": {
-          "streetAddress": "33191 Pagac Pines",
-          "secondaryAddress": "Apt. 135",
-          "city": "Gravel Falls",
-          "state": "Minnesota"
-        }
+      "phoneNumber": "555",
+      "name": {
+        "firstName": "1",
+        "lastName": ""
       },
-      "order": {
-        "items": [],
-        "total": 0
+      "address": {
+        "streetAddress": "555",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
       },
-      "timeStamp": 1634005503842
+      "orderHistory": [],
+      "id": "9a8887ee",
+      "created": 1642059426516
+    },
+    {
+      "phoneNumber": "55500",
+      "name": {
+        "firstName": "ii",
+        "lastName": ""
+      },
+      "address": {
+        "streetAddress": "ii",
+        "secondaryAddress": "",
+        "city": "Gravel Falls",
+        "state": "Minnesota"
+      },
+      "orderHistory": [],
+      "id": "64ea6b97",
+      "created": 1642059763967
     }
   ],
+  "orderHistory": [],
   "settings": {
     "menu": {
       "outOfStock": {

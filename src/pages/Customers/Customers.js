@@ -17,6 +17,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { getFromSS } from '../../utils/sessionStorageHelpers';
 import { deleteCustomer } from '../../utils/fetchHelpers';
+import { formatForDisplay } from '../../utils/formatPhoneNumber';
 
 const ROWS_PER_PAGE = 8;
 const INITIAL_FILTER = { text: '', type: 'name' };
@@ -26,13 +27,14 @@ const toDateTimeFormat = ms => dt.fromMillis(ms).toFormat('D T');
 const buildRows = (customers, page) => {
   return customers
     .slice(page * ROWS_PER_PAGE, page * ROWS_PER_PAGE + ROWS_PER_PAGE)
-    .map(({ name, phoneNumber, address, id, recentOrders }) => {
+    .map(({ name, phoneNumber: phone, address, id, recentOrders }) => {
       const fullName = name.firstName + ' ' + name.lastName;
       const fullAddress =
         address.streetAddress + ', ' + address.secondaryAddress;
       const orderedLast = recentOrders?.[0]
         ? toDateTimeFormat(recentOrders[0].timeStamp)
         : 'n/a';
+      const phoneNumber = formatForDisplay(phone);
 
       return { fullName, phoneNumber, fullAddress, id, orderedLast };
     });
@@ -138,8 +140,6 @@ export default function Customers(props) {
     const customers = getFromSS('customers');
     setCustomerList(customers);
   }, []);
-
-  console.log(`rows: `, rows);
 
   return (
     <>

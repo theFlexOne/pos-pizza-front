@@ -22,12 +22,15 @@ export default function CustomerFormName({ nextPage, prevPage }) {
     action: prevPage,
   };
 
+  const handleKeyDown = ({ key }) => key === 'Enter' && nextPage();
+
   return (
     <Box sx={styles.page}>
       <Box sx={styles.formContainer}>
-        <Box component="form" sx={styles.form}>
+        <Box component="form" sx={styles.form} onKeyDown={handleKeyDown}>
           <Box sx={styles.firstNameWrapper}>
             <CustomerTextField
+              onEnter={() => nextPage()}
               label="First Name"
               name="firstName"
               autoFocus
@@ -36,6 +39,7 @@ export default function CustomerFormName({ nextPage, prevPage }) {
           </Box>
           <Box sx={styles.lastNameWrapper}>
             <CustomerTextField
+              onEnter={() => nextPage()}
               label="Last Name"
               name="lastName"
               sx={styles.lastName}

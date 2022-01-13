@@ -5,7 +5,6 @@ const useDateTime = () => {
   const [time, setTime] = useState(dt.now());
   useEffect(() => {
     const tick = setInterval(() => setTime(dt.now()), 1000 * 1);
-
     return () => {
       clearInterval(tick);
     };

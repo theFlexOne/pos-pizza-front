@@ -29,4 +29,15 @@ const deleteCustomer = id => {
   });
 };
 
-export { fetchAppData, postNewCustomer, deleteCustomer };
+const postNewOrder = async order => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order),
+  };
+  const res = await fetch(APP_DATA_URL + '/orderHistory', options);
+  const newCustomer = await res.json();
+  return newCustomer;
+};
+
+export { fetchAppData, postNewCustomer, deleteCustomer, postNewOrder };

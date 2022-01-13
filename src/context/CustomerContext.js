@@ -95,7 +95,6 @@ const CustomerProvider = ({ children }) => {
     },
     handleCustomerSubmit() {
       const customer = buildCustomer({ ...state });
-      console.log(customer);
       postNewCustomer(customer);
       addCustomerToSS(customer);
       selectCustomer(customer);

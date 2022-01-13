@@ -11,7 +11,6 @@ export default function CustomerFormAddress({ prevPage }) {
   const { state, actions } = useCustomer();
   const { streetAddress } = state;
   const { handleCustomerSubmit } = actions;
-  const theme = useTheme();
   const styles = useStyles().customerFormAddress;
   const nextBtn = {
     label: 'Next Page',
@@ -24,10 +23,12 @@ export default function CustomerFormAddress({ prevPage }) {
     action: prevPage,
   };
 
+  const handleKeyDown = ({ key }) => key === 'Enter' && handleCustomerSubmit();
+
   return (
     <Box sx={styles.page}>
       <Box sx={styles.formContainer}>
-        <Box component="form" sx={styles.form}>
+        <Box component="form" sx={styles.form} onKeyDown={handleKeyDown}>
           <Box sx={{ ...styles.inputWrapper, ...styles.streetAddress }}>
             <CustomerTextField
               name="streetAddress"

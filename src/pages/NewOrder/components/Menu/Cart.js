@@ -10,44 +10,34 @@ import { useOrder } from '../../../../context/OrderContext';
 const SALES_TAX = 0.07;
 
 const CartTotal = ({ subtotal }) => {
+  const CartTotalCell = ({ label, children }) => {
+    return (
+      <Box
+        flex="1"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+      >
+        <Typography variant="body2" alignSelf="center">
+          {label.toUpperCase()}
+        </Typography>
+        <Typography
+          name={label}
+          component="p"
+          variant="body2"
+          alignSelf="center"
+        >
+          {toMoneyString(children)}
+        </Typography>
+      </Box>
+    );
+  };
+
   return (
     <Box display="flex" marginTop="auto" bTop="2px solid rgba(0, 0, 0, 0.5)">
-      <Box
-        flex="1"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-      >
-        <Typography variant="body2" alignSelf="center">
-          SUBTOTAL:
-        </Typography>
-        <Typography
-          name="subtotal"
-          component="p"
-          variant="body2"
-          alignSelf="center"
-        >
-          {toMoneyString(subtotal)}
-        </Typography>
-      </Box>
-      <Box
-        flex="1"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-      >
-        <Typography variant="body2" alignSelf="center">
-          TAX:
-        </Typography>
-        <Typography
-          name="salesTax"
-          component="p"
-          variant="body2"
-          alignSelf="center"
-        >
-          {toMoneyString(subtotal * SALES_TAX)}
-        </Typography>
-      </Box>
+      <CartTotalCell label="subtotal">{subtotal}</CartTotalCell>
+      <CartTotalCell label="tax">{subtotal * SALES_TAX}</CartTotalCell>
+
       <Box
         flex="1"
         display="flex"

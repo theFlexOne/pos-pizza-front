@@ -37,7 +37,6 @@ const CustomerTextField = forwardRef(
           value={value}
           onClick={handleClick}
           onChange={handleChange}
-          onKeyDown={onEnter || undefined}
           inputRef={inputRef}
           InputProps={isPhoneNumber ? cleaveInputProps : undefined}
           inputProps={{ autoFocus }}

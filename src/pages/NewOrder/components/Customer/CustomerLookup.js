@@ -11,20 +11,18 @@ export default function CustomerLookup({ goToMenu }) {
   const inputRef = useRef();
 
   const clearField = () => (inputRef.current.value = '');
-  const handleEnter = ({ key }) => {
-    if (key === 'Enter') actions.lookupCustomer();
-  };
+  const handleKeyDown = ({ key }) =>
+    key === 'Enter' && actions.lookupCustomer();
 
   return (
     <Box sx={styles.page}>
       <Box sx={styles.formContainer}>
-        <Box sx={styles.form}>
+        <Box sx={styles.form} onKeyDown={handleKeyDown}>
           <Typography variant="h5" component="h1" marginBottom="2rem">
             Please enter telephone number:
           </Typography>
           <Box sx={styles.inputWrapper}>
             <CustomerTextField
-              onEnter={handleEnter}
               ref={inputRef}
               name="phoneNumber"
               label="Phone Number"
