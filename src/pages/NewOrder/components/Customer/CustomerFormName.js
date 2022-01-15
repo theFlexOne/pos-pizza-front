@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Keyboard from '../../../../components/Keyboard';
 import { useTheme } from '@emotion/react';
 import CustomerTextField from './CustomerTextField';
@@ -8,8 +8,8 @@ import useStyles from '../../../../hooks/useStyles';
 
 export default function CustomerFormName({ nextPage, prevPage }) {
   const { firstName } = useCustomer().state;
-  const theme = useTheme();
   const styles = useStyles().customerFormName;
+  const inputRef = useRef();
 
   const nextBtn = {
     label: 'Next Page',
@@ -23,11 +23,18 @@ export default function CustomerFormName({ nextPage, prevPage }) {
   };
 
   const handleKeyDown = ({ key }) => key === 'Enter' && nextPage();
+  const handleInput = e => console.dir(inputRef.current);
 
   return (
     <Box sx={styles.page}>
       <Box sx={styles.formContainer}>
-        <Box component="form" sx={styles.form} onKeyDown={handleKeyDown}>
+        <Box
+          component="form"
+          sx={styles.form}
+          ref={inputRef}
+          onInput={handleInput}
+          onKeyDown={handleKeyDown}
+        >
           <Box sx={styles.firstNameWrapper}>
             <CustomerTextField
               onEnter={() => nextPage()}

@@ -7,12 +7,11 @@ import useStyles from '../../../../hooks/useStyles';
 
 export default function CustomerLookup({ goToMenu }) {
   const styles = useStyles().customerLookup;
-  const { actions } = useCustomer();
+  const { lookupCustomer, handleClearInput } = useCustomer().actions;
   const inputRef = useRef();
 
-  const clearField = () => (inputRef.current.value = '');
-  const handleKeyDown = ({ key }) =>
-    key === 'Enter' && actions.lookupCustomer();
+  const clearField = () => handleClearInput('phoneNumber');
+  const handleKeyDown = ({ key }) => key === 'Enter' && lookupCustomer();
 
   return (
     <Box sx={styles.page}>
@@ -27,6 +26,7 @@ export default function CustomerLookup({ goToMenu }) {
               name="phoneNumber"
               label="Phone Number"
               autoFocus
+              // flow
             />
           </Box>
           <Button variant="contained" onClick={goToMenu}>
@@ -48,7 +48,7 @@ export default function CustomerLookup({ goToMenu }) {
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
           <Button
-            onClick={() => actions.lookupCustomer()}
+            onClick={() => lookupCustomer()}
             variant="contained"
             sx={{ mt: 'auto' }}
           >

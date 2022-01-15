@@ -15,20 +15,27 @@ const CleavePhoneInput = forwardRef((props, ref) => {
 const cleaveInputProps = { inputComponent: CleavePhoneInput };
 
 const CustomerTextField = forwardRef(
-  ({ name, label, autoFocus, onEnter, ...other }, ref) => {
+  ({ name, label, autoFocus, onEnter, flow, ...other }, ref) => {
     const { state, actions } = useCustomer();
     const value = state[name];
     const { handleInputChange } = actions;
     const inputRef = ref || useRef();
-
-    const handleChange = ({ target }) => handleInputChange(target);
-    const handleClick = () => inputRef.current.focus();
-
     const isPhoneNumber = name === 'phoneNumber';
+
+    const handleChange = e => {
+      const { target } = e;
+      if (target.rawValue === value && flow) {
+        const newValue = target.rawValue.substring(1) + e.nativeEvent.data;
+        target.rawValue = newValue;
+        return handleInputChange(target);
+      }
+      return handleInputChange(target);
+    };
+    const handleClick = () => inputRef.current.focus();
 
     return (
       <TextField
-        name={name || undefined}
+        name={name || ''}
         label={label || ''}
         value={value}
         onClick={handleClick}

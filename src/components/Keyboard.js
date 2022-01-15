@@ -1,24 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
-
-const styles = {
-  keyboardContainer: {
-    flexBasis: '100%',
-    backgroundColor: '#38D435',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-};
-// class KeyboardButton {
-//   constructor({label, action, disabled, sx}) {
-//     this.label = label || '';
-//     this.action = action || console.error('must include an action prop');
-//     this.disabled = disabled || false;
-//     this.sx = sx || {};
-//   }
-// }
+import useStyles from '../hooks/useStyles';
 
 const KeyboardBtn = ({ label, action, disabled, sx = {} }) => {
   return (
@@ -35,6 +17,7 @@ const KeyboardBtn = ({ label, action, disabled, sx = {} }) => {
 };
 
 export default function Keyboard({ next, prev }) {
+  const styles = useStyles().keyboard;
   return (
     <Box sx={styles.keyboardContainer}>
       <Typography variant="body2" marginTop="auto">

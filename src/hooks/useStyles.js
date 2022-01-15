@@ -229,6 +229,16 @@ const useStyles = (newTheme = undefined) => {
         '&:hover': { color: theme.palette.primary[600] },
       },
     },
+    keyboard: {
+      keyboardContainer: {
+        flexBasis: '100%',
+        backgroundColor: '#38D435',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
   });
   return styles();
 };

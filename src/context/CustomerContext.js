@@ -93,6 +93,14 @@ const CustomerProvider = ({ children }) => {
       };
       dispatch(action);
     },
+    handleClearInput(name) {
+      const action = {
+        type: 'update-field',
+        value: '',
+        name,
+      };
+      dispatch(action);
+    },
     handleCustomerSubmit() {
       const customer = buildCustomer({ ...state });
       postNewCustomer(customer);
