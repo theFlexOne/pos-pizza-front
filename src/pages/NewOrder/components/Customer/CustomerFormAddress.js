@@ -1,7 +1,8 @@
 import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import Keyboard from '../../../../components/Keyboard';
+// import Keyboard from '../../../../components/Keyboard';
+import Keyboard from '../../../../lib/Keyboard/Keyboard';
 import { useTheme } from '@emotion/react';
 import { useCustomer } from '../../../../context/CustomerContext';
 import CustomerTextField from './CustomerTextField';
@@ -12,15 +13,18 @@ export default function CustomerFormAddress({ prevPage }) {
   const { streetAddress } = state;
   const { handleCustomerSubmit } = actions;
   const styles = useStyles().customerFormAddress;
-  const nextBtn = {
-    label: 'Next Page',
-    action: handleCustomerSubmit,
-    disabled: !streetAddress,
-  };
 
-  const prevBtn = {
-    label: 'Prev Page',
-    action: prevPage,
+  const options = {
+    nextBtn: {
+      label: 'Next Page',
+      action: handleCustomerSubmit,
+      disabled: !streetAddress,
+    },
+
+    prevBtn: {
+      label: 'Prev Page',
+      action: prevPage,
+    },
   };
 
   const handleKeyDown = ({ key }) => key === 'Enter' && handleCustomerSubmit();
@@ -64,7 +68,7 @@ export default function CustomerFormAddress({ prevPage }) {
         </Box>
       </Box>
       <Box sx={styles.keyboardContainer}>
-        <Keyboard next={nextBtn} prev={prevBtn} />
+        <Keyboard options={options} />
       </Box>
       {/* <Keyboard onBtnClick={onCustomerSubmit} btnLabel="START ORDER" /> */}
     </Box>

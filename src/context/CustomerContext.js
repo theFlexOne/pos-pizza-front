@@ -93,6 +93,9 @@ const CustomerProvider = ({ children }) => {
       };
       dispatch(action);
     },
+    handleKeyboardClick(val) {
+      // const value = sta;
+    },
     handleClearInput(name) {
       const action = {
         type: 'update-field',
@@ -107,6 +110,15 @@ const CustomerProvider = ({ children }) => {
       addCustomerToSS(customer);
       selectCustomer(customer);
     },
+    toNextPage() {
+      setFormStep(() => formStep + 1);
+    },
+    toPrevPage() {
+      setFormStep(() => formStep - 1);
+    },
+    getFormStep() {
+      return formStep;
+    },
     lookupCustomer() {
       const customerList = getFromSS('customers');
       const customer = customerList.find(
@@ -116,17 +128,8 @@ const CustomerProvider = ({ children }) => {
         selectCustomer(customer);
         return customer;
       }
-      this.toNextPage();
-      return {};
-    },
-    toNextPage() {
       setFormStep(() => formStep + 1);
-    },
-    toPrevPage() {
-      setFormStep(() => formStep - 1);
-    },
-    getFormStep() {
-      return formStep;
+      return {};
     },
     test() {
       const action = { ...DEFAULT_ACTION, type: 'TEST' };

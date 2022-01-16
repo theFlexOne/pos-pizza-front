@@ -4,10 +4,12 @@ import ClearIcon from '@mui/icons-material/Clear';
 import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
 import useStyles from '../../../../hooks/useStyles';
+import NumPad from '../../../../components/NumPad';
 
 export default function CustomerLookup({ goToMenu }) {
   const styles = useStyles().customerLookup;
-  const { lookupCustomer, handleClearInput } = useCustomer().actions;
+  const { actions } = useCustomer();
+  const { lookupCustomer, handleClearInput } = actions;
   const inputRef = useRef();
 
   const clearField = () => handleClearInput('phoneNumber');
@@ -35,7 +37,8 @@ export default function CustomerLookup({ goToMenu }) {
         </Box>
       </Box>
       <Box sx={styles.keypadContainer}>
-        <Box sx={styles.buttonsBox}>
+        <NumPad />
+        {/* <Box sx={styles.buttonsBox}>
           <Typography
             component="h3"
             variant="body2"
@@ -47,17 +50,17 @@ export default function CustomerLookup({ goToMenu }) {
           >
             **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
           </Typography>
-          <Button
-            onClick={() => lookupCustomer()}
-            variant="contained"
-            sx={{ mt: 'auto' }}
-          >
-            LOOKUP TEL
-          </Button>
-          <Button variant="contained" onClick={clearField} sx={{ mb: 'auto' }}>
-            CLEAR <ClearIcon sx={{ ml: '1rem' }} />
-          </Button>
-        </Box>
+        </Box> */}
+        <Button
+          onClick={() => lookupCustomer()}
+          variant="contained"
+          sx={{ mt: 'auto' }}
+        >
+          LOOKUP TEL
+        </Button>
+        <Button variant="contained" onClick={clearField} sx={{ mb: 'auto' }}>
+          CLEAR <ClearIcon sx={{ ml: '1rem' }} />
+        </Button>
       </Box>
     </Box>
   );

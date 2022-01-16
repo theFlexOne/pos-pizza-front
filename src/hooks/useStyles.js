@@ -239,6 +239,13 @@ const useStyles = (newTheme = undefined) => {
         justifyContent: 'center',
       },
     },
+    numPad: {
+      container: {
+        display: 'grid',
+        gridTemplateColumns: '1fr, 1fr, 1fr',
+        maxWidth: '400px',
+      },
+    },
   });
   return styles();
 };

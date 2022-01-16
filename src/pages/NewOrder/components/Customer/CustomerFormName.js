@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import React, { useRef, useEffect } from 'react';
-import Keyboard from '../../../../components/Keyboard';
+// import Keyboard from '../../../../components/Keyboard';
+import Keyboard from '../../../../lib/Keyboard/Keyboard';
 import { useTheme } from '@emotion/react';
 import CustomerTextField from './CustomerTextField';
 import { useCustomer } from '../../../../context/CustomerContext';
@@ -24,6 +25,11 @@ export default function CustomerFormName({ nextPage, prevPage }) {
 
   const handleKeyDown = ({ key }) => key === 'Enter' && nextPage();
   const handleInput = e => console.dir(inputRef.current);
+
+  const options = {
+    nextBtn,
+    prevBtn,
+  };
 
   return (
     <Box sx={styles.page}>
@@ -55,7 +61,8 @@ export default function CustomerFormName({ nextPage, prevPage }) {
         </Box>
       </Box>
       <Box sx={styles.keyboardContainer}>
-        <Keyboard next={{ ...nextBtn }} prev={{ ...prevBtn }} />
+        {/* <Keyboard /> */}
+        <Keyboard options={options} />
       </Box>
     </Box>
   );
