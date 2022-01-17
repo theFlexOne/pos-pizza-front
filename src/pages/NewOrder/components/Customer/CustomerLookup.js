@@ -35,22 +35,17 @@ export default function CustomerLookup({ goToMenu }) {
             SWITCH TO MENU
           </Button>
         </Box>
+        <Box>
+          <Typography component="h1" variant="h3" sx={{ mt: '5rem' }}>
+            POS {} Pizza
+          </Typography>
+          <Typography component="h1" variant="h5">
+            (Point-of-Sales)
+          </Typography>
+        </Box>
       </Box>
       <Box sx={styles.keypadContainer}>
         <NumPad />
-        {/* <Box sx={styles.buttonsBox}>
-          <Typography
-            component="h3"
-            variant="body2"
-            sx={{
-              textDecoration: 'underline',
-              textDecorationThickness: '.1rem',
-              mt: 'auto',
-            }}
-          >
-            **SPACE RESERVED FOR A NUMERIC TOUCH KEYPAD**
-          </Typography>
-        </Box> */}
         <Button
           onClick={() => lookupCustomer()}
           variant="contained"
@@ -65,15 +60,3 @@ export default function CustomerLookup({ goToMenu }) {
     </Box>
   );
 }
-
-/* <TextField
-              name="phoneNumber"
-              label="Phone Number"
-              value={phoneNumber}
-              // onChange={handleChange}
-              onChange={handleInputChange}
-              onClick={focusTextField}
-              fullWidth
-              autoFocus
-              required
-            /> */

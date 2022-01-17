@@ -241,10 +241,14 @@ const useStyles = (newTheme = undefined) => {
     },
     numPad: {
       container: {
-        display: 'grid',
-        gridTemplateColumns: '1fr, 1fr, 1fr',
-        maxWidth: '400px',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
       },
+      row: {
+        display: 'flex',
+      },
+      button: { width: '100px', height: '100px', m: '1.5px' },
     },
   });
   return styles();
