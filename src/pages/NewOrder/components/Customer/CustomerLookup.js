@@ -37,7 +37,7 @@ export default function CustomerLookup({ goToMenu }) {
         </Box>
         <Box>
           <Typography component="h1" variant="h3" sx={{ mt: '5rem' }}>
-            POS {} Pizza
+            POS Pizza
           </Typography>
           <Typography component="h1" variant="h5">
             (Point-of-Sales)

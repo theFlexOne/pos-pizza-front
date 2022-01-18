@@ -12,23 +12,16 @@ export default function CustomerFormName({ nextPage, prevPage }) {
   const styles = useStyles().customerFormName;
   const inputRef = useRef();
 
-  const nextBtn = {
-    label: 'Next Page',
-    action: nextPage,
-    disabled: !firstName,
-  };
-
-  const prevBtn = {
-    label: 'Prev Page',
-    action: prevPage,
-  };
-
   const handleKeyDown = ({ key }) => key === 'Enter' && nextPage();
   const handleInput = e => console.dir(inputRef.current);
 
   const options = {
-    nextBtn,
-    prevBtn,
+    nextBtn: {
+      label: 'Next Page',
+      action: nextPage,
+      disabled: !firstName,
+    },
+    prevBtn: { label: 'Prev Page', action: prevPage },
   };
 
   return (

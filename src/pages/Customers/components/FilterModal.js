@@ -6,7 +6,7 @@ import {
   DialogContent,
   TextField,
 } from '@mui/material';
-import Keyboard from '../../../components/Keyboard';
+import Keyboard from '../../../lib/Keyboard/Keyboard';
 import { Box } from '@mui/system';
 import { useTheme } from '@emotion/react';
 
@@ -55,16 +55,17 @@ export default function FilterModal({
     palette: { primary },
   } = useTheme();
 
-  const filterSubmitBtn = {
-    label: 'search',
-    action: handleFilter,
-  };
-
-  const cancelBtn = {
-    label: 'cancel',
-    action() {
-      setFilter({ text: '', type: 'name' });
-      setIsOpen(false);
+  const options = {
+    nextBtn: {
+      label: 'search',
+      action: handleFilter,
+    },
+    prevBtn: {
+      label: 'cancel',
+      action: () => {
+        setFilter({ text: '', type: 'name' });
+        setIsOpen(false);
+      },
     },
   };
 
@@ -111,8 +112,9 @@ export default function FilterModal({
         </Box>
         <Keyboard
           sx={{ flexGrow: 1 }}
-          next={filterSubmitBtn}
-          prev={cancelBtn}
+          options={options}
+          // next={filterSubmitBtn}
+          // prev={cancelBtn}
         />
       </DialogContent>
     </Dialog>

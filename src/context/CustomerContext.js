@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import { addCustomerToSS, getFromSS } from '../utils/sessionStorageHelpers';
 import { useOrder } from './OrderContext';
 import { v4 as uuid } from 'uuid';
@@ -14,7 +20,6 @@ const initialState = {
   lastName: '',
   streetAddress: '',
   secondaryAddress: '',
-  formStep: 1,
 };
 
 const buildCustomer = ({
@@ -79,6 +84,7 @@ const CustomerProvider = ({ children }) => {
   const [formStep, setFormStep] = useState(1);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { selectCustomer } = useOrder();
+  const focusedInput = useRef(undefined);
 
   const actions = {
     logThis() {
@@ -130,6 +136,12 @@ const CustomerProvider = ({ children }) => {
       }
       setFormStep(() => formStep + 1);
       return {};
+    },
+    setFocusedInput(ref) {
+      focusedInput.current = ref;
+    },
+    handleBlur() {
+      focusedInput.current = undefined;
     },
     test() {
       const action = { ...DEFAULT_ACTION, type: 'TEST' };

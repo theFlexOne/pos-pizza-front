@@ -18,7 +18,7 @@ const CustomerTextField = forwardRef(
   ({ name, label, autoFocus, onEnter, flow, ...other }, ref) => {
     const { state, actions } = useCustomer();
     const value = state[name];
-    const { handleInputChange } = actions;
+    const { handleInputChange, setFocusedInput } = actions;
     const inputRef = ref || useRef();
     const isPhoneNumber = name === 'phoneNumber';
 
@@ -32,12 +32,16 @@ const CustomerTextField = forwardRef(
       return handleInputChange(target);
     };
     const handleClick = () => inputRef.current.focus();
+    const handleFocus = () => setFocusedInput(inputRef.current);
+    const handleBlur = () => setFocusedInput(undefined);
 
     return (
       <TextField
         name={name || ''}
         label={label || ''}
         value={value}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         onClick={handleClick}
         onChange={handleChange}
         inputRef={inputRef}
