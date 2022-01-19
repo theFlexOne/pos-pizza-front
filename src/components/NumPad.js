@@ -4,7 +4,6 @@ import useStyles from '../hooks/useStyles';
 import { useCustomer } from '../context/CustomerContext';
 
 function NumPad(props) {
-  const { state, actions } = useCustomer();
   const styles = useStyles().numPad;
 
   const handleKeyboardClick = e => console.dir(e);

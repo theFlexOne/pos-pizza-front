@@ -250,6 +250,40 @@ const useStyles = (newTheme = undefined) => {
       },
       button: { width: '100px', height: '100px', m: '1.5px' },
     },
+    login: {
+      container: {
+        backgroundColor: theme.palette.secondary[600],
+        flexGrow: '1',
+      },
+      wrapper: {
+        display: 'flex',
+        // alignItems: 'start',
+        backgroundColor: theme.palette.secondary[300],
+        width: '650px',
+        margin: '2rem auto',
+        height: '85%',
+        // pb: '1rem',
+      },
+      numPadWrapper: {
+        flexGrow: '3',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+      },
+      buttonsWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        // padding: 'auto 0',
+        // alignItems: 'center',
+        justifyContent: 'center',
+        flexGrow: '1',
+      },
+      textField: {
+        // marginRight: '1rem',
+        maxWidth: '100px',
+      },
+    },
   });
   return styles();
 };

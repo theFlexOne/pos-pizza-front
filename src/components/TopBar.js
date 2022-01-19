@@ -33,10 +33,12 @@ export default function TopBar() {
       sx={{ backgroundColor: theme.palette.secondary[700] }}
     >
       <Tabs
+        component="nav"
         className="nav tabs"
         variant="fullWidth"
         value={selectedTab}
         onChange={handleChange}
+        TabIndicatorProps={{ width: '1rem' }}
       >
         <LinkTab label="New Order" to="/NewOrder" />
         <LinkTab label="Order History" to="/OrderHistory" disabled />

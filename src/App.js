@@ -8,7 +8,9 @@ import Customers from './pages/Customers/Customers';
 import Settings from './pages/Settings/Settings';
 import useDragScroll from './hooks/useDragScroll';
 import { OrderProvider } from './context/OrderContext';
+import Login from './pages/Login/Login';
 
+const root = document.getElementById('root');
 function App() {
   const [err, isLoading] = useFetchApp();
   const isSS = sessionStorage.length > 0;
@@ -36,6 +38,7 @@ function App() {
             <Route path="/NewOrder" element={<NewOrderProvider />} />
             <Route path="/Customers" element={<Customers />} />
             <Route path="/Settings" element={<Settings />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
         </Box>
       </Layout>

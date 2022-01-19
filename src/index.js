@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './assets/fonts/Future Light.ttf';
+
+const root = document.getElementById('root');
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,5 +13,5 @@ ReactDOM.render(
       <App />
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  root
 );

@@ -8,3 +8,8 @@ body {
   box-sizing: border-box;
   max-height: 100vh;
 }
+
+@font-face {
+  font-family: 'FutureLight';
+  src: url('./assets/fonts/Future\ Light.ttf') format('truetype');
+}

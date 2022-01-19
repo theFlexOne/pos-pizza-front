@@ -19,10 +19,10 @@ const CustomerTableRow = ({ customer, onDeleteCustomer }) => {
 
   const modalOptions = {
     open: isOpen,
-    onClose: handleClose,
+    onModalClose: handleClose,
     title: 'Delete Customer?',
-    cancel: handleClose,
-    confirm: () => onDeleteCustomer(id),
+    onCancel: handleClose,
+    onConfirm: () => onDeleteCustomer(id),
   };
 
   return (

@@ -36,10 +36,25 @@ export default function CustomerLookup({ goToMenu }) {
           </Button>
         </Box>
         <Box>
-          <Typography component="h1" variant="h3" sx={{ mt: '5rem' }}>
+          <Typography
+            component="h1"
+            variant="h3"
+            sx={{
+              mt: '5rem',
+              fontFamily: 'FutureLight',
+              fontSize: '5rem',
+            }}
+          >
             POS Pizza
           </Typography>
-          <Typography component="h1" variant="h5">
+          <Typography
+            component="p"
+            sx={{
+              fontFamily: 'FutureLight',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+            }}
+          >
             (Point-of-Sales)
           </Typography>
         </Box>
